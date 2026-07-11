@@ -1,4 +1,4 @@
--- This Script Hub was made by CantankerousStrategy
+-- This Script Hub was made by IDioTKing
 
 -- Instances:
 
@@ -28,12 +28,12 @@ local UICorner_8 = Instance.new("UICorner")
 local TextLabel_3 = Instance.new("TextLabel")
 local ScriptsFrame = Instance.new("Frame")
 local UICorner_9 = Instance.new("UICorner")
-local ControlGUI = Instance.new("TextButton")
-local FERevengeHands = Instance.new("TextButton")
-local TheGlitch = Instance.new("TextButton")
-local ChaosDeusSword = Instance.new("TextButton")
-local Vereus = Instance.new("TextButton")
-local RoadRollerDance = Instance.new("TextButton")
+local FunctionMethod1 = Instance.new("TextButton")
+local FunctionMethod2 = Instance.new("TextButton")
+local FunctionMethod3 = Instance.new("TextButton")
+local FunctionMethod4 = Instance.new("TextButton")
+local FunctionMethod5 = Instance.new("TextButton")
+local FunctionMethod6 = Instance.new("TextButton")
 
 --Properties:
 
@@ -140,7 +140,7 @@ TITLE.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TITLE.Position = UDim2.new(0, 0, 0.0370370373, 0)
 TITLE.Size = UDim2.new(0, 100, 0, 50)
 TITLE.Font = Enum.Font.Jura
-TITLE.Text = "Cold Monster SKID"
+TITLE.Text = "COLD MONSTER SKID"
 TITLE.TextColor3 = Color3.fromRGB(255, 255, 255)
 TITLE.TextSize = 20.000
 
@@ -169,7 +169,7 @@ TextLabel_2.BackgroundTransparency = 1.000
 TextLabel_2.Position = UDim2.new(0, 0, 0.331606209, 0)
 TextLabel_2.Size = UDim2.new(0, 470, 0, 50)
 TextLabel_2.Font = Enum.Font.Jura
-TextLabel_2.Text = "Join the Discord Server: https://discord.gg/EUN5waqZ"
+TextLabel_2.Text = "Join the Discord Server: https://discord.gg/4k9XU7xRHe"
 TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_2.TextSize = 19.000
 
@@ -188,7 +188,7 @@ TextLabel_3.BackgroundTransparency = 1.000
 TextLabel_3.Position = UDim2.new(0.100000001, 0, 0.0958549231, 0)
 TextLabel_3.Size = UDim2.new(0, 359, 0, 50)
 TextLabel_3.Font = Enum.Font.Jura
-TextLabel_3.Text = "Made By CantankerousStrategy"
+TextLabel_3.Text = "Made By IDioTKing"
 TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_3.TextSize = 19.000
 
@@ -201,88 +201,89 @@ ScriptsFrame.Visible = false
 
 UICorner_9.Parent = ScriptsFrame
 
-ControlGUI.Name = "ControlGUI"
-ControlGUI.Parent = ScriptsFrame
-ControlGUI.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
-ControlGUI.BorderSizePixel = 0
-ControlGUI.Position = UDim2.new(0.0957446843, 0, 0.07772021, 0)
-ControlGUI.Size = UDim2.new(0, 166, 0, 50)
-ControlGUI.Font = Enum.Font.Jura
-ControlGUI.Text = "FE CONTROL GUI"
-ControlGUI.TextColor3 = Color3.fromRGB(255, 255, 255)
-ControlGUI.TextSize = 17.000
-ControlGUI.MouseButton1Down:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/KRNL2/asdasdas/main/control"), true))()
+FunctionMethod1.Name = "FunctionMethod1"
+FunctionMethod1.Parent = ScriptsFrame
+FunctionMethod1.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod1.BorderSizePixel = 0
+FunctionMethod1.Position = UDim2.new(0.0957446843, 0, 0.07772021, 0)
+FunctionMethod1.Size = UDim2.new(0, 166, 0, 50)
+FunctionMethod1.Font = Enum.Font.Jura
+FunctionMethod1.Text = "FlyGui V3"
+FunctionMethod1.TextColor3 = Color3.fromRGB(255, 255, 255)
+FunctionMethod1.TextSize = 17.000
+FunctionMethod1.MouseButton1Down:Connect (function()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
 end)
 
-FERevengeHands.Name = "FERevengeHands"
-FERevengeHands.Parent = ScriptsFrame
-FERevengeHands.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
-FERevengeHands.BorderSizePixel = 0
-FERevengeHands.Position = UDim2.new(0.551063836, 0, 0.07772021, 0)
-FERevengeHands.Size = UDim2.new(0, 166, 0, 50)
-FERevengeHands.Font = Enum.Font.Jura
-FERevengeHands.Text = "FE REVENGE HANDS"
-FERevengeHands.TextColor3 = Color3.fromRGB(255, 255, 255)
-FERevengeHands.TextSize = 17.000
-FERevengeHands.MouseButton1Down:connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/KRNL2/asdasdasd/main/Revenge%20Hands"), true))()
+FunctionMethod2.Name = "FunctionMethod2"
+FunctionMethod2.Parent = ScriptsFrame
+FunctionMethod2.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod2.BorderSizePixel = 0
+FunctionMethod2.Position = UDim2.new(0.551063836, 0, 0.07772021, 0)
+FunctionMethod2.Size = UDim2.new(0, 166, 0, 50)
+FunctionMethod2.Font = Enum.Font.Jura
+FunctionMethod2.Text = "Obby GodMode"
+FunctionMethod2.TextColor3 = Color3.fromRGB(255, 255, 255)
+FunctionMethod2.TextSize = 17.000
+FunctionMethod2.MouseButton1Down:connect (function()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/zephyr10101/ignore-touchinterests/main/main",true))()
 end)
 
-TheGlitch.Name = "TheGlitch"
-TheGlitch.Parent = ScriptsFrame
-TheGlitch.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
-TheGlitch.BorderSizePixel = 0
-TheGlitch.Position = UDim2.new(0.0957446843, 0, 0.370466322, 0)
-TheGlitch.Size = UDim2.new(0, 166, 0, 50)
-TheGlitch.Font = Enum.Font.Jura
-TheGlitch.Text = "THE GLITCH"
-TheGlitch.TextColor3 = Color3.fromRGB(255, 255, 255)
-TheGlitch.TextSize = 17.000
-TheGlitch.MouseButton1Down:connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/KRNL2/haker/main/The%20Glitch"), true))()
+FunctionMethod3.Name = "FunctionMethod3"
+FunctionMethod3.Parent = ScriptsFrame
+FunctionMethod3.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod3.BorderSizePixel = 0
+FunctionMethod3.Position = UDim2.new(0.0957446843, 0, 0.370466322, 0)
+FunctionMethod3.Size = UDim2.new(0, 166, 0, 50)
+FunctionMethod3.Font = Enum.Font.Jura
+FunctionMethod3.Text = "Invisible"
+FunctionMethod3.TextColor3 = Color3.fromRGB(255, 255, 255)
+FunctionMethod3.TextSize = 17.000
+FunctionMethod3.MouseButton1Down:connect (function()
+	loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe./dbb6ce6f6cee4f7a5c9e20d7b88e83db2a93bf25/Invisible%20GUI'))()
 end)
 
-ChaosDeusSword.Name = "ChaosDeusSword"
-ChaosDeusSword.Parent = ScriptsFrame
-ChaosDeusSword.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
-ChaosDeusSword.BorderSizePixel = 0
-ChaosDeusSword.Position = UDim2.new(0.0957446843, 0, 0.658031106, 0)
-ChaosDeusSword.Size = UDim2.new(0, 166, 0, 50)
-ChaosDeusSword.Font = Enum.Font.Jura
-ChaosDeusSword.Text = "CHAOS DEUS SWORD"
-ChaosDeusSword.TextColor3 = Color3.fromRGB(255, 255, 255)
-ChaosDeusSword.TextSize = 17.000
-ChaosDeusSword.MouseButton1Down:connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/KRNL2/sword/main/Chaos%20Deus%20Sword"), true))()
+FunctionMethod4.Name = "FunctionMethod4"
+FunctionMethod4.Parent = ScriptsFrame
+FunctionMethod4.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod4.BorderSizePixel = 0
+FunctionMethod4.Position = UDim2.new(0.551063836, 0, 0.367875636, 0)
+FunctionMethod4.Size = UDim2.new(0, 166, 0, 50)
+FunctionMethod4.Font = Enum.Font.Jura
+FunctionMethod4.Text = "Rochips Panel"
+FunctionMethod4.TextColor3 = Color3.fromRGB(255, 255, 255)
+FunctionMethod4.TextSize = 17.000
+FunctionMethod4.MouseButton1Down:connect (function()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/randomstring0/unk/main/d"))()
+
 end)
 
-Vereus.Name = "Vereus"
-Vereus.Parent = ScriptsFrame
-Vereus.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
-Vereus.BorderSizePixel = 0
-Vereus.Position = UDim2.new(0.551063836, 0, 0.658031166, 0)
-Vereus.Size = UDim2.new(0, 166, 0, 50)
-Vereus.Font = Enum.Font.Jura
-Vereus.Text = "FE VEREUS (R6)"
-Vereus.TextColor3 = Color3.fromRGB(255, 255, 255)
-Vereus.TextSize = 17.000
-Vereus.MouseButton1Down:connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/KRNL2/3dx/main/VEREUS"), true))()
+FunctionMethod5.Name = "FunctionMethod5"
+FunctionMethod5.Parent = ScriptsFrame
+FunctionMethod5.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod5.BorderSizePixel = 0
+FunctionMethod5.Position = UDim2.new(0.0957446843, 0, 0.658031106, 0)
+FunctionMethod5.Size = UDim2.new(0, 166, 0, 50)
+FunctionMethod5.Font = Enum.Font.Jura
+FunctionMethod5.Text = "Body Fling"
+FunctionMethod5.TextColor3 = Color3.fromRGB(255, 255, 255)
+FunctionMethod5.TextSize = 17.000
+FunctionMethod5.MouseButton1Down:connect (function()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/0Ben1/fe./main/Fling%20GUI"))()
 end)
 
-RoadRollerDance.Name = "RoadRollerDance"
-RoadRollerDance.Parent = ScriptsFrame
-RoadRollerDance.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
-RoadRollerDance.BorderSizePixel = 0
-RoadRollerDance.Position = UDim2.new(0.551063836, 0, 0.367875636, 0)
-RoadRollerDance.Size = UDim2.new(0, 166, 0, 50)
-RoadRollerDance.Font = Enum.Font.Jura
-RoadRollerDance.Text = "ROAD ROLLER DANCE"
-RoadRollerDance.TextColor3 = Color3.fromRGB(255, 255, 255)
-RoadRollerDance.TextSize = 17.000
-RoadRollerDance.MouseButton1Down:connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/KRNL2/rm/main/Road%20Roller%20Dance"), true))()
+FunctionMethod6.Name = "FunctionMethod6"
+FunctionMethod6.Parent = ScriptsFrame
+FunctionMethod6.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod6.BorderSizePixel = 0
+FunctionMethod6.Position = UDim2.new(0.551063836, 0, 0.658031166, 0)
+FunctionMethod6.Size = UDim2.new(0, 166, 0, 50)
+FunctionMethod6.Font = Enum.Font.Jura
+FunctionMethod6.Text = "Control NPC"
+FunctionMethod6.TextColor3 = Color3.fromRGB(255, 255, 255)
+FunctionMethod6.TextSize = 17.000
+FunctionMethod6.MouseButton1Down:connect (function()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty38.lua"))()
 end)
 
 -- Scripts:
