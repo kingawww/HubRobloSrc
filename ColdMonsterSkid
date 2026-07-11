@@ -67,7 +67,7 @@ ScriptsButton.Size = UDim2.new(0, 100, 0, 64)
 ScriptsButton.Font = Enum.Font.Jura
 ScriptsButton.Text = "Scripts"
 ScriptsButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-ScriptsButton.TextSize = 20.000
+ScriptsButton.TextSize = 18.000
 
 bar.Name = "bar"
 bar.Parent = ScriptsButton
@@ -75,7 +75,7 @@ bar.AnchorPoint = Vector2.new(0.5, 0.5)
 bar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar.BorderSizePixel = 0
 bar.Position = UDim2.new(0.490000427, 0, 0.734375, 0)
-bar.Size = UDim2.new(0, 91, 0, 4)
+bar.Size = UDim2.new(0, 70, 0, 4)
 bar.ZIndex = 2
 
 UICorner_3.Parent = bar
@@ -89,7 +89,7 @@ CreditsButton.Size = UDim2.new(0, 100, 0, 64)
 CreditsButton.Font = Enum.Font.Jura
 CreditsButton.Text = "Credits"
 CreditsButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CreditsButton.TextSize = 20.000
+CreditsButton.TextSize = 18.000
 
 bar_2.Name = "bar"
 bar_2.Parent = CreditsButton
@@ -97,7 +97,7 @@ bar_2.AnchorPoint = Vector2.new(0.5, 0.5)
 bar_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar_2.BorderSizePixel = 0
 bar_2.Position = UDim2.new(0.490000427, 0, 0.734375, 0)
-bar_2.Size = UDim2.new(0, 91, 0, 4)
+bar_2.Size = UDim2.new(0, 70, 0, 4)
 bar_2.ZIndex = 2
 
 UICorner_4.Parent = bar_2
@@ -111,7 +111,7 @@ ExtrasButton.Size = UDim2.new(0, 100, 0, 64)
 ExtrasButton.Font = Enum.Font.Jura
 ExtrasButton.Text = "Extras"
 ExtrasButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-ExtrasButton.TextSize = 20.000
+ExtrasButton.TextSize = 18.000
 
 bar_3.Name = "bar"
 bar_3.Parent = ExtrasButton
@@ -119,7 +119,7 @@ bar_3.AnchorPoint = Vector2.new(0.5, 0.5)
 bar_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar_3.BorderSizePixel = 0
 bar_3.Position = UDim2.new(0.490000427, 0, 0.734375, 0)
-bar_3.Size = UDim2.new(0, 91, 0, 4)
+bar_3.Size = UDim2.new(0, 70, 0, 4)
 bar_3.ZIndex = 2
 
 UICorner_5.Parent = bar_3
