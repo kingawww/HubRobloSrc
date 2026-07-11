@@ -54,7 +54,6 @@ main.BorderSizePixel = 0
 main.Position = UDim2.new(0.0892388448, 0, 0.233672038, 0)
 main.Size = UDim2.new(0, 480, 0, 360)
 main.Active = true
-main.Draggable = true
 
 UICorner.Parent = main
 
@@ -471,4 +470,40 @@ ToggleButton.MouseButton1Click:Connect(function()
     opened = not opened
     main.Visible = opened
 
+end)
+local UIS = game:GetService("UserInputService") -- anti scroll
+
+local dragging = false
+local dragStart
+local startPos
+
+TopBar.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1
+	or input.UserInputType == Enum.UserInputType.Touch then
+
+		dragging = true
+		dragStart = input.Position
+		startPos = main.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+UIS.InputChanged:Connect(function(input)
+	if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement
+	or input.UserInputType == Enum.UserInputType.Touch) then
+
+		local delta = input.Position - dragStart
+
+		main.Position = UDim2.new(
+			startPos.X.Scale,
+			startPos.X.Offset + delta.X,
+			startPos.Y.Scale,
+			startPos.Y.Offset + delta.Y
+		)
+	end
 end)
