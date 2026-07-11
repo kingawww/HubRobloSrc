@@ -34,6 +34,8 @@ local FunctionMethod3 = Instance.new("TextButton")
 local FunctionMethod4 = Instance.new("TextButton")
 local FunctionMethod5 = Instance.new("TextButton")
 local FunctionMethod6 = Instance.new("TextButton")
+local FunctionMethod7 = Instance.new("TextButton")
+local FunctionMethod8 = Instance.new("TextButton")
 local ToggleButton = Instance.new("TextButton")
 local ToggleCorner = Instance.new("UICorner")
 
@@ -299,6 +301,36 @@ FunctionMethod6.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod6.TextSize = 17.000
 FunctionMethod6.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty38.lua"), true))()
+end)
+
+FunctionMethod7.Name = "FunctionMethod7"
+FunctionMethod7.Parent = ScriptsFrame
+FunctionMethod7.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FunctionMethod7.BackgroundTransparency = 0.2
+FunctionMethod7.BorderSizePixel = 0
+FunctionMethod7.Position = UDim2.new(0.0957, 0, 0.61, 0)
+FunctionMethod7.Size = UDim2.new(0,145,0,44)
+FunctionMethod7.Font = Enum.Font.Jura
+FunctionMethod7.Text = "Fling ALL"
+FunctionMethod7.TextColor3 = Color3.fromRGB(255, 255, 255)
+FunctionMethod7.TextSize = 17.000
+FunctionMethod7.MouseButton1Click:Connect (function()
+	loadstring(game:HttpGet(("https://pastebin.com/raw/zqyDSUWX"), true))()
+end)
+
+FunctionMethod8.Name = "FunctionMethod8"
+FunctionMethod8.Parent = ScriptsFrame
+FunctionMethod8.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FunctionMethod8.BackgroundTransparency = 0.2
+FunctionMethod8.BorderSizePixel = 0
+FunctionMethod8.Position = UDim2.new(0.5510, 0, 0.61, 0)
+FunctionMethod8.Size = UDim2.new(0,145,0,44)
+FunctionMethod8.Font = Enum.Font.Jura
+FunctionMethod8.Text = "Skin Stealer"
+FunctionMethod8.TextColor3 = Color3.fromRGB(255, 255, 255)
+FunctionMethod8.TextSize = 17.000
+FunctionMethod8.MouseButton1Click:Connect (function()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/Invoooker11/Outfit/main/OutfitCopier.lua"), true))()
 end)
 
 ToggleButton.Name = "ToggleButton" -- on off toggle
