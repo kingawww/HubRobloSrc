@@ -32,7 +32,7 @@ local UIGridLayout = Instance.new("UIGridLayout")
 
 UIGridLayout.Parent = ScriptsFrame
 UIGridLayout.CellSize = UDim2.new(0,145,0,44)
-UIGridLayout.CellPadding = UDim2.new(0,25,0,15)
+UIGridLayout.CellPadding = UDim2.new(0,32,0,15)
 UIGridLayout.FillDirectionMaxCells = 2
 UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
