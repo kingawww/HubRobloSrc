@@ -45,10 +45,10 @@ ScreenGui.Parent = game.CoreGui
 main.Name = "main"
 main.Parent = ScreenGui
 main.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
+main.BackgroundTransparency = 0.35
 main.BorderSizePixel = 0
 main.Position = UDim2.new(0.0892388448, 0, 0.233672038, 0)
 main.Size = UDim2.new(0, 480, 0, 360)
-main.BackgroundTransparency = 0.35
 main.Active = true
 main.Draggable = true
 
@@ -57,9 +57,9 @@ UICorner.Parent = main
 SideBar.Name = "SideBar"
 SideBar.Parent = main
 SideBar.BackgroundColor3 = Color3.fromRGB(20, 20, 200)
+SideBar.BackgroundTransparency = 0.3
 SideBar.Position = UDim2.new(0, 0, 0.00228832942, 0)
 SideBar.Size = UDim2.new(0, 80, 0, 360)
-SideBar.BackgroundTransparency = 0.25
 
 UICorner_2.Parent = SideBar
 
@@ -132,9 +132,9 @@ UICorner_5.Parent = bar_3
 TopBar.Name = "TopBar"
 TopBar.Parent = main
 TopBar.BackgroundColor3 = Color3.fromRGB(20, 20, 200)
+TopBar.BackgroundTransparency = 0.3
 TopBar.Position = UDim2.new(0, 0, -0.00686497986, 0)
 TopBar.Size = UDim2.new(0, 480, 0, 40)
-TopBar.BackgroundTransparency = 0.25
 
 UICorner_6.Parent = TopBar
 
@@ -153,9 +153,9 @@ TITLE.TextSize = 20.000
 ExtrasFrame.Name = "ExtrasFrame"
 ExtrasFrame.Parent = main
 ExtrasFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
+ExtrasFrame.BackgroundTransparency = 1.0
 ExtrasFrame.Position = UDim2.new(0.174153894, 0, 0.115472652, 0)
 ExtrasFrame.Size = UDim2.new(0, 400, 0, 320)
-ExtrasFrame.BackgroundTransparency = 1.0
 ExtrasFrame.Visible = false
 
 UICorner_7.Parent = ExtrasFrame
@@ -183,9 +183,9 @@ TextLabel_2.TextSize = 19.000
 CreditsFrame.Name = "CreditsFrame"
 CreditsFrame.Parent = main
 CreditsFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
+CreditsFrame.BackgroundTransparency = 1.0
 CreditsFrame.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
 CreditsFrame.Size = UDim2.new(0, 400, 0, 320)
-CreditsFrame.BackgroundTransparency = 1.0
 CreditsFrame.Visible = false
 
 UICorner_8.Parent = CreditsFrame
@@ -203,16 +203,17 @@ TextLabel_3.TextSize = 38.000
 ScriptsFrame.Name = "ScriptsFrame"
 ScriptsFrame.Parent = main
 ScriptsFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
+ScriptsFrame.BackgroundTransparency = 1.0
 ScriptsFrame.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
 ScriptsFrame.Size = UDim2.new(0, 400, 0, 320)
-ScriptsFrame.BackgroundTransparency = 1.0
 ScriptsFrame.Visible = false
 
 UICorner_9.Parent = ScriptsFrame
 
 FunctionMethod1.Name = "FunctionMethod1"
 FunctionMethod1.Parent = ScriptsFrame
-FunctionMethod1.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod1.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FunctionMethod1.BackgroundTransparency = 0.2
 FunctionMethod1.BorderSizePixel = 0
 FunctionMethod1.Position = UDim2.new(0.0957, 0, 0.07, 0)
 FunctionMethod1.Size = UDim2.new(0,145,0,44)
@@ -226,7 +227,8 @@ end)
 
 FunctionMethod2.Name = "FunctionMethod2"
 FunctionMethod2.Parent = ScriptsFrame
-FunctionMethod2.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod2.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FunctionMethod2.BackgroundTransparency = 0.2
 FunctionMethod2.BorderSizePixel = 0
 FunctionMethod2.Position = UDim2.new(0.5510, 0, 0.07, 0)
 FunctionMethod2.Size = UDim2.new(0,145,0,44)
@@ -240,7 +242,8 @@ end)
 
 FunctionMethod3.Name = "FunctionMethod3"
 FunctionMethod3.Parent = ScriptsFrame
-FunctionMethod3.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod3.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FunctionMethod3.BackgroundTransparency = 0.2
 FunctionMethod3.BorderSizePixel = 0
 FunctionMethod3.Position = UDim2.new(0.0957, 0, 0.25, 0)
 FunctionMethod3.Size = UDim2.new(0,145,0,44)
@@ -254,7 +257,8 @@ end)
 
 FunctionMethod4.Name = "FunctionMethod4"
 FunctionMethod4.Parent = ScriptsFrame
-FunctionMethod4.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod4.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FunctionMethod4.BackgroundTransparency = 0.2
 FunctionMethod4.BorderSizePixel = 0
 FunctionMethod4.Position = UDim2.new(0.5510, 0, 0.25, 0)
 FunctionMethod4.Size = UDim2.new(0,145,0,44)
@@ -269,7 +273,8 @@ end)
 
 FunctionMethod5.Name = "FunctionMethod5"
 FunctionMethod5.Parent = ScriptsFrame
-FunctionMethod5.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod5.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FunctionMethod5.BackgroundTransparency = 0.2
 FunctionMethod5.BorderSizePixel = 0
 FunctionMethod5.Position = UDim2.new(0.0957, 0, 0.43, 0)
 FunctionMethod5.Size = UDim2.new(0,145,0,44)
@@ -283,7 +288,8 @@ end)
 
 FunctionMethod6.Name = "FunctionMethod6"
 FunctionMethod6.Parent = ScriptsFrame
-FunctionMethod6.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
+FunctionMethod6.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FunctionMethod6.BackgroundTransparency = 0.2
 FunctionMethod6.BorderSizePixel = 0
 FunctionMethod6.Position = UDim2.new(0.5510, 0, 0.43, 0)
 FunctionMethod6.Size = UDim2.new(0,145,0,44)
@@ -300,7 +306,7 @@ ToggleButton.Parent = ScreenGui
 ToggleButton.Size = UDim2.new(0, 45, 0, 45)
 ToggleButton.Position = UDim2.new(0, 15, 1, -90)
 ToggleButton.BackgroundColor3 = Color3.fromRGB(20,20,200)
-ToggleButton.BackgroundTransparency = 0.25
+ToggleButton.BackgroundTransparency = 0.35
 ToggleButton.Text = "☃"
 ToggleButton.TextColor3 = Color3.new(1,1,1)
 ToggleButton.Font = Enum.Font.GothamBold
