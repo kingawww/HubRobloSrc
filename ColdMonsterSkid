@@ -8,6 +8,7 @@ local TweenInfo = TweenInfo.new(
 	Enum.EasingStyle.Quad,
 	Enum.EasingDirection.Out
 )
+local OriginalTransparency = {} -- 透明度記憶
 local ScreenGui = Instance.new("ScreenGui")
 local main = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -436,6 +437,20 @@ ToggleButton.TextSize = 24
 
 ToggleCorner.CornerRadius = UDim.new(1,0)
 ToggleCorner.Parent = ToggleButton
+for _,v in ipairs(main:GetDescendants()) do -- 透明度記憶
+
+	if v:IsA("Frame") or v:IsA("ScrollingFrame") then
+		OriginalTransparency[v] = v.BackgroundTransparency
+
+	elseif v:IsA("TextButton") or v:IsA("TextLabel") then
+		OriginalTransparency[v] = {
+			Background = v.BackgroundTransparency,
+			Text = v.TextTransparency
+		}
+
+	end
+
+end
 -- Scripts:
 
 local function DTUMP_fake_script() -- bar.LocalScript 
@@ -517,7 +532,26 @@ ToggleButton.MouseButton1Click:Connect(function() -- Transparency Animation
 	if opened then
 
 		opened = false
+for _,v in ipairs(main:GetDescendants()) do
 
+	if v:IsA("Frame") or v:IsA("ScrollingFrame") then
+		TweenService:Create(v,TweenInfo,{
+			BackgroundTransparency = 1
+		}):Play()
+
+	elseif v:IsA("TextButton") then
+		TweenService:Create(v,TweenInfo,{
+			BackgroundTransparency = 1,
+			TextTransparency = 1
+		}):Play()
+
+	elseif v:IsA("TextLabel") then
+		TweenService:Create(v,TweenInfo,{
+			TextTransparency = 1
+		}):Play()
+	end
+
+end
 		local FadeOut = {}
 
 		for _,v in ipairs(main:GetDescendants()) do
@@ -559,6 +593,27 @@ ToggleButton.MouseButton1Click:Connect(function() -- Transparency Animation
 		opened = true
 
 		main.Visible = true
+
+for _,v in ipairs(main:GetDescendants()) do
+
+	if v:IsA("Frame") or v:IsA("ScrollingFrame") then
+		TweenService:Create(v,TweenInfo,{
+			BackgroundTransparency = 1
+		}):Play()
+
+	elseif v:IsA("TextButton") then
+		TweenService:Create(v,TweenInfo,{
+			BackgroundTransparency = 1,
+			TextTransparency = 1
+		}):Play()
+
+	elseif v:IsA("TextLabel") then
+		TweenService:Create(v,TweenInfo,{
+			TextTransparency = 1
+		}):Play()
+	end
+
+end
 
 		SetTransparency(main,1)
 
