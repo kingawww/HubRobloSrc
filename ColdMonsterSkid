@@ -362,7 +362,7 @@ FunctionMethod10.Text = "C00lkidd GUI"
 FunctionMethod10.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod10.TextSize = 21.000
 FunctionMethod10.MouseButton1Click:Connect (function()
-	loadstring(game:GetObjects(("rbxassetid://9827584846")[1].Source))()
+	loadstring(game:GetObjects((("rbxassetid://9827584846")[1].Source), true))()
 end)
 
 ToggleButton.Name = "ToggleButton" -- on off toggle
