@@ -34,6 +34,9 @@ local FunctionMethod3 = Instance.new("TextButton")
 local FunctionMethod4 = Instance.new("TextButton")
 local FunctionMethod5 = Instance.new("TextButton")
 local FunctionMethod6 = Instance.new("TextButton")
+local ToggleButton = Instance.new("TextButton")
+local ToggleCorner = Instance.new("UICorner")
+
 
 --Properties:
 
@@ -292,6 +295,19 @@ FunctionMethod6.MouseButton1Down:connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty38.lua"), true))()
 end)
 
+ToggleButton.Name = "ToggleButton" -- on off toggle
+ToggleButton.Parent = ScreenGui
+ToggleButton.Size = UDim2.new(0, 45, 0, 45)
+ToggleButton.Position = UDim2.new(0, 15, 1, -60)
+ToggleButton.BackgroundColor3 = Color3.fromRGB(20,20,200)
+ToggleButton.BackgroundTransparency = 0.25
+ToggleButton.Text = "≡"
+ToggleButton.TextColor3 = Color3.new(1,1,1)
+ToggleButton.Font = Enum.Font.GothamBold
+ToggleButton.TextSize = 24
+
+ToggleCorner.CornerRadius = UDim.new(1,0)
+ToggleCorner.Parent = ToggleButton
 -- Scripts:
 
 local function DTUMP_fake_script() -- bar.LocalScript 
@@ -366,3 +382,11 @@ local function OTBCOV_fake_script() -- ExtrasButton.LocalScript
 	end)
 end
 coroutine.wrap(OTBCOV_fake_script)()
+local opened = true -- on off toggle
+
+ToggleButton.MouseButton1Click:Connect(function()
+
+    opened = not opened
+    main.Visible = opened
+
+end)
