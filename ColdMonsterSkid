@@ -220,7 +220,7 @@ FunctionMethod1.Font = Enum.Font.Jura
 FunctionMethod1.Text = "FlyGui V3"
 FunctionMethod1.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod1.TextSize = 17.000
-FunctionMethod1.MouseButton1Down:Connect (function()
+FunctionMethod1.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"), true))()
 end)
 
@@ -234,7 +234,7 @@ FunctionMethod2.Font = Enum.Font.Jura
 FunctionMethod2.Text = "Obby GodMode"
 FunctionMethod2.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod2.TextSize = 17.000
-FunctionMethod2.MouseButton1Down:connect (function()
+FunctionMethod2.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/zephyr10101/ignore-touchinterests/main/main"), true))()
 end)
 
@@ -248,7 +248,7 @@ FunctionMethod3.Font = Enum.Font.Jura
 FunctionMethod3.Text = "Invisible"
 FunctionMethod3.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod3.TextSize = 17.000
-FunctionMethod3.MouseButton1Down:connect (function()
+FunctionMethod3.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe./dbb6ce6f6cee4f7a5c9e20d7b88e83db2a93bf25/Invisible%20GUI'), true))()
 end)
 
@@ -262,7 +262,7 @@ FunctionMethod4.Font = Enum.Font.Jura
 FunctionMethod4.Text = "Rochips Panel"
 FunctionMethod4.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod4.TextSize = 17.000
-FunctionMethod4.MouseButton1Down:connect (function()
+FunctionMethod4.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/randomstring0/unk/main/d"), true))()
 
 end)
@@ -277,7 +277,7 @@ FunctionMethod5.Font = Enum.Font.Jura
 FunctionMethod5.Text = "Body Fling"
 FunctionMethod5.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod5.TextSize = 17.000
-FunctionMethod5.MouseButton1Down:connect (function()
+FunctionMethod5.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/0Ben1/fe./main/Fling%20GUI"), true))()
 end)
 
@@ -291,7 +291,7 @@ FunctionMethod6.Font = Enum.Font.Jura
 FunctionMethod6.Text = "Control NPC"
 FunctionMethod6.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod6.TextSize = 17.000
-FunctionMethod6.MouseButton1Down:connect (function()
+FunctionMethod6.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty38.lua"), true))()
 end)
 
@@ -301,7 +301,7 @@ ToggleButton.Size = UDim2.new(0, 45, 0, 45)
 ToggleButton.Position = UDim2.new(0, 15, 1, -60)
 ToggleButton.BackgroundColor3 = Color3.fromRGB(20,20,200)
 ToggleButton.BackgroundTransparency = 0.25
-ToggleButton.Text = "≡"
+ToggleButton.Text = "☃"
 ToggleButton.TextColor3 = Color3.new(1,1,1)
 ToggleButton.Font = Enum.Font.GothamBold
 ToggleButton.TextSize = 24
