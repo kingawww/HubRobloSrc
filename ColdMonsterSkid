@@ -343,11 +343,11 @@ FunctionMethod9.BorderSizePixel = 0
 FunctionMethod9.Position = UDim2.new(0.0957, 0, 0.79, 0)
 FunctionMethod9.Size = UDim2.new(0,145,0,44)
 FunctionMethod9.Font = Enum.Font.Jura
-FunctionMethod9.Text = "Mobile Keyboard"
+FunctionMethod9.Text = "C00lkidd2 HUB remake"
 FunctionMethod9.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod9.TextSize = 21.000
 FunctionMethod9.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt"), true))()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/ckid"), true))()
 end)
 
 FunctionMethod10.Name = "FunctionMethod10"
@@ -358,11 +358,11 @@ FunctionMethod10.BorderSizePixel = 0
 FunctionMethod10.Position = UDim2.new(0.5510, 0, 0.79, 0)
 FunctionMethod10.Size = UDim2.new(0,145,0,44)
 FunctionMethod10.Font = Enum.Font.Jura
-FunctionMethod10.Text = "C00lkidd GUI"
+FunctionMethod10.Text = "FE Trolling GUI"
 FunctionMethod10.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod10.TextSize = 21.000
 FunctionMethod10.MouseButton1Click:Connect (function()
-	loadstring(game:GetObjects((("rbxassetid://9827584846")[1].Source), true))()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/FE%20Trolling%20GUI.luau"), true))()
 end)
 
 ToggleButton.Name = "ToggleButton" -- on off toggle
