@@ -64,6 +64,9 @@ SideBar.BackgroundColor3 = Color3.fromRGB(20, 20, 200)
 SideBar.BackgroundTransparency = 0.3
 SideBar.Position = UDim2.new(0, 0, 0.00228832942, 0)
 SideBar.Size = UDim2.new(0, 80, 0, 360)
+--anti scroll
+SideBar.Active = true
+SideBar.Selectable = true
 
 UICorner_2.Parent = SideBar
 
@@ -139,6 +142,9 @@ TopBar.BackgroundColor3 = Color3.fromRGB(20, 20, 200)
 TopBar.BackgroundTransparency = 0.3
 TopBar.Position = UDim2.new(0, 0, -0.00686497986, 0)
 TopBar.Size = UDim2.new(0, 480, 0, 40)
+--anti scroll
+TopBar.Active = true
+TopBar.Selectable = true
 
 UICorner_6.Parent = TopBar
 
@@ -211,8 +217,8 @@ ScriptsFrame.BackgroundTransparency = 1.0
 ScriptsFrame.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
 ScriptsFrame.Size = UDim2.new(0, 400, 0, 320)
 ScriptsFrame.Visible = false
---scroll scripts screen
-ScriptsFrame.CanvasSize = UDim2.new(0,0,0,600)
+--scroll "Scripts" screen
+ScriptsFrame.CanvasSize = UDim2.new(0,0,0,360)
 ScriptsFrame.ScrollBarThickness = 8
 ScriptsFrame.ScrollBarImageColor3 = Color3.fromRGB(255,255,255)
 ScriptsFrame.BorderSizePixel = 0
