@@ -45,7 +45,7 @@ main.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
 main.BorderSizePixel = 0
 main.Position = UDim2.new(0.0892388448, 0, 0.233672038, 0)
 main.Size = UDim2.new(0, 480, 0, 360)
-main.BackgroundTransparency = 0.15
+main.BackgroundTransparency = 0.3
 main.Active = true
 main.Draggable = true
 
@@ -56,7 +56,7 @@ SideBar.Parent = main
 SideBar.BackgroundColor3 = Color3.fromRGB(200, 20, 20)
 SideBar.Position = UDim2.new(0, 0, 0.00228832942, 0)
 SideBar.Size = UDim2.new(0, 80, 0, 360)
-SideBar.BackgroundTransparency = 0.1
+SideBar.BackgroundTransparency = 0.2
 
 UICorner_2.Parent = SideBar
 
@@ -131,7 +131,7 @@ TopBar.Parent = main
 TopBar.BackgroundColor3 = Color3.fromRGB(200, 20, 20)
 TopBar.Position = UDim2.new(0, 0, -0.00686497986, 0)
 TopBar.Size = UDim2.new(0, 480, 0, 40)
-TopBar.BackgroundTransparency = 0.1
+TopBar.BackgroundTransparency = 0.2
 
 UICorner_6.Parent = TopBar
 
@@ -152,6 +152,7 @@ ExtrasFrame.Parent = main
 ExtrasFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
 ExtrasFrame.Position = UDim2.new(0.174153894, 0, 0.115472652, 0)
 ExtrasFrame.Size = UDim2.new(0, 400, 0, 320)
+ExtrasFrame.BackgroundTransparency = 0.3
 ExtrasFrame.Visible = false
 
 UICorner_7.Parent = ExtrasFrame
@@ -181,6 +182,7 @@ CreditsFrame.Parent = main
 CreditsFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
 CreditsFrame.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
 CreditsFrame.Size = UDim2.new(0, 400, 0, 320)
+CreditsFrame.BackgroundTransparency = 0.3
 CreditsFrame.Visible = false
 
 UICorner_8.Parent = CreditsFrame
@@ -198,8 +200,9 @@ TextLabel_3.TextSize = 19.000
 ScriptsFrame.Name = "ScriptsFrame"
 ScriptsFrame.Parent = main
 ScriptsFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
-ScriptsFrame.Position = UDim2.new(0.14, 0, 0.11, 0)
+ScriptsFrame.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
 ScriptsFrame.Size = UDim2.new(0, 400, 0, 320)
+ScriptsFrame.BackgroundTransparency = 0.3
 ScriptsFrame.Visible = false
 
 UICorner_9.Parent = ScriptsFrame
