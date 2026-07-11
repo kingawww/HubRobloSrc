@@ -76,7 +76,7 @@ bar.Parent = ScriptsButton
 bar.AnchorPoint = Vector2.new(0.5, 0.5)
 bar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar.BorderSizePixel = 0
-bar.Position = UDim2.new(0.42, 0, 0.75, 0)
+bar.Position = UDim2.new(0.45, 0, 0.75, 0)
 bar.Size = UDim2.new(0, 70, 0, 4)
 bar.ZIndex = 2
 
@@ -98,7 +98,7 @@ bar_2.Parent = CreditsButton
 bar_2.AnchorPoint = Vector2.new(0.5, 0.5)
 bar_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar_2.BorderSizePixel = 0
-bar_2.Position = UDim2.new(0.42, 0, 0.75, 0)
+bar_2.Position = UDim2.new(0.45, 0, 0.75, 0)
 bar_2.Size = UDim2.new(0, 70, 0, 4)
 bar_2.ZIndex = 2
 
@@ -120,7 +120,7 @@ bar_3.Parent = ExtrasButton
 bar_3.AnchorPoint = Vector2.new(0.5, 0.5)
 bar_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar_3.BorderSizePixel = 0
-bar_3.Position = UDim2.new(0.42, 0, 0.75, 0)
+bar_3.Position = UDim2.new(0.45, 0, 0.75, 0)
 bar_3.Size = UDim2.new(0, 70, 0, 4)
 bar_3.ZIndex = 2
 
@@ -165,7 +165,7 @@ TextLabel.Size = UDim2.new(0, 464, 0, 50)
 TextLabel.Font = Enum.Font.Jura
 TextLabel.Text = "Have any suggestions?"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 19.000
+TextLabel.TextSize = 28.000
 
 TextLabel_2.Parent = ExtrasFrame
 TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -190,12 +190,12 @@ UICorner_8.Parent = CreditsFrame
 TextLabel_3.Parent = CreditsFrame
 TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_3.BackgroundTransparency = 1.000
-TextLabel_3.Position = UDim2.new(0.100000001, 0, 0.0958549231, 0)
+TextLabel_3.Position = UDim2.new(0, 0, 0.1, 0)
 TextLabel_3.Size = UDim2.new(0, 359, 0, 50)
 TextLabel_3.Font = Enum.Font.Jura
 TextLabel_3.Text = "Made By IDioTKing"
 TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_3.TextSize = 26.000
+TextLabel_3.TextSize = 38.000
 
 ScriptsFrame.Name = "ScriptsFrame"
 ScriptsFrame.Parent = main
