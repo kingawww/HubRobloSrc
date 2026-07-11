@@ -44,7 +44,7 @@ main.Parent = ScreenGui
 main.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
 main.BorderSizePixel = 0
 main.Position = UDim2.new(0.0892388448, 0, 0.233672038, 0)
-main.Size = UDim2.new(0, 570, 0, 437)
+main.Size = UDim2.new(0, 480, 0, 360)
 main.Active = true
 main.Draggable = true
 
@@ -54,7 +54,7 @@ SideBar.Name = "SideBar"
 SideBar.Parent = main
 SideBar.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
 SideBar.Position = UDim2.new(0, 0, 0.00228832942, 0)
-SideBar.Size = UDim2.new(0, 100, 0, 436)
+SideBar.Size = UDim2.new(0, 80, 0, 436)
 
 UICorner_2.Parent = SideBar
 
@@ -128,7 +128,7 @@ TopBar.Name = "TopBar"
 TopBar.Parent = main
 TopBar.BackgroundColor3 = Color3.fromRGB(62, 180, 137)
 TopBar.Position = UDim2.new(0, 0, -0.00686497986, 0)
-TopBar.Size = UDim2.new(0, 570, 0, 54)
+TopBar.Size = UDim2.new(0, 570, 0, 40)
 
 UICorner_6.Parent = TopBar
 
@@ -138,7 +138,7 @@ TITLE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TITLE.BackgroundTransparency = 1.000
 TITLE.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TITLE.Position = UDim2.new(0, 0, 0.0370370373, 0)
-TITLE.Size = UDim2.new(0, 100, 0, 50)
+TITLE.Size = UDim2.new(0, 100, 0, 40)
 TITLE.Font = Enum.Font.Jura
 TITLE.Text = "      COLD MONSTER SKID"
 TITLE.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -148,7 +148,7 @@ ExtrasFrame.Name = "ExtrasFrame"
 ExtrasFrame.Parent = main
 ExtrasFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
 ExtrasFrame.Position = UDim2.new(0.174153894, 0, 0.115472652, 0)
-ExtrasFrame.Size = UDim2.new(0, 470, 0, 386)
+ExtrasFrame.Size = UDim2.new(0, 400, 0, 320)
 ExtrasFrame.Visible = false
 
 UICorner_7.Parent = ExtrasFrame
@@ -177,7 +177,7 @@ CreditsFrame.Name = "CreditsFrame"
 CreditsFrame.Parent = main
 CreditsFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
 CreditsFrame.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
-CreditsFrame.Size = UDim2.new(0, 470, 0, 386)
+CreditsFrame.Size = UDim2.new(0, 400, 0, 320)
 CreditsFrame.Visible = false
 
 UICorner_8.Parent = CreditsFrame
@@ -195,8 +195,8 @@ TextLabel_3.TextSize = 19.000
 ScriptsFrame.Name = "ScriptsFrame"
 ScriptsFrame.Parent = main
 ScriptsFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
-ScriptsFrame.Position = UDim2.new(0.174153879, 0, 0.110895976, 0)
-ScriptsFrame.Size = UDim2.new(0, 470, 0, 386)
+ScriptsFrame.Position = UDim2.new(0.14, 0, 0.11, 0)
+ScriptsFrame.Size = UDim2.new(0, 400, 0, 320)
 ScriptsFrame.Visible = false
 
 UICorner_9.Parent = ScriptsFrame
