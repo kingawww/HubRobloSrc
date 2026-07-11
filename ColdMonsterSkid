@@ -3,7 +3,7 @@
 -- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
-local main = Instance.new("Frame")
+local main = Instance.new("ScrollingFrame")
 local UICorner = Instance.new("UICorner")
 local SideBar = Instance.new("Frame")
 local UICorner_2 = Instance.new("UICorner")
@@ -55,6 +55,12 @@ main.Position = UDim2.new(0.0892388448, 0, 0.233672038, 0)
 main.Size = UDim2.new(0, 480, 0, 360)
 main.Active = true
 main.Draggable = true
+--scroll first screen
+main.CanvasSize = UDim2.new(0,0,0,600)
+main.ScrollBarThickness = 8
+main.ScrollBarImageColor3 = Color3.fromRGB(255,255,255)
+main.BorderSizePixel = 0
+main.ClipsDescendants = true
 
 UICorner.Parent = main
 
