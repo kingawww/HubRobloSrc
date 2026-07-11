@@ -298,7 +298,7 @@ end)
 ToggleButton.Name = "ToggleButton" -- on off toggle
 ToggleButton.Parent = ScreenGui
 ToggleButton.Size = UDim2.new(0, 45, 0, 45)
-ToggleButton.Position = UDim2.new(0, 15, 1, -60)
+ToggleButton.Position = UDim2.new(0, 15, 1, -90)
 ToggleButton.BackgroundColor3 = Color3.fromRGB(20,20,200)
 ToggleButton.BackgroundTransparency = 0.25
 ToggleButton.Text = "☃"
