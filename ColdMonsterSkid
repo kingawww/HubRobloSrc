@@ -53,7 +53,7 @@ UICorner.Parent = main
 
 SideBar.Name = "SideBar"
 SideBar.Parent = main
-SideBar.BackgroundColor3 = Color3.fromRGB(200, 20, 20)
+SideBar.BackgroundColor3 = Color3.fromRGB(20, 20, 200)
 SideBar.Position = UDim2.new(0, 0, 0.00228832942, 0)
 SideBar.Size = UDim2.new(0, 80, 0, 360)
 SideBar.BackgroundTransparency = 0.25
@@ -128,7 +128,7 @@ UICorner_5.Parent = bar_3
 
 TopBar.Name = "TopBar"
 TopBar.Parent = main
-TopBar.BackgroundColor3 = Color3.fromRGB(200, 20, 20)
+TopBar.BackgroundColor3 = Color3.fromRGB(20, 20, 200)
 TopBar.Position = UDim2.new(0, 0, -0.00686497986, 0)
 TopBar.Size = UDim2.new(0, 480, 0, 40)
 TopBar.BackgroundTransparency = 0.25
