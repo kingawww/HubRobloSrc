@@ -1,7 +1,13 @@
 -- This Script Hub was made by IDioTKing
 
 -- Instances:
+local TweenService = game:GetService("TweenService")
 
+local TweenInfo = TweenInfo.new(
+	0.25, -- アニメーション時間
+	Enum.EasingStyle.Quad,
+	Enum.EasingDirection.Out
+)
 local ScreenGui = Instance.new("ScreenGui")
 local main = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -61,6 +67,7 @@ main.BackgroundTransparency = 0.35
 main.BorderSizePixel = 0
 main.Position = UDim2.new(0.0892388448, 0, 0.233672038, 0)
 main.Size = UDim2.new(0, 480, 0, 360)
+local OpenSize = main.Size
 main.Active = true
 main.Draggable = true
 
@@ -488,8 +495,35 @@ local opened = true -- on off toggle
 
 ToggleButton.MouseButton1Click:Connect(function()
 
-    opened = not opened
-    main.Visible = opened
+	if opened then
+		opened = false
+
+		local Tween = TweenService:Create(
+			main,
+			TweenInfo,
+			{Size = UDim2.new(0,0,0,0)}
+		)
+
+		Tween:Play()
+
+		Tween.Completed:Wait()
+		main.Visible = false
+
+	else
+		opened = true
+
+		main.Visible = true
+		main.Size = UDim2.new(0,0,0,0)
+
+		local Tween = TweenService:Create(
+			main,
+			TweenInfo,
+			{Size = OpenSize}
+		)
+
+		Tween:Play()
+
+	end
 
 end)
 local UIS = game:GetService("UserInputService") -- anti scroll
