@@ -36,6 +36,8 @@ local FunctionMethod5 = Instance.new("TextButton")
 local FunctionMethod6 = Instance.new("TextButton")
 local FunctionMethod7 = Instance.new("TextButton")
 local FunctionMethod8 = Instance.new("TextButton")
+local FunctionMethod9 = Instance.new("TextButton")
+local FunctionMethod10 = Instance.new("TextButton")
 local ToggleButton = Instance.new("TextButton")
 local ToggleCorner = Instance.new("UICorner")
 
@@ -46,7 +48,7 @@ ScreenGui.Parent = game.CoreGui
 
 main.Name = "main"
 main.Parent = ScreenGui
-main.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
+main.BackgroundColor3 = Color3.fromRGB(100, 100, 255)
 main.BackgroundTransparency = 0.35
 main.BorderSizePixel = 0
 main.Position = UDim2.new(0.0892388448, 0, 0.233672038, 0)
@@ -326,11 +328,41 @@ FunctionMethod8.BorderSizePixel = 0
 FunctionMethod8.Position = UDim2.new(0.5510, 0, 0.61, 0)
 FunctionMethod8.Size = UDim2.new(0,145,0,44)
 FunctionMethod8.Font = Enum.Font.Jura
-FunctionMethod8.Text = "Skin Stealer"
+FunctionMethod8.Text = "Nexus 5.0"
 FunctionMethod8.TextColor3 = Color3.fromRGB(255, 255, 255)
 FunctionMethod8.TextSize = 21.000
 FunctionMethod8.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://avatar.sowonaha.workers.dev"), true))()
+end)
+
+FunctionMethod9.Name = "FunctionMethod9"
+FunctionMethod9.Parent = ScriptsFrame
+FunctionMethod9.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FunctionMethod9.BackgroundTransparency = 0.2
+FunctionMethod9.BorderSizePixel = 0
+FunctionMethod9.Position = UDim2.new(0.0957, 0, 0.79, 0)
+FunctionMethod9.Size = UDim2.new(0,145,0,44)
+FunctionMethod9.Font = Enum.Font.Jura
+FunctionMethod9.Text = "Mobile Keyboard"
+FunctionMethod9.TextColor3 = Color3.fromRGB(255, 255, 255)
+FunctionMethod9.TextSize = 21.000
+FunctionMethod9.MouseButton1Click:Connect (function()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt"), true))()
+end)
+
+FunctionMethod10.Name = "FunctionMethod10"
+FunctionMethod10.Parent = ScriptsFrame
+FunctionMethod10.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FunctionMethod10.BackgroundTransparency = 0.2
+FunctionMethod10.BorderSizePixel = 0
+FunctionMethod10.Position = UDim2.new(0.5510, 0, 0.79, 0)
+FunctionMethod10.Size = UDim2.new(0,145,0,44)
+FunctionMethod10.Font = Enum.Font.Jura
+FunctionMethod10.Text = "C00lkidd GUI"
+FunctionMethod10.TextColor3 = Color3.fromRGB(255, 255, 255)
+FunctionMethod10.TextSize = 21.000
+FunctionMethod10.MouseButton1Click:Connect (function()
+	loadstring(game:GetObjects(("rbxassetid://9827584846")[1].Source))()
 end)
 
 ToggleButton.Name = "ToggleButton" -- on off toggle
