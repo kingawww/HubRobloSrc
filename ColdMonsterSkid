@@ -566,13 +566,19 @@ ToggleButton.MouseButton1Click:Connect(function() -- Transparency Animation
 
 		for _,v in ipairs(main:GetDescendants()) do
 
-			if v:IsA("Frame") or v:IsA("ScrollingFrame") then
-				table.insert(FadeIn,
-					TweenService:Create(v,TweenInfo,{
-						BackgroundTransparency = 0.3
-					})
-				)
+if v:IsA("Frame") then
+	table.insert(FadeIn,
+		TweenService:Create(v,TweenInfo,{
+			BackgroundTransparency = 0.3
+		})
+	)
 
+elseif v:IsA("ScrollingFrame") then
+	table.insert(FadeIn,
+		TweenService:Create(v,TweenInfo,{
+			BackgroundTransparency = 1
+		})
+	)
 			elseif v:IsA("TextButton") or v:IsA("TextLabel") then
 				table.insert(FadeIn,
 					TweenService:Create(v,TweenInfo,{
