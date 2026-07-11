@@ -215,10 +215,10 @@ ScriptsFrame.Parent = main
 ScriptsFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
 ScriptsFrame.BackgroundTransparency = 1.0
 ScriptsFrame.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
-ScriptsFrame.Size = UDim2.new(0, 480, 0, 360)
+ScriptsFrame.Size = UDim2.new(0, 400, 0, 320)
 ScriptsFrame.Visible = false
 --scroll "Scripts" screen
-ScriptsFrame.CanvasSize = UDim2.new(0,480,0,600)
+ScriptsFrame.CanvasSize = UDim2.new(0,0,0,700)
 ScriptsFrame.ScrollBarThickness = 8
 ScriptsFrame.ScrollBarImageColor3 = Color3.fromRGB(255,255,255)
 ScriptsFrame.BorderSizePixel = 0
