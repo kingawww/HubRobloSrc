@@ -140,7 +140,7 @@ TITLE.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TITLE.Position = UDim2.new(0, 0, 0.0370370373, 0)
 TITLE.Size = UDim2.new(0, 100, 0, 50)
 TITLE.Font = Enum.Font.Jura
-TITLE.Text = "MINT HUB"
+TITLE.Text = "Cold Monster SKID"
 TITLE.TextColor3 = Color3.fromRGB(255, 255, 255)
 TITLE.TextSize = 20.000
 
