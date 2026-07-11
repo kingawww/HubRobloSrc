@@ -3,7 +3,7 @@
 -- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
-local main = Instance.new("ScrollingFrame")
+local main = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
 local SideBar = Instance.new("Frame")
 local UICorner_2 = Instance.new("UICorner")
@@ -26,7 +26,7 @@ local TextLabel_2 = Instance.new("TextLabel")
 local CreditsFrame = Instance.new("Frame")
 local UICorner_8 = Instance.new("UICorner")
 local TextLabel_3 = Instance.new("TextLabel")
-local ScriptsFrame = Instance.new("Frame")
+local ScriptsFrame = Instance.new("ScrollingFrame")
 local UICorner_9 = Instance.new("UICorner")
 local FunctionMethod1 = Instance.new("TextButton")
 local FunctionMethod2 = Instance.new("TextButton")
@@ -55,12 +55,6 @@ main.Position = UDim2.new(0.0892388448, 0, 0.233672038, 0)
 main.Size = UDim2.new(0, 480, 0, 360)
 main.Active = true
 main.Draggable = true
---scroll first screen
-main.CanvasSize = UDim2.new(0,0,0,600)
-main.ScrollBarThickness = 8
-main.ScrollBarImageColor3 = Color3.fromRGB(255,255,255)
-main.BorderSizePixel = 0
-main.ClipsDescendants = true
 
 UICorner.Parent = main
 
@@ -217,6 +211,12 @@ ScriptsFrame.BackgroundTransparency = 1.0
 ScriptsFrame.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
 ScriptsFrame.Size = UDim2.new(0, 400, 0, 320)
 ScriptsFrame.Visible = false
+--scroll scripts screen
+ScriptsFrame.CanvasSize = UDim2.new(0,0,0,600)
+ScriptsFrame.ScrollBarThickness = 8
+ScriptsFrame.ScrollBarImageColor3 = Color3.fromRGB(255,255,255)
+ScriptsFrame.BorderSizePixel = 0
+ScriptsFrame.ClipsDescendants = true
 
 UICorner_9.Parent = ScriptsFrame
 
