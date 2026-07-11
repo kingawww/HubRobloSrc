@@ -79,7 +79,7 @@ bar.Parent = ScriptsButton
 bar.AnchorPoint = Vector2.new(0.5, 0.5)
 bar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar.BorderSizePixel = 0
-bar.Position = UDim2.new(0.45, 0, 0.75, 0)
+bar.Position = UDim2.new(0.5, 0, 0.75, 0)
 bar.Size = UDim2.new(0, 70, 0, 4)
 bar.ZIndex = 2
 
@@ -101,7 +101,7 @@ bar_2.Parent = CreditsButton
 bar_2.AnchorPoint = Vector2.new(0.5, 0.5)
 bar_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar_2.BorderSizePixel = 0
-bar_2.Position = UDim2.new(0.45, 0, 0.75, 0)
+bar_2.Position = UDim2.new(0.5, 0, 0.75, 0)
 bar_2.Size = UDim2.new(0, 70, 0, 4)
 bar_2.ZIndex = 2
 
@@ -123,7 +123,7 @@ bar_3.Parent = ExtrasButton
 bar_3.AnchorPoint = Vector2.new(0.5, 0.5)
 bar_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bar_3.BorderSizePixel = 0
-bar_3.Position = UDim2.new(0.45, 0, 0.75, 0)
+bar_3.Position = UDim2.new(0.5, 0, 0.75, 0)
 bar_3.Size = UDim2.new(0, 70, 0, 4)
 bar_3.ZIndex = 2
 
