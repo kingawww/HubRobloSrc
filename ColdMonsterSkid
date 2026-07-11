@@ -8,7 +8,145 @@ local TweenInfo = TweenInfo.new(
 	Enum.EasingStyle.Quad,
 	Enum.EasingDirection.Out
 )
-local OriginalTransparency = {} -- 透明度記憶
+-- 透明度記憶
+local OriginalTransparency = {}
+
+for _,v in ipairs(main:GetDescendants()) do
+
+if v:IsA("Frame") or v:IsA("ScrollingFrame") then
+
+	OriginalTransparency[v] = {
+		Background = v.BackgroundTransparency
+	}
+
+elseif v:IsA("TextButton") or v:IsA("TextLabel") then
+
+	OriginalTransparency[v] = {
+		Background = v.BackgroundTransparency,
+		Text = v.TextTransparency
+	}
+
+elseif v:IsA("ImageLabel") or v:IsA("ImageButton") then
+
+	OriginalTransparency[v] = {
+		Background = v.BackgroundTransparency,
+		Image = v.ImageTransparency
+	}
+
+end
+```
+
+end
+
+local opened = true
+
+ToggleButton.MouseButton1Click:Connect(function()
+
+local TweenList = {}
+
+if opened then
+
+	opened = false
+
+	for _,v in ipairs(main:GetDescendants()) do
+
+		if OriginalTransparency[v] then
+
+			if v:IsA("Frame") or v:IsA("ScrollingFrame") then
+
+				table.insert(TweenList,
+					TweenService:Create(v,TweenInfo,{
+						BackgroundTransparency = 1
+					})
+				)
+
+			elseif v:IsA("TextButton") or v:IsA("TextLabel") then
+
+				table.insert(TweenList,
+					TweenService:Create(v,TweenInfo,{
+						BackgroundTransparency = 1,
+						TextTransparency = 1
+					})
+				)
+
+			elseif v:IsA("ImageLabel") or v:IsA("ImageButton") then
+
+				table.insert(TweenList,
+					TweenService:Create(v,TweenInfo,{
+						BackgroundTransparency = 1,
+						ImageTransparency = 1
+					})
+				)
+
+			end
+
+		end
+
+	end
+
+
+	for _,Tween in ipairs(TweenList) do
+		Tween:Play()
+	end
+
+
+	wait(0.25)
+	main.Visible = false
+
+
+else
+
+	opened = true
+	main.Visible = true
+
+
+	for _,v in ipairs(main:GetDescendants()) do
+
+		if OriginalTransparency[v] then
+
+			if v:IsA("Frame") or v:IsA("ScrollingFrame") then
+
+				table.insert(TweenList,
+					TweenService:Create(v,TweenInfo,{
+						BackgroundTransparency = OriginalTransparency[v].Background
+					})
+				)
+
+
+			elseif v:IsA("TextButton") or v:IsA("TextLabel") then
+
+				table.insert(TweenList,
+					TweenService:Create(v,TweenInfo,{
+						BackgroundTransparency = OriginalTransparency[v].Background,
+						TextTransparency = OriginalTransparency[v].Text
+					})
+				)
+
+
+			elseif v:IsA("ImageLabel") or v:IsA("ImageButton") then
+
+				table.insert(TweenList,
+					TweenService:Create(v,TweenInfo,{
+						BackgroundTransparency = OriginalTransparency[v].Background,
+						ImageTransparency = OriginalTransparency[v].Image
+					})
+				)
+
+			end
+
+		end
+
+	end
+
+
+	for _,Tween in ipairs(TweenList) do
+		Tween:Play()
+	end
+
+end
+
+end)
+
 local ScreenGui = Instance.new("ScreenGui")
 local main = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -442,15 +580,21 @@ for _,v in ipairs(main:GetDescendants()) do -- 透明度記憶
 	if v:IsA("Frame") or v:IsA("ScrollingFrame") then
 		OriginalTransparency[v] = v.BackgroundTransparency
 
-	elseif v:IsA("TextButton") or v:IsA("TextLabel") then
-		OriginalTransparency[v] = {
-			Background = v.BackgroundTransparency,
-			Text = v.TextTransparency
-		}
+	elseif v:IsA("TextButton") then
+	table.insert(FadeIn,
+		TweenService:Create(v,TweenInfo,{
+			BackgroundTransparency = OriginalTransparency[v].Background,
+			TextTransparency = OriginalTransparency[v].Text
+		})
+	)
 
-	end
-
-end
+elseif v:IsA("TextLabel") then
+	table.insert(FadeIn,
+		TweenService:Create(v,TweenInfo,{
+			BackgroundTransparency = OriginalTransparency[v].Background,
+			TextTransparency = OriginalTransparency[v].Text
+		})
+	)
 -- Scripts:
 
 local function DTUMP_fake_script() -- bar.LocalScript 
@@ -615,7 +759,6 @@ for _,v in ipairs(main:GetDescendants()) do
 
 end
 
-		SetTransparency(main,1)
 
 		local FadeIn = {}
 
@@ -624,7 +767,7 @@ end
 if v:IsA("Frame") then
 	table.insert(FadeIn,
 		TweenService:Create(v,TweenInfo,{
-			BackgroundTransparency = 0.3
+			BackgroundTransparency = OriginalTransparency[v]
 		})
 	)
 
