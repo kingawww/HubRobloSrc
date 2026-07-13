@@ -52,7 +52,7 @@ local FM14 = Instance.new("TextButton")
 local Buttons = {FM1,FM2,FM3,FM4,FM5,FM6,FM7,FM8,FM9,FM10,FM11,FM12,FM13,FM14}
 local ToggleButton = Instance.new("TextButton") -- on off toggle
 local ToggleCorner = Instance.new("UICorner")
- -- "main SideBar TopBar" black outline
+ -- "main SideBar TopBar Buttons" black outline
 local Objects = {main, TopBar, SideBar}
 for _,v in ipairs(Buttons) do
 	table.insert(Objects, v)
