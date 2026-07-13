@@ -262,7 +262,7 @@ TextLabel_6.BackgroundTransparency = 1.000
 TextLabel_6.Position = UDim2.new(0, 0, 0.45, 0)
 TextLabel_6.Size = UDim2.new(0, 359, 0, 50)
 TextLabel_6.Font = Enum.Font.Jura
-TextLabel_6.Text = "V1.0 - Started Cold Monster SKID!\nV2.0 - Added Click animation & Outline on menu"
+TextLabel_6.Text = "V1.0 - Started Cold Monster SKID!\nV1.1 - Added Click animation & Outline on menu"
 TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.TextSize = 22.000
 
@@ -598,6 +598,7 @@ local function OTBCOV_fake_script() -- ExtrasButton.LocalScript
 	end)
 end
 coroutine.wrap(OTBCOV_fake_script)()
+
 local TweenService = game:GetService("TweenService") -- 飛び出すanimation
 
 local opened = true -- on off toggle
@@ -610,7 +611,6 @@ ToggleButton.MouseButton1Click:Connect(function()
 	if opened then
 		main.Visible = true
 		main.Size = UDim2.new(0, 0, 0, 0)
-
 		local tween = TweenService:Create(
 			main,
 			TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
@@ -618,9 +618,7 @@ ToggleButton.MouseButton1Click:Connect(function()
 				Size = originalSize
 			}
 		)
-
 		tween:Play()
-
 	else
 		local tween = TweenService:Create(
 			main,
@@ -629,9 +627,7 @@ ToggleButton.MouseButton1Click:Connect(function()
 				Size = UDim2.new(0, 0, 0, 0)
 			}
 		)
-
 		tween:Play()
-
 		tween.Completed:Connect(function()
 			if not opened then
 				main.Visible = false
@@ -639,8 +635,8 @@ ToggleButton.MouseButton1Click:Connect(function()
 			end
 		end)
 	end
-
 end)
+
 local TweenService = game:GetService("TweenService") -- ボタン押したら縮むやつ
 for _,Button in ipairs(Buttons) do
 	local Scale = Button:FindFirstChildOfClass("UIScale")
@@ -666,6 +662,7 @@ for _,Button in ipairs(Buttons) do
 	):Play()
     end)
 end
+
 local UIS = game:GetService("UserInputService") -- anti scroll
 
 local dragging = false
@@ -673,28 +670,19 @@ local dragStart
 local startPos
 
 local function EnableDrag(Object)
-
 	Object.InputBegan:Connect(function(input)
-
 		if input.UserInputType == Enum.UserInputType.MouseButton1
 		or input.UserInputType == Enum.UserInputType.Touch then
-
 			dragging = true
 			dragStart = input.Position
 			startPos = main.Position
-
 			input.Changed:Connect(function()
-
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
 				end
-
 			end)
-
 		end
-
 	end)
-
 end
 
 -- ドラッグ可能な場所
@@ -708,16 +696,12 @@ UIS.InputChanged:Connect(function(input)
 		input.UserInputType == Enum.UserInputType.MouseMovement
 		or input.UserInputType == Enum.UserInputType.Touch
 	) then
-
 		local delta = input.Position - dragStart
-
 		main.Position = UDim2.new(
 			startPos.X.Scale,
 			startPos.X.Offset + delta.X,
 			startPos.Y.Scale,
 			startPos.Y.Offset + delta.Y
 		)
-
 	end
-
 end)
