@@ -50,8 +50,13 @@ local FM11 = Instance.new("TextButton")
 local FM12 = Instance.new("TextButton")
 local FM13 = Instance.new("TextButton")
 local FM14 = Instance.new("TextButton")
-local ToggleButton = Instance.new("TextButton")
+local ToggleButton = Instance.new("TextButton") -- on off toggle
 local ToggleCorner = Instance.new("UICorner")
+local stroke = Instance.new("UIStroke") -- "main" white outline
+stroke.Parent = main
+stroke.Color = Color3.fromRGB(255,255,255)
+stroke.Thickness = 1
+stroke.Transparency = 0.75
 
 -- Memo: FM = FunctionMethod
 
