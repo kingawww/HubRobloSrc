@@ -625,6 +625,13 @@ for _,Button in ipairs(Buttons) do
 			{Scale = 1}
 		):Play()
 	end)
+	Button.MouseLeave:Connect(function() -- 押したままボタンの外で指を離しても元通りに膨らむ
+	TweenService:Create(
+		Scale,
+		TweenInfo.new(0.08, Enum.EasingStyle.Quad),
+		{Scale = 1}
+	):Play()
+    end)
 end
 local UIS = game:GetService("UserInputService") -- anti scroll
 
