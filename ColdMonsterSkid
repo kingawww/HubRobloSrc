@@ -54,9 +54,9 @@ local ToggleButton = Instance.new("TextButton") -- on off toggle
 local ToggleCorner = Instance.new("UICorner")
 local stroke = Instance.new("UIStroke") -- "main" white outline
 stroke.Parent = main
-stroke.Color = Color3.fromRGB(255,255,255)
+stroke.Color = Color3.fromRGB(0,0,0)
 stroke.Thickness = 1
-stroke.Transparency = 0.75
+stroke.Transparency = 0.4
 
 -- Memo: FM = FunctionMethod
 
