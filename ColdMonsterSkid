@@ -60,6 +60,7 @@ end
 for _,obj in ipairs(Objects) do
 	local stroke = Instance.new("UIStroke")
 	stroke.Parent = obj
+	stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 	stroke.Color = Color3.fromRGB(0,0,0)
 	stroke.Thickness = 1
 	stroke.Transparency = 0.4
