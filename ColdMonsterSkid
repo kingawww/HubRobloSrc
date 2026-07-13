@@ -52,7 +52,7 @@ local FM14 = Instance.new("TextButton")
 local Buttons = {FM1,FM2,FM3,FM4,FM5,FM6,FM7,FM8,FM9,FM10,FM11,FM12,FM13,FM14}
 local ToggleButton = Instance.new("TextButton") -- on off toggle
 local ToggleCorner = Instance.new("UICorner")
-for _,obj in ipairs({main, TopBar, SideBar Buttons}) do -- "main SideBar TopBar" black outline
+for _,obj in ipairs({main, TopBar, SideBar, Buttons}) do -- "main SideBar TopBar" black outline
 	local stroke = Instance.new("UIStroke")
 	stroke.Parent = obj
 	stroke.Color = Color3.fromRGB(0,0,0)
