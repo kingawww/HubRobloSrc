@@ -472,6 +472,12 @@ FM12.LayoutOrder = 12
 FM13.LayoutOrder = 13
 FM14.LayoutOrder = 14
 
+-- make ボタン押したら縮むやつ
+for _,Button in ipairs(Buttons) do
+	local Scale = Instance.new("UIScale")
+	Scale.Parent = Button
+end
+
 ToggleButton.Name = "ToggleButton" -- on off toggle
 ToggleButton.Parent = ScreenGui
 ToggleButton.Size = UDim2.new(0, 45, 0, 45)
@@ -602,30 +608,21 @@ ToggleButton.MouseButton1Click:Connect(function()
 	end
 
 end)
-local TweenService = game:GetService("TweenService") --ボタン縮むやつ
+local TweenService = game:GetService("TweenService") -- ボタン押したら縮むやつ
 for _,Button in ipairs(Buttons) do
-	local OriginalSize = Button.Size
+	local Scale = Button:FindFirstChildOfClass("UIScale")
 	Button.MouseButton1Down:Connect(function()
 		TweenService:Create(
-			Button,
-			TweenInfo.new(0.05, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{
-				Size = UDim2.new(
-					OriginalSize.X.Scale,
-					OriginalSize.X.Offset - 4,
-					OriginalSize.Y.Scale,
-					OriginalSize.Y.Offset - 2
-				)
-			}
+			Scale,
+			TweenInfo.new(0.05, Enum.EasingStyle.Quad),
+			{Scale = 0.95}
 		):Play()
 	end)
 	Button.MouseButton1Up:Connect(function()
 		TweenService:Create(
-			Button,
-			TweenInfo.new(0.08, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{
-				Size = OriginalSize
-			}
+			Scale,
+			TweenInfo.new(0.08, Enum.EasingStyle.Quad),
+			{Scale = 1}
 		):Play()
 	end)
 end
