@@ -1,4 +1,4 @@
--- This Script Hub was made by IDioTKing
+-- Cold Monster SKID v1.1 was made by IDioTKing
 
 -- Instances:
 
@@ -48,6 +48,8 @@ local FM9 = Instance.new("TextButton")
 local FM10 = Instance.new("TextButton")
 local FM11 = Instance.new("TextButton")
 local FM12 = Instance.new("TextButton")
+local FM13 = Instance.new("TextButton")
+local FM14 = Instance.new("TextButton")
 local ToggleButton = Instance.new("TextButton")
 local ToggleCorner = Instance.new("UICorner")
 
@@ -167,7 +169,7 @@ TITLE.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TITLE.Position = UDim2.new(0, 0, 0.0370370373, 0)
 TITLE.Size = UDim2.new(0, 100, 0, 40)
 TITLE.Font = Enum.Font.Jura
-TITLE.Text = "COLD MONSTER SKID"
+TITLE.Text = "COLD MONSTER SKID V1.1"
 TITLE.TextColor3 = Color3.fromRGB(255, 255, 255)
 TITLE.TextSize = 20.000
 
@@ -416,6 +418,34 @@ FM12.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://pastebin.com/raw/zXk4Rq2r"), true))()
 end)
 
+FM13.Name = "FM13"
+FM13.Parent = ScriptsFrame
+FM13.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM13.BackgroundTransparency = 0.2
+FM13.BorderSizePixel = 0
+FM13.Size = UDim2.new(0,145,0,44)
+FM13.Font = Enum.Font.Jura
+FM13.Text = "Highlight esp"
+FM13.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM13.TextSize = 21.000
+FM13.MouseButton1Click:Connect (function()
+	loadstring(game:HttpGet(("https://pastebin.com/raw/7K1Jhmck"), true))()
+end)
+
+FM14.Name = "FM14"
+FM14.Parent = ScriptsFrame
+FM14.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM14.BackgroundTransparency = 0.2
+FM14.BorderSizePixel = 0
+FM14.Size = UDim2.new(0,145,0,44)
+FM14.Font = Enum.Font.Jura
+FM14.Text = "Delta Mobile Keyboard"
+FM14.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM14.TextSize = 21.000
+FM14.MouseButton1Click:Connect (function()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xxtan31/Ata/main/deltakeyboardcrack.txt"), true))()
+end)
+
 -- make UIGridLayout (noob)
 FM1.LayoutOrder = 1
 FM2.LayoutOrder = 2
@@ -429,6 +459,8 @@ FM9.LayoutOrder = 9
 FM10.LayoutOrder = 10
 FM11.LayoutOrder = 11
 FM12.LayoutOrder = 12
+FM13.LayoutOrder = 13
+FM14.LayoutOrder = 14
 
 ToggleButton.Name = "ToggleButton" -- on off toggle
 ToggleButton.Parent = ScreenGui
