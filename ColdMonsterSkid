@@ -36,19 +36,22 @@ UIGridLayout.CellPadding = UDim2.new(0,32,0,15)
 UIGridLayout.FillDirectionMaxCells = 2
 UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
-local FunctionMethod1 = Instance.new("TextButton")
-local FunctionMethod2 = Instance.new("TextButton")
-local FunctionMethod3 = Instance.new("TextButton")
-local FunctionMethod4 = Instance.new("TextButton")
-local FunctionMethod5 = Instance.new("TextButton")
-local FunctionMethod6 = Instance.new("TextButton")
-local FunctionMethod7 = Instance.new("TextButton")
-local FunctionMethod8 = Instance.new("TextButton")
-local FunctionMethod9 = Instance.new("TextButton")
-local FunctionMethod10 = Instance.new("TextButton")
+local FM1 = Instance.new("TextButton")
+local FM2 = Instance.new("TextButton")
+local FM3 = Instance.new("TextButton")
+local FM4 = Instance.new("TextButton")
+local FM5 = Instance.new("TextButton")
+local FM6 = Instance.new("TextButton")
+local FM7 = Instance.new("TextButton")
+local FM8 = Instance.new("TextButton")
+local FM9 = Instance.new("TextButton")
+local FM10 = Instance.new("TextButton")
+local FM11 = Instance.new("TextButton")
+local FM12 = Instance.new("TextButton")
 local ToggleButton = Instance.new("TextButton")
 local ToggleCorner = Instance.new("UICorner")
 
+-- Memo: FM = FunctionMethod
 
 --Properties:
 
@@ -234,168 +237,198 @@ ScriptsFrame.ClipsDescendants = true
 
 UICorner_9.Parent = ScriptsFrame
 
-FunctionMethod1.Name = "FunctionMethod1"
-FunctionMethod1.Parent = ScriptsFrame
-FunctionMethod1.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FunctionMethod1.BackgroundTransparency = 0.2
-FunctionMethod1.BorderSizePixel = 0
---FunctionMethod1.Position = UDim2.new(0.0957, 0, 0.07, 0)
-FunctionMethod1.Size = UDim2.new(0,145,0,44)
-FunctionMethod1.Font = Enum.Font.Jura
-FunctionMethod1.Text = "FlyGui V3"
-FunctionMethod1.TextColor3 = Color3.fromRGB(255, 255, 255)
-FunctionMethod1.TextSize = 21.000
-FunctionMethod1.MouseButton1Click:Connect (function()
+FM1.Name = "FM1"
+FM1.Parent = ScriptsFrame
+FM1.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM1.BackgroundTransparency = 0.2
+FM1.BorderSizePixel = 0
+--FM1.Position = UDim2.new(0.0957, 0, 0.07, 0)
+FM1.Size = UDim2.new(0,145,0,44)
+FM1.Font = Enum.Font.Jura
+FM1.Text = "FlyGui V3"
+FM1.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM1.TextSize = 21.000
+FM1.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"), true))()
 end)
 
-FunctionMethod2.Name = "FunctionMethod2"
-FunctionMethod2.Parent = ScriptsFrame
-FunctionMethod2.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FunctionMethod2.BackgroundTransparency = 0.2
-FunctionMethod2.BorderSizePixel = 0
---FunctionMethod2.Position = UDim2.new(0.5510, 0, 0.07, 0)
-FunctionMethod2.Size = UDim2.new(0,145,0,44)
-FunctionMethod2.Font = Enum.Font.Jura
-FunctionMethod2.Text = "Obby GodMode"
-FunctionMethod2.TextColor3 = Color3.fromRGB(255, 255, 255)
-FunctionMethod2.TextSize = 21.000
-FunctionMethod2.MouseButton1Click:Connect (function()
+FM2.Name = "FM2"
+FM2.Parent = ScriptsFrame
+FM2.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM2.BackgroundTransparency = 0.2
+FM2.BorderSizePixel = 0
+--FM2.Position = UDim2.new(0.5510, 0, 0.07, 0)
+FM2.Size = UDim2.new(0,145,0,44)
+FM2.Font = Enum.Font.Jura
+FM2.Text = "Obby GodMode"
+FM2.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM2.TextSize = 21.000
+FM2.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/zephyr10101/ignore-touchinterests/main/main"), true))()
 end)
 
-FunctionMethod3.Name = "FunctionMethod3"
-FunctionMethod3.Parent = ScriptsFrame
-FunctionMethod3.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FunctionMethod3.BackgroundTransparency = 0.2
-FunctionMethod3.BorderSizePixel = 0
---FunctionMethod3.Position = UDim2.new(0.0957, 0, 0.25, 0)
-FunctionMethod3.Size = UDim2.new(0,145,0,44)
-FunctionMethod3.Font = Enum.Font.Jura
-FunctionMethod3.Text = "Invisible"
-FunctionMethod3.TextColor3 = Color3.fromRGB(255, 255, 255)
-FunctionMethod3.TextSize = 21.000
-FunctionMethod3.MouseButton1Click:Connect (function()
+FM3.Name = "FM3"
+FM3.Parent = ScriptsFrame
+FM3.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM3.BackgroundTransparency = 0.2
+FM3.BorderSizePixel = 0
+--FM3.Position = UDim2.new(0.0957, 0, 0.25, 0)
+FM3.Size = UDim2.new(0,145,0,44)
+FM3.Font = Enum.Font.Jura
+FM3.Text = "Invisible"
+FM3.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM3.TextSize = 21.000
+FM3.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe./dbb6ce6f6cee4f7a5c9e20d7b88e83db2a93bf25/Invisible%20GUI'), true))()
 end)
 
-FunctionMethod4.Name = "FunctionMethod4"
-FunctionMethod4.Parent = ScriptsFrame
-FunctionMethod4.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FunctionMethod4.BackgroundTransparency = 0.2
-FunctionMethod4.BorderSizePixel = 0
---FunctionMethod4.Position = UDim2.new(0.5510, 0, 0.25, 0)
-FunctionMethod4.Size = UDim2.new(0,145,0,44)
-FunctionMethod4.Font = Enum.Font.Jura
-FunctionMethod4.Text = "Rochips Panel"
-FunctionMethod4.TextColor3 = Color3.fromRGB(255, 255, 255)
-FunctionMethod4.TextSize = 21.000
-FunctionMethod4.MouseButton1Click:Connect (function()
+FM4.Name = "FM4"
+FM4.Parent = ScriptsFrame
+FM4.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM4.BackgroundTransparency = 0.2
+FM4.BorderSizePixel = 0
+--FM4.Position = UDim2.new(0.5510, 0, 0.25, 0)
+FM4.Size = UDim2.new(0,145,0,44)
+FM4.Font = Enum.Font.Jura
+FM4.Text = "Rochips Panel"
+FM4.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM4.TextSize = 21.000
+FM4.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/randomstring0/unk/main/d"), true))()
 
 end)
 
-FunctionMethod5.Name = "FunctionMethod5"
-FunctionMethod5.Parent = ScriptsFrame
-FunctionMethod5.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FunctionMethod5.BackgroundTransparency = 0.2
-FunctionMethod5.BorderSizePixel = 0
---FunctionMethod5.Position = UDim2.new(0.0957, 0, 0.43, 0)
-FunctionMethod5.Size = UDim2.new(0,145,0,44)
-FunctionMethod5.Font = Enum.Font.Jura
-FunctionMethod5.Text = "Body Fling"
-FunctionMethod5.TextColor3 = Color3.fromRGB(255, 255, 255)
-FunctionMethod5.TextSize = 21.000
-FunctionMethod5.MouseButton1Click:Connect (function()
+FM5.Name = "FM5"
+FM5.Parent = ScriptsFrame
+FM5.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM5.BackgroundTransparency = 0.2
+FM5.BorderSizePixel = 0
+--FM5.Position = UDim2.new(0.0957, 0, 0.43, 0)
+FM5.Size = UDim2.new(0,145,0,44)
+FM5.Font = Enum.Font.Jura
+FM5.Text = "Body Fling"
+FM5.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM5.TextSize = 21.000
+FM5.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/0Ben1/fe./main/Fling%20GUI"), true))()
 end)
 
-FunctionMethod6.Name = "FunctionMethod6"
-FunctionMethod6.Parent = ScriptsFrame
-FunctionMethod6.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FunctionMethod6.BackgroundTransparency = 0.2
-FunctionMethod6.BorderSizePixel = 0
---FunctionMethod6.Position = UDim2.new(0.5510, 0, 0.43, 0)
-FunctionMethod6.Size = UDim2.new(0,145,0,44)
-FunctionMethod6.Font = Enum.Font.Jura
-FunctionMethod6.Text = "Control NPC"
-FunctionMethod6.TextColor3 = Color3.fromRGB(255, 255, 255)
-FunctionMethod6.TextSize = 21.000
-FunctionMethod6.MouseButton1Click:Connect (function()
+FM6.Name = "FM6"
+FM6.Parent = ScriptsFrame
+FM6.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM6.BackgroundTransparency = 0.2
+FM6.BorderSizePixel = 0
+--FM6.Position = UDim2.new(0.5510, 0, 0.43, 0)
+FM6.Size = UDim2.new(0,145,0,44)
+FM6.Font = Enum.Font.Jura
+FM6.Text = "Control NPC"
+FM6.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM6.TextSize = 21.000
+FM6.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty38.lua"), true))()
 end)
 
-FunctionMethod7.Name = "FunctionMethod7"
-FunctionMethod7.Parent = ScriptsFrame
-FunctionMethod7.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FunctionMethod7.BackgroundTransparency = 0.2
-FunctionMethod7.BorderSizePixel = 0
---FunctionMethod7.Position = UDim2.new(0.0957, 0, 0.61, 0)
-FunctionMethod7.Size = UDim2.new(0,145,0,44)
-FunctionMethod7.Font = Enum.Font.Jura
-FunctionMethod7.Text = "Fling ALL"
-FunctionMethod7.TextColor3 = Color3.fromRGB(255, 255, 255)
-FunctionMethod7.TextSize = 21.000
-FunctionMethod7.MouseButton1Click:Connect (function()
+FM7.Name = "FM7"
+FM7.Parent = ScriptsFrame
+FM7.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM7.BackgroundTransparency = 0.2
+FM7.BorderSizePixel = 0
+--FM7.Position = UDim2.new(0.0957, 0, 0.61, 0)
+FM7.Size = UDim2.new(0,145,0,44)
+FM7.Font = Enum.Font.Jura
+FM7.Text = "Fling ALL"
+FM7.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM7.TextSize = 21.000
+FM7.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://pastebin.com/raw/zqyDSUWX"), true))()
 end)
 
-FunctionMethod8.Name = "FunctionMethod8"
-FunctionMethod8.Parent = ScriptsFrame
-FunctionMethod8.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FunctionMethod8.BackgroundTransparency = 0.2
-FunctionMethod8.BorderSizePixel = 0
---FunctionMethod8.Position = UDim2.new(0.5510, 0, 0.61, 0)
-FunctionMethod8.Size = UDim2.new(0,145,0,44)
-FunctionMethod8.Font = Enum.Font.Jura
-FunctionMethod8.Text = "Nexus 5.0"
-FunctionMethod8.TextColor3 = Color3.fromRGB(255, 255, 255)
-FunctionMethod8.TextSize = 21.000
-FunctionMethod8.MouseButton1Click:Connect (function()
+FM8.Name = "FM8"
+FM8.Parent = ScriptsFrame
+FM8.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM8.BackgroundTransparency = 0.2
+FM8.BorderSizePixel = 0
+--FM8.Position = UDim2.new(0.5510, 0, 0.61, 0)
+FM8.Size = UDim2.new(0,145,0,44)
+FM8.Font = Enum.Font.Jura
+FM8.Text = "Nexus 5.0"
+FM8.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM8.TextSize = 21.000
+FM8.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://avatar.sowonaha.workers.dev"), true))()
 end)
 
-FunctionMethod9.Name = "FunctionMethod9"
-FunctionMethod9.Parent = ScriptsFrame
-FunctionMethod9.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FunctionMethod9.BackgroundTransparency = 0.2
-FunctionMethod9.BorderSizePixel = 0
---FunctionMethod9.Position = UDim2.new(0.0957, 0, 0.79, 0)
-FunctionMethod9.Size = UDim2.new(0,145,0,44)
-FunctionMethod9.Font = Enum.Font.Jura
-FunctionMethod9.Text = "C00lkidd2 HUB remake"
-FunctionMethod9.TextColor3 = Color3.fromRGB(255, 255, 255)
-FunctionMethod9.TextSize = 21.000
-FunctionMethod9.MouseButton1Click:Connect (function()
+FM9.Name = "FM9"
+FM9.Parent = ScriptsFrame
+FM9.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM9.BackgroundTransparency = 0.2
+FM9.BorderSizePixel = 0
+--FM9.Position = UDim2.new(0.0957, 0, 0.79, 0)
+FM9.Size = UDim2.new(0,145,0,44)
+FM9.Font = Enum.Font.Jura
+FM9.Text = "C00lkidd2 Hub remake"
+FM9.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM9.TextSize = 21.000
+FM9.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/ckid"), true))()
 end)
 
-FunctionMethod10.Name = "FunctionMethod10"
-FunctionMethod10.Parent = ScriptsFrame
-FunctionMethod10.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FunctionMethod10.BackgroundTransparency = 0.2
-FunctionMethod10.BorderSizePixel = 0
---FunctionMethod10.Position = UDim2.new(0.5510, 0, 0.79, 0)
-FunctionMethod10.Size = UDim2.new(0,145,0,44)
-FunctionMethod10.Font = Enum.Font.Jura
-FunctionMethod10.Text = "FE Trolling GUI"
-FunctionMethod10.TextColor3 = Color3.fromRGB(255, 255, 255)
-FunctionMethod10.TextSize = 21.000
-FunctionMethod10.MouseButton1Click:Connect (function()
+FM10.Name = "FM10"
+FM10.Parent = ScriptsFrame
+FM10.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM10.BackgroundTransparency = 0.2
+FM10.BorderSizePixel = 0
+--FM10.Position = UDim2.new(0.5510, 0, 0.79, 0)
+FM10.Size = UDim2.new(0,145,0,44)
+FM10.Font = Enum.Font.Jura
+FM10.Text = "FE Trolling GUI"
+FM10.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM10.TextSize = 21.000
+FM10.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/FE%20Trolling%20GUI.luau"), true))()
 end)
 
+FM11.Name = "FM11"
+FM11.Parent = ScriptsFrame
+FM11.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM11.BackgroundTransparency = 0.2
+FM11.BorderSizePixel = 0
+FM11.Size = UDim2.new(0,145,0,44)
+FM11.Font = Enum.Font.Jura
+FM11.Text = "Astral Hub V3"
+FM11.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM11.TextSize = 21.000
+FM11.MouseButton1Click:Connect (function()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/Vcsk/AstralHub/main/Main.lua"), true))()
+end)
+
+FM12.Name = "FM12"
+FM12.Parent = ScriptsFrame
+FM12.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM12.BackgroundTransparency = 0.2
+FM12.BorderSizePixel = 0
+FM12.Size = UDim2.new(0,145,0,44)
+FM12.Font = Enum.Font.Jura
+FM12.Text = "Walk On Walls"
+FM12.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM12.TextSize = 21.000
+FM12.MouseButton1Click:Connect (function()
+	loadstring(game:HttpGet(("https://pastebin.com/raw/zXk4Rq2r"), true))()
+end)
+
 -- make UIGridLayout (noob)
-FunctionMethod1.LayoutOrder = 1
-FunctionMethod2.LayoutOrder = 2
-FunctionMethod3.LayoutOrder = 3
-FunctionMethod4.LayoutOrder = 4
-FunctionMethod5.LayoutOrder = 5
-FunctionMethod6.LayoutOrder = 6
-FunctionMethod7.LayoutOrder = 7
-FunctionMethod8.LayoutOrder = 8
-FunctionMethod9.LayoutOrder = 9
-FunctionMethod10.LayoutOrder = 10
+FM1.LayoutOrder = 1
+FM2.LayoutOrder = 2
+FM3.LayoutOrder = 3
+FM4.LayoutOrder = 4
+FM5.LayoutOrder = 5
+FM6.LayoutOrder = 6
+FM7.LayoutOrder = 7
+FM8.LayoutOrder = 8
+FM9.LayoutOrder = 9
+FM10.LayoutOrder = 10
+FM11.LayoutOrder = 11
+FM12.LayoutOrder = 12
 
 ToggleButton.Name = "ToggleButton" -- on off toggle
 ToggleButton.Parent = ScreenGui
@@ -484,7 +517,7 @@ local function OTBCOV_fake_script() -- ExtrasButton.LocalScript
 	end)
 end
 coroutine.wrap(OTBCOV_fake_script)()
-local TweenService = game:GetService("TweenService") -- animation
+local TweenService = game:GetService("TweenService") -- 飛び出すanimation
 
 local opened = true -- on off toggle
 local originalSize = main.Size
