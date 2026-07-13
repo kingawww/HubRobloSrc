@@ -52,11 +52,11 @@ local FM11 = Instance.new("TextButton")
 local FM12 = Instance.new("TextButton")
 local FM13 = Instance.new("TextButton")
 local FM14 = Instance.new("TextButton")
-local Buttons = {FM1,FM2,FM3,FM4,FM5,FM6,FM7,FM8,FM9,FM10,FM11,FM12,FM13,FM14}
-local ToggleButton = Instance.new("TextButton") -- on off toggle
+local FMs = {FM1,FM2,FM3,FM4,FM5,FM6,FM7,FM8,FM9,FM10,FM11,FM12,FM13,FM14} -- FMs = FunctionMethods
+local OnOffFormain = Instance.new("TextButton") -- on off toggle
 local ToggleCorner = Instance.new("UICorner")
-local Objects = {main, TopBar, SideBar} -- "main SideBar TopBar Buttons" black outline
-for _,v in ipairs(Buttons) do
+local Objects = {main, TopBar, SideBar} -- "main SideBar TopBar FMs" black outline
+for _,v in ipairs(FMs) do
 	table.insert(Objects, v)
 end
 for _,obj in ipairs(Objects) do
@@ -506,24 +506,24 @@ FM13.LayoutOrder = 13
 FM14.LayoutOrder = 14
 
 -- make ボタン押したら縮むやつ
-for _,Button in ipairs(Buttons) do
+for _,Button in ipairs(FMs) do
 	local Scale = Instance.new("UIScale")
 	Scale.Parent = Button
 end
 
-ToggleButton.Name = "ToggleButton" -- on off toggle
-ToggleButton.Parent = ScreenGui
-ToggleButton.Size = UDim2.new(0, 45, 0, 45)
-ToggleButton.Position = UDim2.new(0, 15, 1, -90)
-ToggleButton.BackgroundColor3 = Color3.fromRGB(20,20,200)
-ToggleButton.BackgroundTransparency = 0.35
-ToggleButton.Text = "☃"
-ToggleButton.TextColor3 = Color3.new(1,1,1)
-ToggleButton.Font = Enum.Font.GothamBold
-ToggleButton.TextSize = 24
+OnOffFormain.Name = "OnOffFormain" -- on off toggle
+OnOffFormain.Parent = ScreenGui
+OnOffFormain.Size = UDim2.new(0, 45, 0, 45)
+OnOffFormain.Position = UDim2.new(0, 15, 1, -90)
+OnOffFormain.BackgroundColor3 = Color3.fromRGB(20,20,200)
+OnOffFormain.BackgroundTransparency = 0.35
+OnOffFormain.Text = "☃"
+OnOffFormain.TextColor3 = Color3.new(1,1,1)
+OnOffFormain.Font = Enum.Font.GothamBold
+OnOffFormain.TextSize = 24
 
 ToggleCorner.CornerRadius = UDim.new(1,0)
-ToggleCorner.Parent = ToggleButton
+ToggleCorner.Parent = OnOffFormain
 -- Scripts:
 
 local function DTUMP_fake_script() -- bar.LocalScript 
@@ -604,7 +604,7 @@ local TweenService = game:GetService("TweenService") -- 飛び出すanimation
 local opened = true -- on off toggle
 local originalSize = main.Size
 
-ToggleButton.MouseButton1Click:Connect(function()
+OnOffFormain.MouseButton1Click:Connect(function()
 
 	opened = not opened
 
@@ -638,7 +638,7 @@ ToggleButton.MouseButton1Click:Connect(function()
 end)
 
 local TweenService = game:GetService("TweenService") -- ボタン押したら縮むやつ
-for _,Button in ipairs(Buttons) do
+for _,Button in ipairs(FMs) do
 	local Scale = Button:FindFirstChildOfClass("UIScale")
 	Button.MouseButton1Down:Connect(function()
 		TweenService:Create(
@@ -663,19 +663,19 @@ for _,Button in ipairs(Buttons) do
     end)
 end
 
-local UIS = game:GetService("UserInputService") -- anti scroll
+local UIS = game:GetService("UserInputService") -- anti scrollやドラッグできる場所の指定
 
 local dragging = false
 local dragStart
 local startPos
 
-local function EnableDrag(Object)
+local function EnableDrag(Object, Target)
 	Object.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1
 		or input.UserInputType == Enum.UserInputType.Touch then
 			dragging = true
 			dragStart = input.Position
-			startPos = main.Position
+			startPos = Target.Position
 			input.Changed:Connect(function()
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
@@ -686,9 +686,10 @@ local function EnableDrag(Object)
 end
 
 -- ドラッグ可能な場所
-EnableDrag(main)
-EnableDrag(TopBar)
-EnableDrag(SideBar)
+EnableDrag(main, main)
+EnableDrag(TopBar, main)
+EnableDrag(SideBar, main)
+EnableDrag(OnOffFormain, OnOffFormain)
 
 UIS.InputChanged:Connect(function(input)
 
@@ -697,7 +698,7 @@ UIS.InputChanged:Connect(function(input)
 		or input.UserInputType == Enum.UserInputType.Touch
 	) then
 		local delta = input.Position - dragStart
-		main.Position = UDim2.new(
+		Target.Position = UDim2.new(
 			startPos.X.Scale,
 			startPos.X.Offset + delta.X,
 			startPos.Y.Scale,
