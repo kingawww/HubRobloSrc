@@ -84,6 +84,17 @@ main.Draggable = true
 
 UICorner.Parent = main
 
+local BackgroundImage = Instance.new("ImageLabel") -- add image on background
+BackgroundImage.Name = "BackgroundImage"
+BackgroundImage.Parent = main
+BackgroundImage.Size = UDim2.fromScale(1, 1)
+BackgroundImage.Position = UDim2.fromScale(0, 0)
+BackgroundImage.BackgroundTransparency = 1
+BackgroundImage.Image = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRr6CJhFSdWBT82Ec_Ni8VUxfDG2dKzSES6fQ&usqp=CAU"
+BackgroundImage.ImageTransparency = 0.3
+BackgroundImage.ScaleType = Enum.ScaleType.Crop
+BackgroundImage.ZIndex = 0
+
 SideBar.Name = "SideBar"
 SideBar.Parent = main
 SideBar.BackgroundColor3 = Color3.fromRGB(20, 20, 200)
