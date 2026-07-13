@@ -64,33 +64,6 @@ for _,obj in ipairs(Objects) do
 	stroke.Thickness = 0.5
 	stroke.Transparency = 0.4
 end
-local TweenService = game:GetService("TweenService") --ボタン縮むやつ
-for _,Button in ipairs(Buttons) do
-	local OriginalSize = Button.Size
-	Button.MouseButton1Down:Connect(function()
-		TweenService:Create(
-			Button,
-			TweenInfo.new(0.05, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{
-				Size = UDim2.new(
-					OriginalSize.X.Scale,
-					OriginalSize.X.Offset - 4,
-					OriginalSize.Y.Scale,
-					OriginalSize.Y.Offset - 2
-				)
-			}
-		):Play()
-	end)
-	Button.MouseButton1Up:Connect(function()
-		TweenService:Create(
-			Button,
-			TweenInfo.new(0.08, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{
-				Size = OriginalSize
-			}
-		):Play()
-	end)
-end
 
 --Properties:
 
@@ -629,6 +602,33 @@ ToggleButton.MouseButton1Click:Connect(function()
 	end
 
 end)
+local TweenService = game:GetService("TweenService") --ボタン縮むやつ
+for _,Button in ipairs(Buttons) do
+	local OriginalSize = Button.Size
+	Button.MouseButton1Down:Connect(function()
+		TweenService:Create(
+			Button,
+			TweenInfo.new(0.05, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{
+				Size = UDim2.new(
+					OriginalSize.X.Scale,
+					OriginalSize.X.Offset - 4,
+					OriginalSize.Y.Scale,
+					OriginalSize.Y.Offset - 2
+				)
+			}
+		):Play()
+	end)
+	Button.MouseButton1Up:Connect(function()
+		TweenService:Create(
+			Button,
+			TweenInfo.new(0.08, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{
+				Size = OriginalSize
+			}
+		):Play()
+	end)
+end
 local UIS = game:GetService("UserInputService") -- anti scroll
 
 local dragging = false
