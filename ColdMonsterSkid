@@ -49,24 +49,15 @@ local FM11 = Instance.new("TextButton")
 local FM12 = Instance.new("TextButton")
 local FM13 = Instance.new("TextButton")
 local FM14 = Instance.new("TextButton")
+local Buttons = {FM1,FM2,FM3,FM4,FM5,FM6,FM7,FM8,FM9,FM10,FM11,FM12,FM13,FM14}
 local ToggleButton = Instance.new("TextButton") -- on off toggle
 local ToggleCorner = Instance.new("UICorner")
-for _,obj in ipairs({main, TopBar, SideBar}) do -- "main SideBar TopBar" black outline
+for _,obj in ipairs({main, TopBar, SideBar Buttons}) do -- "main SideBar TopBar" black outline
 	local stroke = Instance.new("UIStroke")
 	stroke.Parent = obj
 	stroke.Color = Color3.fromRGB(0,0,0)
 	stroke.Thickness = 1
 	stroke.Transparency = 0.4
-end
-local Buttons = {FM1,FM2,FM3,FM4,FM5,FM6,FM7,FM8,FM9,FM10,FM11,FM12,FM13,FM14} -- ボタンを立体的に
-for _,Button in ipairs(Buttons) do
-	local Gradient = Instance.new("UIGradient")
-	Gradient.Parent = Button
-	Gradient.Color = ColorSequence.new{
-		ColorSequenceKeypoint.new(0, Color3.fromRGB(255,90,90)),
-		ColorSequenceKeypoint.new(1, Color3.fromRGB(140,20,20))
-	}
-	Gradient.Rotation = 90
 end
 -- Memo: FM = FunctionMethod
 
