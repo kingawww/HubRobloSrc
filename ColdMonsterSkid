@@ -52,12 +52,13 @@ local FM13 = Instance.new("TextButton")
 local FM14 = Instance.new("TextButton")
 local ToggleButton = Instance.new("TextButton") -- on off toggle
 local ToggleCorner = Instance.new("UICorner")
-local stroke = Instance.new("UIStroke") -- "main" white outline
-stroke.Parent = main
-stroke.Color = Color3.fromRGB(0,0,0)
-stroke.Thickness = 1
-stroke.Transparency = 0.4
-
+for _,obj in ipairs({main, TopBar, SideBar}) do -- "main SideBar TopBar" black outline
+	local stroke = Instance.new("UIStroke")
+	stroke.Parent = obj
+	stroke.Color = Color3.fromRGB(0,0,0)
+	stroke.Thickness = 1
+	stroke.Transparency = 0.4
+end
 -- Memo: FM = FunctionMethod
 
 --Properties:
