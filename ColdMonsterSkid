@@ -2,6 +2,33 @@
 
 -- Instances:
 
+local TweenService = game:GetService("TweenService") --ボタン縮むやつ
+for _,Button in ipairs(Buttons) do
+	local OriginalSize = Button.Size
+	Button.MouseButton1Down:Connect(function()
+		TweenService:Create(
+			Button,
+			TweenInfo.new(0.05, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{
+				Size = UDim2.new(
+					OriginalSize.X.Scale,
+					OriginalSize.X.Offset - 4,
+					OriginalSize.Y.Scale,
+					OriginalSize.Y.Offset - 2
+				)
+			}
+		):Play()
+	end)
+	Button.MouseButton1Up:Connect(function()
+		TweenService:Create(
+			Button,
+			TweenInfo.new(0.08, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{
+				Size = OriginalSize
+			}
+		):Play()
+	end)
+end
 local ScreenGui = Instance.new("ScreenGui")
 local main = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -26,7 +53,7 @@ local TextLabel_2 = Instance.new("TextLabel")
 local CreditsFrame = Instance.new("Frame")
 local UICorner_8 = Instance.new("UICorner")
 local TextLabel_3 = Instance.new("TextLabel")
-local ScriptsFrame = Instance.new("ScrollingFrame")
+local ScriptsFrame = Instance.new("ScrollingFrame") -- Frame → ScrollingFrame
 local UICorner_9 = Instance.new("UICorner")
 local UIGridLayout = Instance.new("UIGridLayout") -- 2列に整列
 UIGridLayout.Parent = ScriptsFrame
@@ -244,7 +271,7 @@ ScriptsFrame.Size = UDim2.new(0, 400, 0, 320)
 ScriptsFrame.Visible = false
 --scroll "Scripts" screen
 ScriptsFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y --ScriptsFrame.CanvasSize = UDim2.new(0,0,0,700)
-ScriptsFrame.ScrollBarThickness = 8
+ScriptsFrame.ScrollBarThickness = 6
 ScriptsFrame.ScrollBarImageColor3 = Color3.fromRGB(255,255,255)
 ScriptsFrame.BorderSizePixel = 0
 ScriptsFrame.ClipsDescendants = true
