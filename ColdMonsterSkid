@@ -2,33 +2,6 @@
 
 -- Instances:
 
-local TweenService = game:GetService("TweenService") --ボタン縮むやつ
-for _,Button in ipairs(Buttons) do
-	local OriginalSize = Button.Size
-	Button.MouseButton1Down:Connect(function()
-		TweenService:Create(
-			Button,
-			TweenInfo.new(0.05, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{
-				Size = UDim2.new(
-					OriginalSize.X.Scale,
-					OriginalSize.X.Offset - 4,
-					OriginalSize.Y.Scale,
-					OriginalSize.Y.Offset - 2
-				)
-			}
-		):Play()
-	end)
-	Button.MouseButton1Up:Connect(function()
-		TweenService:Create(
-			Button,
-			TweenInfo.new(0.08, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{
-				Size = OriginalSize
-			}
-		):Play()
-	end)
-end
 local ScreenGui = Instance.new("ScreenGui")
 local main = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -62,7 +35,7 @@ UIGridLayout.CellPadding = UDim2.new(0,32,0,15)
 UIGridLayout.FillDirectionMaxCells = 2
 UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
-local FM1 = Instance.new("TextButton")
+local FM1 = Instance.new("TextButton") -- Memo: FM = FunctionMethod
 local FM2 = Instance.new("TextButton")
 local FM3 = Instance.new("TextButton")
 local FM4 = Instance.new("TextButton")
@@ -79,8 +52,7 @@ local FM14 = Instance.new("TextButton")
 local Buttons = {FM1,FM2,FM3,FM4,FM5,FM6,FM7,FM8,FM9,FM10,FM11,FM12,FM13,FM14}
 local ToggleButton = Instance.new("TextButton") -- on off toggle
 local ToggleCorner = Instance.new("UICorner")
- -- "main SideBar TopBar Buttons" black outline
-local Objects = {main, TopBar, SideBar}
+local Objects = {main, TopBar, SideBar} -- "main SideBar TopBar Buttons" black outline
 for _,v in ipairs(Buttons) do
 	table.insert(Objects, v)
 end
@@ -92,7 +64,33 @@ for _,obj in ipairs(Objects) do
 	stroke.Thickness = 0.5
 	stroke.Transparency = 0.4
 end
--- Memo: FM = FunctionMethod
+local TweenService = game:GetService("TweenService") --ボタン縮むやつ
+for _,Button in ipairs(Buttons) do
+	local OriginalSize = Button.Size
+	Button.MouseButton1Down:Connect(function()
+		TweenService:Create(
+			Button,
+			TweenInfo.new(0.05, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{
+				Size = UDim2.new(
+					OriginalSize.X.Scale,
+					OriginalSize.X.Offset - 4,
+					OriginalSize.Y.Scale,
+					OriginalSize.Y.Offset - 2
+				)
+			}
+		):Play()
+	end)
+	Button.MouseButton1Up:Connect(function()
+		TweenService:Create(
+			Button,
+			TweenInfo.new(0.08, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+			{
+				Size = OriginalSize
+			}
+		):Play()
+	end)
+end
 
 --Properties:
 
