@@ -668,6 +668,7 @@ local UIS = game:GetService("UserInputService") -- anti scrollやドラッグで
 local dragging = false
 local dragStart
 local startPos
+local dragTarget
 
 local function EnableDrag(Object, Target)
 	Object.InputBegan:Connect(function(input)
@@ -676,6 +677,7 @@ local function EnableDrag(Object, Target)
 			dragging = true
 			dragStart = input.Position
 			startPos = Target.Position
+			dragTarget = Target
 			input.Changed:Connect(function()
 				if input.UserInputState == Enum.UserInputState.End then
 					dragging = false
@@ -698,7 +700,7 @@ UIS.InputChanged:Connect(function(input)
 		or input.UserInputType == Enum.UserInputType.Touch
 	) then
 		local delta = input.Position - dragStart
-		Target.Position = UDim2.new(
+		dragTarget.Position = UDim2.new(
 			startPos.X.Scale,
 			startPos.X.Offset + delta.X,
 			startPos.Y.Scale,
