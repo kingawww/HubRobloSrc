@@ -23,7 +23,7 @@ local ExtrasFrame = Instance.new("Frame")
 local UICorner_7 = Instance.new("UICorner")
 local TextLabel_1 = Instance.new("TextLabel")
 local TextLabel_2 = Instance.new("TextLabel")
-local CreditsFrame = Instance.new("Frame")
+local CreditsFrame = Instance.new("ScrollingFrame")
 local UICorner_8 = Instance.new("UICorner")
 local TextLabel_3 = Instance.new("TextLabel")
 local TextLabel_4 = Instance.new("TextLabel")
@@ -193,7 +193,7 @@ TITLE.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TITLE.Position = UDim2.new(0, 0, 0.0370370373, 0)
 TITLE.Size = UDim2.new(0, 100, 0, 40)
 TITLE.Font = Enum.Font.Jura
-TITLE.Text = "COLD MONSTER SKID V1.1"
+TITLE.Text = "COLD MONSTER SKID V1.2"
 TITLE.TextColor3 = Color3.fromRGB(255, 255, 255)
 TITLE.TextSize = 20.000
 
@@ -235,6 +235,16 @@ CreditsFrame.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
 CreditsFrame.Size = UDim2.new(0, 400, 0, 320)
 CreditsFrame.Visible = false
 
+CreditsFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
+CreditsFrame.ScrollBarThickness = 6
+CreditsFrame.ScrollBarImageColor3 = Color3.fromRGB(255,255,255)
+CreditsFrame.BorderSizePixel = 0
+CreditsFrame.ClipsDescendants = true
+
+local CreditsPadding = Instance.new("UIPadding")
+CreditsPadding.Parent = CreditsFrame
+CreditsPadding.PaddingBottom = UDim.new(0, 100)
+
 UICorner_8.Parent = CreditsFrame
 
 TextLabel_3.Parent = CreditsFrame
@@ -273,7 +283,7 @@ TextLabel_6.BackgroundTransparency = 1.000
 TextLabel_6.Position = UDim2.new(0, 0, 0.45, 0)
 TextLabel_6.Size = UDim2.new(0, 359, 0, 50)
 TextLabel_6.Font = Enum.Font.Jura
-TextLabel_6.Text = "V1.0 - Started Cold Monster SKID!\nV1.1 - Added Click animation & Outline on menu"
+TextLabel_6.Text = "V1.0 - Started Cold Monster SKID!\nV1.1\n- Added Click animation & Outline on menu\nV1.2\n- ”Rochips Panel is RIP!!”\n- Fix OnOff from bottom-left to top-right"
 TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.TextSize = 22.000
 
