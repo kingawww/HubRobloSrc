@@ -283,7 +283,7 @@ TextLabel_6.BackgroundTransparency = 1.000
 TextLabel_6.Position = UDim2.new(0, 0, 0.45, 0)
 TextLabel_6.Size = UDim2.new(0, 359, 0, 50)
 TextLabel_6.Font = Enum.Font.Jura
-TextLabel_6.Text = "｛Update log｝\nV1.0\n- Started Cold Monster SKID!\nV1.1\n- Added Click animation & Outline on menu\nV1.2\n- ”Rochips Panel” was RIP!\n- Fix OnOff from bottom-left to top-right"
+TextLabel_6.Text = "\n｛Update log｝\nV1.0\n- Started Cold Monster SKID!\nV1.1\n- Added Click animation & Outline on menu\nV1.2\n- ”Rochips Panel” was RIP!\n- Fix OnOff from bottom-left to top-right"
 TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.TextSize = 22.000
 
