@@ -1,4 +1,4 @@
--- Cold Monster SKID v1.1 was made by IDioTKing
+-- Cold Monster SKID v1.2 was made by IDioTKing
 
 -- Instances:
 
@@ -346,11 +346,11 @@ FM4.BorderSizePixel = 0
 --FM4.Position = UDim2.new(0.5510, 0, 0.25, 0)
 FM4.Size = UDim2.new(0,145,0,44)
 FM4.Font = Enum.Font.Jura
-FM4.Text = "Rochips Panel"
+FM4.Text = "Bundle Animations"
 FM4.TextColor3 = Color3.fromRGB(255, 255, 255)
 FM4.TextSize = 21.000
 FM4.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/randomstring0/unk/main/d"), true))()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/Bac0nHck/Scripts/refs/heads/main/BundleAnimations.lua"), true))()
 
 end)
 
@@ -525,7 +525,8 @@ end
 OnOffFormain.Name = "OnOffFormain" -- on off toggle
 OnOffFormain.Parent = ScreenGui
 OnOffFormain.Size = UDim2.new(0, 45, 0, 45)
-OnOffFormain.Position = UDim2.new(0, 15, 1, -90)
+OnOffFormain.AnchorPoint = Vector2.new(0.5, 0)
+OnOffFormain.Position = UDim2.new(0.6, 0, 0, 15)
 OnOffFormain.BackgroundColor3 = Color3.fromRGB(20,20,200)
 OnOffFormain.BackgroundTransparency = 0.35
 OnOffFormain.Text = "☃"
