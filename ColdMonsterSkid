@@ -518,11 +518,11 @@ FM15.BackgroundTransparency = 0.2
 FM15.BorderSizePixel = 0
 FM15.Size = UDim2.new(0,145,0,44)
 FM15.Font = Enum.Font.Jura
-FM15.Text = "VoidOverlord 0CD!"
+FM15.Text = "VoidOverlord NoCD!"
 FM15.TextColor3 = Color3.fromRGB(255, 255, 255)
 FM15.TextSize = 21.000
 FM15.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/VoidOverlord-0CD.lua"), true))() --自作Script
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/VoidOverlord-NoCD.lua"), true))() --自作Script
 end)
 
 -- make UIGridLayout (noob)
