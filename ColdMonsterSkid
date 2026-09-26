@@ -52,7 +52,8 @@ local FM11 = Instance.new("TextButton")
 local FM12 = Instance.new("TextButton")
 local FM13 = Instance.new("TextButton")
 local FM14 = Instance.new("TextButton")
-local FMs = {FM1,FM2,FM3,FM4,FM5,FM6,FM7,FM8,FM9,FM10,FM11,FM12,FM13,FM14} -- FMs = FunctionMethods
+local FM15 = Instance.new("TextButton")
+local FMs = {FM1,FM2,FM3,FM4,FM5,FM6,FM7,FM8,FM9,FM10,FM11,FM12,FM13,FM14,FM15} -- FMs = FunctionMethods
 local OnOffFormain = Instance.new("TextButton") -- on off toggle
 local ToggleCorner = Instance.new("UICorner")
 local Objects = {main, TopBar, SideBar} -- "main SideBar TopBar FMs" black outline
@@ -510,6 +511,20 @@ FM14.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xxtan31/Ata/main/deltakeyboardcrack.txt"), true))()
 end)
 
+FM15.Name = "FM15"
+FM15.Parent = ScriptsFrame
+FM15.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+FM15.BackgroundTransparency = 0.2
+FM15.BorderSizePixel = 0
+FM15.Size = UDim2.new(0,145,0,44)
+FM15.Font = Enum.Font.Jura
+FM15.Text = "VoidOverlord 0CD!"
+FM15.TextColor3 = Color3.fromRGB(255, 255, 255)
+FM15.TextSize = 21.000
+FM15.MouseButton1Click:Connect (function()
+	loadstring(game:HttpGet(("https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/VoidOverlord-0CD.lua"), true))() --自作Script
+end)
+
 -- make UIGridLayout (noob)
 FM1.LayoutOrder = 1
 FM2.LayoutOrder = 2
@@ -525,6 +540,7 @@ FM11.LayoutOrder = 11
 FM12.LayoutOrder = 12
 FM13.LayoutOrder = 13
 FM14.LayoutOrder = 14
+FM15.LayoutOrder = 15
 
 -- make ボタン押したら縮むやつ
 for _,Button in ipairs(FMs) do
