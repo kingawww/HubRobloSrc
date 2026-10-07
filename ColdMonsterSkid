@@ -307,7 +307,6 @@ TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.TextSize = 22.000
 TextLabel_6.TextWrapped = true
 TextLabel_6.TextYAlignment = Enum.TextYAlignment.Top
-TextLabel_6.AutomaticSize = Enum.AutomaticSize.Y
 
 ScriptsFrame.Name = "ScriptsFrame"
 ScriptsFrame.Parent = main
