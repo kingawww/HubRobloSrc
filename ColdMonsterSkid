@@ -41,10 +41,11 @@ UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
 -- FM = FunctionMethod
 local fmselected = Instance.new('Sound', main)
 fmselected.SoundId = 'rbxassetid://3314301672'
+fmselected.Volume = 0.8
 
 local tabselected = Instance.new('Sound', main)
 tabselected.SoundId = 'rbxassetid://6228296129'
-tabselected.Volume = 1
+tabselected.Volume = 0.95
 -- v1.3↓
 local FMData = {
     [1]  = {"FlyGui V3", "https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"},
