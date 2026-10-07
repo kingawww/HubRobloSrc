@@ -41,7 +41,7 @@ UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
 -- FM = FunctionMethod
 local fmselected = Instance.new('Sound', main)
 fmselected.SoundId = 'rbxassetid://3314301672'
-fmselected.Volume = 0.8
+fmselected.Volume = 0.65
 
 local tabselected = Instance.new('Sound', main)
 tabselected.SoundId = 'rbxassetid://6228296129'
