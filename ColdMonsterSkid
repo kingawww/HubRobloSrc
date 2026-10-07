@@ -39,10 +39,10 @@ UIGridLayout.FillDirectionMaxCells = 2
 UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
 -- FM = FunctionMethod
-local fmselected = Instance.new('Sound', Main)
+local fmselected = Instance.new('Sound', main)
 fmselected.SoundId = 'rbxassetid://3314301672'
 
-local tabselected = Instance.new('Sound', Main)
+local tabselected = Instance.new('Sound', main)
 tabselected.SoundId = 'rbxassetid://6228296129'
 tabselected.Volume = 1
 -- v1.3↓
