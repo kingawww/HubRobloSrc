@@ -38,6 +38,8 @@ UIGridLayout.CellPadding = UDim2.new(0,32,0,15)
 UIGridLayout.FillDirectionMaxCells = 2
 UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+-- FM = FunctionMethod
+-- v1.3↓
 local FMData = {
     [1]  = {"FlyGui V3", "https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"},
     [2]  = {"Obby GodMode", "https://raw.githubusercontent.com/zephyr10101/ignore-touchinterests/main/main"},
@@ -71,36 +73,11 @@ local FMData = {
     [30] = {"NPC Manipulator", "https://raw.githubusercontent.com/InnocentViru/NPC-Manipulator/refs/heads/main/NPC%20Manipulator%20Script.lua"}
 }
 
-local FMs = {}
+local FMs = {} -- FMs = FunctionMethods
 
-for i = 1, 30 do
-    local FM = Instance.new("TextButton")
-
-    FM.Name = "FM" .. i
-    FM.Parent = ScriptsFrame
-    FM.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-    FM.BackgroundTransparency = 0.2
-    FM.BorderSizePixel = 0
-    FM.Size = UDim2.new(0, 145, 0, 44)
-    FM.Font = Enum.Font.Jura
-    FM.Text = FMData[i][1]
-    FM.TextColor3 = Color3.fromRGB(255, 255, 255)
-    FM.TextSize = 21
-    FM.LayoutOrder = i
-
-    local URL = FMData[i][2]
-
-    FM.MouseButton1Click:Connect(function()
-        loadstring(game:HttpGet(URL, true))()
-    end)
-
-    FMs[i] = FM
-end
-
+local OnOffFormain = Instance.new("TextButton") -- on off toggle
+local ToggleCorner = Instance.new("UICorner")
 local Objects = {main, TopBar, SideBar} -- "main SideBar TopBar FMs" black outline
-for _,v in ipairs(FMs) do
-	table.insert(Objects, v)
-end
 for _,obj in ipairs(Objects) do
 	local stroke = Instance.new("UIStroke")
 	stroke.Parent = obj
@@ -345,23 +322,39 @@ ScriptsFrame.ClipsDescendants = true
 
 UICorner_9.Parent = ScriptsFrame
 
-FM1.Name = "FM1"
-FM1.Parent = ScriptsFrame
-FM1.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM1.BackgroundTransparency = 0.2
-FM1.BorderSizePixel = 0
---FM1.Position = UDim2.new(0.0957, 0, 0.07, 0)
-FM1.Size = UDim2.new(0,145,0,44)
-FM1.Font = Enum.Font.Jura
-FM1.Text = "FlyGui V3"
-FM1.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM1.TextSize = 21.000
-FM1.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"), true))()
-end)
+-- Create FM buttons
+for i = 1, 30 do
+	local FM = Instance.new("TextButton")
+	local Data = FMData[i]
 
--- make UIGridLayout (noob)
+	FM.Name = "FM" .. i
+	FM.Parent = ScriptsFrame
+	FM.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+	FM.BackgroundTransparency = 0.2
+	FM.BorderSizePixel = 0
+	FM.Size = UDim2.new(0,145,0,44)
+	FM.Font = Enum.Font.Jura
+	FM.Text = Data[1]
+	FM.TextColor3 = Color3.fromRGB(255, 255, 255)
+	FM.TextSize = 21.000
+	FM.LayoutOrder = i
 
+	FM.MouseButton1Click:Connect(function()
+		loadstring(game:HttpGet(Data[2], true))()
+	end)
+
+	table.insert(FMs, FM)
+end
+
+-- Add black outline to FM buttons
+for _,v in ipairs(FMs) do
+	local stroke = Instance.new("UIStroke")
+	stroke.Parent = v
+	stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	stroke.Color = Color3.fromRGB(0,0,0)
+	stroke.Thickness = 0.5
+	stroke.Transparency = 0.4
+end
 
 -- make ボタン押したら縮むやつ
 for _,Button in ipairs(FMs) do
