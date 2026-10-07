@@ -39,6 +39,12 @@ UIGridLayout.FillDirectionMaxCells = 2
 UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
 -- FM = FunctionMethod
+local fmselected = Instance.new('Sound', Main)
+fmselected.SoundId = 'rbxassetid://3314301672'
+
+local tabselected = Instance.new('Sound', Main)
+tabselected.SoundId = 'rbxassetid://6228296129'
+tabselected.Volume = 1
 -- v1.3↓
 local FMData = {
     [1]  = {"FlyGui V3", "https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"},
@@ -340,6 +346,7 @@ for i = 1, 30 do
 	FM.LayoutOrder = i
 
 	FM.MouseButton1Click:Connect(function()
+	    fmselected:Play()
 		loadstring(game:HttpGet(Data[2], true))()
 	end)
 
@@ -396,6 +403,7 @@ local function DQZLQDA_fake_script() -- ScriptsButton.LocalScript
 	local script = Instance.new('LocalScript', ScriptsButton)
 
 	script.Parent.MouseButton1Click:Connect (function()
+	    tabselected:Play()
 		script.Parent.Parent.Parent.ExtrasFrame.Visible = false
 		script.Parent.Parent.Parent.CreditsFrame.Visible = false
 		script.Parent.Parent.Parent.ScriptsFrame.Visible = true
@@ -420,6 +428,7 @@ local function QQXH_fake_script() -- CreditsButton.LocalScript
 	local script = Instance.new('LocalScript', CreditsButton)
 
 	script.Parent.MouseButton1Click:Connect (function()
+	    tabselected:Play()
 		script.Parent.Parent.Parent.ExtrasFrame.Visible = false
 		script.Parent.Parent.Parent.CreditsFrame.Visible = true
 		script.Parent.Parent.Parent.ScriptsFrame.Visible = false
@@ -444,6 +453,7 @@ local function OTBCOV_fake_script() -- ExtrasButton.LocalScript
 	local script = Instance.new('LocalScript', ExtrasButton)
 
 	script.Parent.MouseButton1Click:Connect (function()
+	    tabselected:Play()
 		script.Parent.Parent.Parent.ExtrasFrame.Visible = true
 		script.Parent.Parent.Parent.CreditsFrame.Visible = false
 		script.Parent.Parent.Parent.ScriptsFrame.Visible = false
@@ -458,6 +468,7 @@ local originalSize = main.Size
 
 OnOffFormain.MouseButton1Click:Connect(function()
 
+    fmselected:Play()
 	opened = not opened
 
 	if opened then
