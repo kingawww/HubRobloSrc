@@ -305,8 +305,6 @@ TextLabel_6.Font = Enum.Font.Jura
 TextLabel_6.Text = "｛Update log｝\nV1.0\n- Started Cold Monster SKID!\nV1.1\n- Added Click animation & Outline on menu\nV1.2\n- ”Rochips Panel” was RIP!\n- Fix OnOff from bottom-left to top-right\nV1.3\nAdded Many Script."
 TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.TextSize = 22.000
-TextLabel_6.TextWrapped = true
-TextLabel_6.TextYAlignment = Enum.TextYAlignment.Top
 
 ScriptsFrame.Name = "ScriptsFrame"
 ScriptsFrame.Parent = main
