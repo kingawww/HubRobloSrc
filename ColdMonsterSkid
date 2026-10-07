@@ -38,39 +38,65 @@ UIGridLayout.CellPadding = UDim2.new(0,32,0,15)
 UIGridLayout.FillDirectionMaxCells = 2
 UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
-local FM1 = Instance.new("TextButton") -- Memo: FM = FunctionMethod
-local FM2 = Instance.new("TextButton")
-local FM3 = Instance.new("TextButton")
-local FM4 = Instance.new("TextButton")
-local FM5 = Instance.new("TextButton")
-local FM6 = Instance.new("TextButton")
-local FM7 = Instance.new("TextButton")
-local FM8 = Instance.new("TextButton")
-local FM9 = Instance.new("TextButton")
-local FM10 = Instance.new("TextButton")
-local FM11 = Instance.new("TextButton")
-local FM12 = Instance.new("TextButton")
-local FM13 = Instance.new("TextButton")
-local FM14 = Instance.new("TextButton")
-local FM15 = Instance.new("TextButton")
-local FM16 = Instance.new("TextButton") -- v1.3↓
-local FM17 = Instance.new("TextButton")
-local FM18 = Instance.new("TextButton")
-local FM19 = Instance.new("TextButton")
-local FM20 = Instance.new("TextButton")
-local FM21 = Instance.new("TextButton")
-local FM22 = Instance.new("TextButton")
-local FM23 = Instance.new("TextButton")
-local FM24 = Instance.new("TextButton")
-local FM25 = Instance.new("TextButton")
-local FM26 = Instance.new("TextButton")
-local FM27 = Instance.new("TextButton")
-local FM28 = Instance.new("TextButton")
-local FM29 = Instance.new("TextButton")
-local FM30 = Instance.new("TextButton")
-local FMs = {FM1,FM2,FM3,FM4,FM5,FM6,FM7,FM8,FM9,FM10,FM11,FM12,FM13,FM14,FM15,FM16,FM17,FM18,FM19,FM20,FM21,FM22,FM23,FM24,FM25,FM26,FM27,FM28,FM29,FM30} -- FMs = FunctionMethods
-local OnOffFormain = Instance.new("TextButton") -- on off toggle
-local ToggleCorner = Instance.new("UICorner")
+local FMData = {
+    [1]  = {"FlyGui V3", "https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"},
+    [2]  = {"Obby GodMode", "https://raw.githubusercontent.com/zephyr10101/ignore-touchinterests/main/main"},
+    [3]  = {"Invisible", "https://raw.githubusercontent.com/0Ben1/fe./dbb6ce6f6cee4f7a5c9e20d7b88e83db2a93bf25/Invisible%20GUI"},
+    [4]  = {"Bundle Animations", "https://raw.githubusercontent.com/Bac0nHck/Scripts/refs/heads/main/BundleAnimations.lua"},
+    [5]  = {"Body Fling", "https://raw.githubusercontent.com/0Ben1/fe./main/Fling%20GUI"},
+    [6]  = {"Control NPC", "https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty38.lua"},
+    [7]  = {"Fling ALL", "https://pastebin.com/raw/zqyDSUWX"},
+    [8]  = {"Nexus 5.0", "https://avatar.sowonaha.workers.dev"},
+    [9]  = {"C00lkidd2 Hub remake", "https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/ckid"},
+    [10] = {"FE Trolling GUI", "https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/FE%20Trolling%20GUI.luau"},
+    [11] = {"Astral Hub V3", "https://raw.githubusercontent.com/Vcsk/AstralHub/main/Main.lua"},
+    [12] = {"Walk On Walls", "https://pastebin.com/raw/zXk4Rq2r"},
+    [13] = {"Highlight esp", "https://pastebin.com/raw/7K1Jhmck"},
+    [14] = {"Delta Mobile Keyboard", "https://raw.githubusercontent.com/Xxtan31/Ata/main/deltakeyboardcrack.txt"},
+    [15] = {"VoidOverlord NoCD!", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/VoidOverlord-NoCD.lua"},
+    [16] = {"Dark Knight", "https://pastebin.com/raw/Eq7Nd8K8"},
+    [17] = {"Demise NoCD!", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/UniversalDemise-NoCD"},
+    [18] = {"Lord", "https://pastefy.app/FebcDLCB/raw?t=" .. tick()},
+    [19] = {"Hater Hand", "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/hand"},
+    [20] = {"Dual RB Swords", "https://rawscripts.net/raw/Universal-Script-Dual-Ultima-RB-Swords-use-an-reanimation-42992"},
+    [21] = {"Lost Hope Scythe", "https://rawscripts.net/raw/Universal-Script-Lost-Hope-Scythe-78166"},
+    [22] = {"VDRo HUB", "https://gist.github.com/Hoang179211/982a4a064a35bbb72849b9b3d11e6a59/raw/5b1edb610825f0f3e1b6e405e34ae913adf9f61d/VDRo%2520Hub"},
+    [23] = {"SizeChanger +-0.1", "https://pastebin.com/raw/VKy1mAjk"},
+    [24] = {"Normal GodMode", "https://raw.githubusercontent.com/brylesantos38-cell/Godmode-doors-script-/refs/heads/main/Idk%20it%20only%20work%20on%20entities%20that%20has%20vynxius%20spawner%20v2%20I'll%20make%20one%20that%20supports%20any%20spawner"},
+    [25] = {"D3k7n! GodMode", "https://pastebin.com/raw/0vHhUmYi"},
+    [26] = {"GodMode maybe", "https://raw.githubusercontent.com/2Soat/Invincibility/main/Initiation"},
+    [27] = {"Sword KillAura", "https://pastebin.com/raw/CCh9W9Tt"},
+    [28] = {"Lag Switch", "https://gist.githubusercontent.com/voxelscriptz/27135ac7aded338f6d9955ff42241edd/raw/4e82963eedda1eaa650688699ac87fd2d8ab40bc/gistfile1.txt"},
+    [29] = {"KillNpcAura v2", "https://pastefy.app/lXaYlxWd/raw"},
+    [30] = {"NPC Manipulator", "https://raw.githubusercontent.com/InnocentViru/NPC-Manipulator/refs/heads/main/NPC%20Manipulator%20Script.lua"}
+}
+
+local FMs = {}
+
+for i = 1, 30 do
+    local FM = Instance.new("TextButton")
+
+    FM.Name = "FM" .. i
+    FM.Parent = ScriptsFrame
+    FM.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+    FM.BackgroundTransparency = 0.2
+    FM.BorderSizePixel = 0
+    FM.Size = UDim2.new(0, 145, 0, 44)
+    FM.Font = Enum.Font.Jura
+    FM.Text = FMData[i][1]
+    FM.TextColor3 = Color3.fromRGB(255, 255, 255)
+    FM.TextSize = 21
+    FM.LayoutOrder = i
+
+    local URL = FMData[i][2]
+
+    FM.MouseButton1Click:Connect(function()
+        loadstring(game:HttpGet(URL, true))()
+    end)
+
+    FMs[i] = FM
+end
+
 local Objects = {main, TopBar, SideBar} -- "main SideBar TopBar FMs" black outline
 for _,v in ipairs(FMs) do
 	table.insert(Objects, v)
@@ -334,453 +360,8 @@ FM1.MouseButton1Click:Connect (function()
 	loadstring(game:HttpGet(("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"), true))()
 end)
 
-FM2.Name = "FM2"
-FM2.Parent = ScriptsFrame
-FM2.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM2.BackgroundTransparency = 0.2
-FM2.BorderSizePixel = 0
---FM2.Position = UDim2.new(0.5510, 0, 0.07, 0)
-FM2.Size = UDim2.new(0,145,0,44)
-FM2.Font = Enum.Font.Jura
-FM2.Text = "Obby GodMode"
-FM2.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM2.TextSize = 21.000
-FM2.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/zephyr10101/ignore-touchinterests/main/main"), true))()
-end)
-
-FM3.Name = "FM3"
-FM3.Parent = ScriptsFrame
-FM3.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM3.BackgroundTransparency = 0.2
-FM3.BorderSizePixel = 0
---FM3.Position = UDim2.new(0.0957, 0, 0.25, 0)
-FM3.Size = UDim2.new(0,145,0,44)
-FM3.Font = Enum.Font.Jura
-FM3.Text = "Invisible"
-FM3.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM3.TextSize = 21.000
-FM3.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe./dbb6ce6f6cee4f7a5c9e20d7b88e83db2a93bf25/Invisible%20GUI'), true))()
-end)
-
-FM4.Name = "FM4"
-FM4.Parent = ScriptsFrame
-FM4.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM4.BackgroundTransparency = 0.2
-FM4.BorderSizePixel = 0
---FM4.Position = UDim2.new(0.5510, 0, 0.25, 0)
-FM4.Size = UDim2.new(0,145,0,44)
-FM4.Font = Enum.Font.Jura
-FM4.Text = "Bundle Animations"
-FM4.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM4.TextSize = 21.000
-FM4.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/Bac0nHck/Scripts/refs/heads/main/BundleAnimations.lua"), true))()
-
-end)
-
-FM5.Name = "FM5"
-FM5.Parent = ScriptsFrame
-FM5.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM5.BackgroundTransparency = 0.2
-FM5.BorderSizePixel = 0
---FM5.Position = UDim2.new(0.0957, 0, 0.43, 0)
-FM5.Size = UDim2.new(0,145,0,44)
-FM5.Font = Enum.Font.Jura
-FM5.Text = "Body Fling"
-FM5.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM5.TextSize = 21.000
-FM5.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/0Ben1/fe./main/Fling%20GUI"), true))()
-end)
-
-FM6.Name = "FM6"
-FM6.Parent = ScriptsFrame
-FM6.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM6.BackgroundTransparency = 0.2
-FM6.BorderSizePixel = 0
---FM6.Position = UDim2.new(0.5510, 0, 0.43, 0)
-FM6.Size = UDim2.new(0,145,0,44)
-FM6.Font = Enum.Font.Jura
-FM6.Text = "Control NPC"
-FM6.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM6.TextSize = 21.000
-FM6.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty38.lua"), true))()
-end)
-
-FM7.Name = "FM7"
-FM7.Parent = ScriptsFrame
-FM7.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM7.BackgroundTransparency = 0.2
-FM7.BorderSizePixel = 0
---FM7.Position = UDim2.new(0.0957, 0, 0.61, 0)
-FM7.Size = UDim2.new(0,145,0,44)
-FM7.Font = Enum.Font.Jura
-FM7.Text = "Fling ALL"
-FM7.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM7.TextSize = 21.000
-FM7.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://pastebin.com/raw/zqyDSUWX"), true))()
-end)
-
-FM8.Name = "FM8"
-FM8.Parent = ScriptsFrame
-FM8.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM8.BackgroundTransparency = 0.2
-FM8.BorderSizePixel = 0
---FM8.Position = UDim2.new(0.5510, 0, 0.61, 0)
-FM8.Size = UDim2.new(0,145,0,44)
-FM8.Font = Enum.Font.Jura
-FM8.Text = "Nexus 5.0"
-FM8.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM8.TextSize = 21.000
-FM8.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://avatar.sowonaha.workers.dev"), true))()
-end)
-
-FM9.Name = "FM9"
-FM9.Parent = ScriptsFrame
-FM9.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM9.BackgroundTransparency = 0.2
-FM9.BorderSizePixel = 0
---FM9.Position = UDim2.new(0.0957, 0, 0.79, 0)
-FM9.Size = UDim2.new(0,145,0,44)
-FM9.Font = Enum.Font.Jura
-FM9.Text = "C00lkidd2 Hub remake"
-FM9.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM9.TextSize = 21.000
-FM9.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/ckid"), true))()
-end)
-
-FM10.Name = "FM10"
-FM10.Parent = ScriptsFrame
-FM10.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM10.BackgroundTransparency = 0.2
-FM10.BorderSizePixel = 0
---FM10.Position = UDim2.new(0.5510, 0, 0.79, 0)
-FM10.Size = UDim2.new(0,145,0,44)
-FM10.Font = Enum.Font.Jura
-FM10.Text = "FE Trolling GUI"
-FM10.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM10.TextSize = 21.000
-FM10.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/FE%20Trolling%20GUI.luau"), true))()
-end)
-
-FM11.Name = "FM11"
-FM11.Parent = ScriptsFrame
-FM11.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM11.BackgroundTransparency = 0.2
-FM11.BorderSizePixel = 0
-FM11.Size = UDim2.new(0,145,0,44)
-FM11.Font = Enum.Font.Jura
-FM11.Text = "Astral Hub V3"
-FM11.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM11.TextSize = 21.000
-FM11.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/Vcsk/AstralHub/main/Main.lua"), true))()
-end)
-
-FM12.Name = "FM12"
-FM12.Parent = ScriptsFrame
-FM12.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM12.BackgroundTransparency = 0.2
-FM12.BorderSizePixel = 0
-FM12.Size = UDim2.new(0,145,0,44)
-FM12.Font = Enum.Font.Jura
-FM12.Text = "Walk On Walls"
-FM12.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM12.TextSize = 21.000
-FM12.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://pastebin.com/raw/zXk4Rq2r"), true))()
-end)
-
-FM13.Name = "FM13"
-FM13.Parent = ScriptsFrame
-FM13.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM13.BackgroundTransparency = 0.2
-FM13.BorderSizePixel = 0
-FM13.Size = UDim2.new(0,145,0,44)
-FM13.Font = Enum.Font.Jura
-FM13.Text = "Highlight esp"
-FM13.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM13.TextSize = 21.000
-FM13.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://pastebin.com/raw/7K1Jhmck"), true))()
-end)
-
-FM14.Name = "FM14"
-FM14.Parent = ScriptsFrame
-FM14.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM14.BackgroundTransparency = 0.2
-FM14.BorderSizePixel = 0
-FM14.Size = UDim2.new(0,145,0,44)
-FM14.Font = Enum.Font.Jura
-FM14.Text = "Delta Mobile Keyboard"
-FM14.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM14.TextSize = 21.000
-FM14.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xxtan31/Ata/main/deltakeyboardcrack.txt"), true))()
-end)
-
-FM15.Name = "FM15"
-FM15.Parent = ScriptsFrame
-FM15.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM15.BackgroundTransparency = 0.2
-FM15.BorderSizePixel = 0
-FM15.Size = UDim2.new(0,145,0,44)
-FM15.Font = Enum.Font.Jura
-FM15.Text = "VoidOverlord NoCD!"
-FM15.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM15.TextSize = 21.000
-FM15.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/VoidOverlord-NoCD.lua"), true))() --自作Script
-end)
-
-FM16.Name = "FM16"
-FM16.Parent = ScriptsFrame
-FM16.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM16.BackgroundTransparency = 0.2
-FM16.BorderSizePixel = 0
-FM16.Size = UDim2.new(0,145,0,44)
-FM16.Font = Enum.Font.Jura
-FM16.Text = "Dark Knight"
-FM16.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM16.TextSize = 21.000
-FM16.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet("https://pastebin.com/raw/Eq7Nd8K8", true))()
-end)
-
-FM17.Name = "FM17"
-FM17.Parent = ScriptsFrame
-FM17.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM17.BackgroundTransparency = 0.2
-FM17.BorderSizePixel = 0
-FM17.Size = UDim2.new(0,145,0,44)
-FM17.Font = Enum.Font.Jura
-FM17.Text = "Demise NoCD!"
-FM17.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM17.TextSize = 21.000
-FM17.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/UniversalDemise-NoCD"), true))() --自作Script
-end)
-
-FM18.Name = "FM18"
-FM18.Parent = ScriptsFrame
-FM18.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM18.BackgroundTransparency = 0.2
-FM18.BorderSizePixel = 0
-FM18.Size = UDim2.new(0,145,0,44)
-FM18.Font = Enum.Font.Jura
-FM18.Text = "Lord"
-FM18.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM18.TextSize = 21.000
-FM18.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://pastefy.app/FebcDLCB/raw?t=" .. tick()), true))() --自作Script
-end)
-
-FM19.Name = "FM19"
-FM19.Parent = ScriptsFrame
-FM19.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM19.BackgroundTransparency = 0.2
-FM19.BorderSizePixel = 0
-FM19.Size = UDim2.new(0,145,0,44)
-FM19.Font = Enum.Font.Jura
-FM19.Text = "Hater Hand"
-FM19.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM19.TextSize = 21.000
-FM19.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/hand"), true))()
-end)
-
-FM20.Name = "FM20"
-FM20.Parent = ScriptsFrame
-FM20.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM20.BackgroundTransparency = 0.2
-FM20.BorderSizePixel = 0
-FM20.Size = UDim2.new(0,145,0,44)
-FM20.Font = Enum.Font.Jura
-FM20.Text = "Dual RB Swords"
-FM20.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM20.TextSize = 21.000
-FM20.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://rawscripts.net/raw/Universal-Script-Dual-Ultima-RB-Swords-use-an-reanimation-42992"), true))()
-end)
-
-FM21.Name = "FM21"
-FM21.Parent = ScriptsFrame
-FM21.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM21.BackgroundTransparency = 0.2
-FM21.BorderSizePixel = 0
-FM21.Size = UDim2.new(0,145,0,44)
-FM21.Font = Enum.Font.Jura
-FM21.Text = "Lost Hope Scythe"
-FM21.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM21.TextSize = 21.000
-FM21.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://rawscripts.net/raw/Universal-Script-Lost-Hope-Scythe-78166"), true))()
-end)
-
-FM22.Name = "FM22"
-FM22.Parent = ScriptsFrame
-FM22.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM22.BackgroundTransparency = 0.2
-FM22.BorderSizePixel = 0
-FM22.Size = UDim2.new(0,145,0,44)
-FM22.Font = Enum.Font.Jura
-FM22.Text = "VDRo HUB"
-FM22.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM22.TextSize = 21.000
-FM22.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://gist.github.com/Hoang179211/982a4a064a35bbb72849b9b3d11e6a59/raw/5b1edb610825f0f3e1b6e405e34ae913adf9f61d/VDRo%2520Hub"), true))()
-end)
-
-FM23.Name = "FM23"
-FM23.Parent = ScriptsFrame
-FM23.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM23.BackgroundTransparency = 0.2
-FM23.BorderSizePixel = 0
-FM23.Size = UDim2.new(0,145,0,44)
-FM23.Font = Enum.Font.Jura
-FM23.Text = "SizeChanger +-0.1"
-FM23.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM23.TextSize = 21.000
-FM23.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://pastebin.com/raw/VKy1mAjk"), true))()
-end)
-
-FM24.Name = "FM24"
-FM24.Parent = ScriptsFrame
-FM24.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM24.BackgroundTransparency = 0.2
-FM24.BorderSizePixel = 0
-FM24.Size = UDim2.new(0,145,0,44)
-FM24.Font = Enum.Font.Jura
-FM24.Text = "Normal GodMode"
-FM24.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM24.TextSize = 21.000
-FM24.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/brylesantos38-cell/Godmode-doors-script-/refs/heads/main/Idk%20it%20only%20work%20on%20entities%20that%20has%20vynxius%20spawner%20v2%20I'll%20make%20one%20that%20supports%20any%20spawner"), true))()
-end)
-
-FM25.Name = "FM25"
-FM25.Parent = ScriptsFrame
-FM25.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM25.BackgroundTransparency = 0.2
-FM25.BorderSizePixel = 0
-FM25.Size = UDim2.new(0,145,0,44)
-FM25.Font = Enum.Font.Jura
-FM25.Text = "D3k7n! GodMode"
-FM25.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM25.TextSize = 21.000
-FM25.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://pastebin.com/raw/0vHhUmYi"), true))()
-end)
-
-FM26.Name = "FM26"
-FM26.Parent = ScriptsFrame
-FM26.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM26.BackgroundTransparency = 0.2
-FM26.BorderSizePixel = 0
-FM26.Size = UDim2.new(0,145,0,44)
-FM26.Font = Enum.Font.Jura
-FM26.Text = "GodMode maybe"
-FM26.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM26.TextSize = 21.000
-FM26.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/2Soat/Invincibility/main/Initiation"), true))()
-end)
-
-FM27.Name = "FM27"
-FM27.Parent = ScriptsFrame
-FM27.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM27.BackgroundTransparency = 0.2
-FM27.BorderSizePixel = 0
-FM27.Size = UDim2.new(0,145,0,44)
-FM27.Font = Enum.Font.Jura
-FM27.Text = "Sword KillAura"
-FM27.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM27.TextSize = 21.000
-FM27.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://pastebin.com/raw/CCh9W9Tt"), true))()
-end)
-
-FM28.Name = "FM28"
-FM28.Parent = ScriptsFrame
-FM28.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM28.BackgroundTransparency = 0.2
-FM28.BorderSizePixel = 0
-FM28.Size = UDim2.new(0,145,0,44)
-FM28.Font = Enum.Font.Jura
-FM28.Text = "Lag Switch"
-FM28.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM28.TextSize = 21.000
-FM28.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://gist.githubusercontent.com/voxelscriptz/27135ac7aded338f6d9955ff42241edd/raw/4e82963eedda1eaa650688699ac87fd2d8ab40bc/gistfile1.txt"), true))()
-end)
-
-FM29.Name = "FM29"
-FM29.Parent = ScriptsFrame
-FM29.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM29.BackgroundTransparency = 0.2
-FM29.BorderSizePixel = 0
-FM29.Size = UDim2.new(0,145,0,44)
-FM29.Font = Enum.Font.Jura
-FM29.Text = "KillNpcAura v2"
-FM29.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM29.TextSize = 21.000
-FM29.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://pastefy.app/lXaYlxWd/raw"), true))()
-end)
-
-FM30.Name = "FM30"
-FM30.Parent = ScriptsFrame
-FM30.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-FM30.BackgroundTransparency = 0.2
-FM30.BorderSizePixel = 0
-FM30.Size = UDim2.new(0,145,0,44)
-FM30.Font = Enum.Font.Jura
-FM30.Text = "NPC Manipulator"
-FM30.TextColor3 = Color3.fromRGB(255, 255, 255)
-FM30.TextSize = 21.000
-FM30.MouseButton1Click:Connect (function()
-	loadstring(game:HttpGet(("https://raw.githubusercontent.com/InnocentViru/NPC-Manipulator/refs/heads/main/NPC%20Manipulator%20Script.lua"), true))()
-end)
-
 -- make UIGridLayout (noob)
-FM1.LayoutOrder = 1
-FM2.LayoutOrder = 2
-FM3.LayoutOrder = 3
-FM4.LayoutOrder = 4
-FM5.LayoutOrder = 5
-FM6.LayoutOrder = 6
-FM7.LayoutOrder = 7
-FM8.LayoutOrder = 8
-FM9.LayoutOrder = 9
-FM10.LayoutOrder = 10
-FM11.LayoutOrder = 11
-FM12.LayoutOrder = 12
-FM13.LayoutOrder = 13
-FM14.LayoutOrder = 14
-FM15.LayoutOrder = 15
-FM16.LayoutOrder = 16
-FM17.LayoutOrder = 17
-FM18.LayoutOrder = 18
-FM19.LayoutOrder = 19
-FM20.LayoutOrder = 20
-FM21.LayoutOrder = 21
-FM22.LayoutOrder = 22
-FM23.LayoutOrder = 23
-FM24.LayoutOrder = 24
-FM25.LayoutOrder = 25
-FM26.LayoutOrder = 26
-FM27.LayoutOrder = 27
-FM28.LayoutOrder = 28
-FM29.LayoutOrder = 29
-FM30.LayoutOrder = 30
+
 
 -- make ボタン押したら縮むやつ
 for _,Button in ipairs(FMs) do
