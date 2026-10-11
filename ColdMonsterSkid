@@ -77,7 +77,8 @@ local FMData = {
     [27] = {"Sword KillAura", "https://pastebin.com/raw/CCh9W9Tt"},
     [28] = {"Lag Switch", "https://gist.githubusercontent.com/voxelscriptz/27135ac7aded338f6d9955ff42241edd/raw/4e82963eedda1eaa650688699ac87fd2d8ab40bc/gistfile1.txt"},
     [29] = {"KillNpcAura v2", "https://pastefy.app/lXaYlxWd/raw"},
-    [30] = {"NPC Manipulator", "https://raw.githubusercontent.com/InnocentViru/NPC-Manipulator/refs/heads/main/NPC%20Manipulator%20Script.lua"}
+    [30] = {"NPC Manipulator", "https://raw.githubusercontent.com/InnocentViru/NPC-Manipulator/refs/heads/main/NPC%20Manipulator%20Script.lua"},
+    [31] = {"XVC Hub", "https://pastebin.com/raw/Piw5bqGq"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
@@ -330,7 +331,7 @@ ScriptsFrame.ClipsDescendants = true
 UICorner_9.Parent = ScriptsFrame
 
 -- Create FM buttons
-for i = 1, 30 do
+for i = 1, 31 do
 	local FM = Instance.new("TextButton")
 	local Data = FMData[i]
 
