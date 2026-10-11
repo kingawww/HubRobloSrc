@@ -79,7 +79,8 @@ local FMData = {
     [29] = {"KillNpcAura v2", "https://pastefy.app/lXaYlxWd/raw"},
     [30] = {"NPC Manipulator", "https://raw.githubusercontent.com/InnocentViru/NPC-Manipulator/refs/heads/main/NPC%20Manipulator%20Script.lua"},
     [31] = {"XVC Hub", "https://pastebin.com/raw/Piw5bqGq"},
-    [32] = {"John Doe", "https://rawscripts.net/raw/Universal-Script-John-doe-210549"}
+    [32] = {"John Doe", "https://rawscripts.net/raw/Universal-Script-John-doe-210549"},
+    [33] = {"FE STRETCHED", "https://pastebin.com/raw/7Nv28tRE"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
@@ -332,7 +333,7 @@ ScriptsFrame.ClipsDescendants = true
 UICorner_9.Parent = ScriptsFrame
 
 -- Create FM buttons
-for i = 1, 32 do
+for i = 1, 33 do
 	local FM = Instance.new("TextButton")
 	local Data = FMData[i]
 
