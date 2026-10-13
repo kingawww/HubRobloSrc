@@ -88,7 +88,7 @@ local FMData = {
     [32] = {"John Doe", "https://rawscripts.net/raw/Universal-Script-John-doe-210549"},
     [33] = {"FE STRETCHED", "https://pastebin.com/raw/7Nv28tRE"},
     [34] = {"Mass Kill", "https://raw.githubusercontent.com/Makuscripts/PlsDonate/refs/heads/main/Steal-Robux.lua"},
-    [35] = {"Inferno Dominus toggle", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/EquipInfernoDominusGPT"}
+    [35] = {"Inferno Dominus R6", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/EquipInfernoDominusGPT"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
