@@ -1,0 +1,822 @@
+writefile("BLUU.mp3", game:HttpGet("https://github.com/ian49972/smth/raw/refs/heads/main/BLUU.mp3"))
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local gui = Instance.new("ScreenGui")        
+gui.Name = "SimpleFadeGui"        
+gui.ResetOnSpawn = false        
+gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")        
+        
+-- Create TextLabel        
+local textLabel = Instance.new("TextLabel")        
+textLabel.Size = UDim2.new(0.4, 0, 0.1, 0)        
+textLabel.Position = UDim2.new(0.3, 0, 0.45, 0)        
+textLabel.BackgroundTransparency = 1        
+textLabel.TextScaled = true        
+textLabel.Font = Enum.Font.GothamBold        
+textLabel.TextColor3 = Color3.new(1, 1, 1)        
+textLabel.Text = "Made by ban_thid or just Rob_SB4.... Hi @c00lkid1234\nNoCD! by IDioTKing"        
+textLabel.Parent = gui        
+        
+for i = 1, 30 do        
+	textLabel.TextTransparency = i / 30        
+	textLabel.TextStrokeTransparency = i / 30        
+	wait(0.1)        
+end        
+wait(0.2)        
+gui:Destroy()
+
+local animateScript = character:FindFirstChild("Animate")
+if animateScript then animateScript:Destroy() end
+
+-- Clone function
+local function CloneMe(char)
+    char.Archivable = true
+    local clone = char:Clone()
+    char.Archivable = false
+    return clone
+end
+
+-- Bot creation
+local function createBot()
+    local bot = Players:CreateHumanoidModelFromUserId(8644215086)
+    bot.Name = "c00lkid1243"
+    bot.Parent = workspace
+    if not bot:FindFirstChild("HumanoidRootPart") then
+        local hrp = Instance.new("Part")
+        hrp.Name = "HumanoidRootPart"
+        hrp.Size = Vector3.new(2, 2, 1)
+        hrp.Anchored = false
+        hrp.CanCollide = true
+        hrp.Transparency = 1
+        hrp.Parent = bot
+        bot:PivotTo(CFrame.new(0, 5, 0))
+    end
+    return bot
+end
+
+-- NPC model weld
+local npcModel = game:GetObjects("rbxassetid://90036748233430")[1]
+npcModel.Parent = workspace
+npcModel:PivotTo(character:GetPivot())
+
+local function weldPartToLimb(limb, partToWeld, originalParentPart)
+    partToWeld.Anchored = false
+    partToWeld.CanCollide = false
+    partToWeld.Massless = true
+    local relativeCFrame = originalParentPart.CFrame:ToObjectSpace(partToWeld.CFrame)
+    local limbName = partToWeld.Name:match("(.*)c$")
+    local offset = limbName == "Head" and CFrame.new(0, 0.2, 0) or CFrame.new(0, 0, 0.1) * CFrame.Angles(0, math.pi, 0)
+    partToWeld.Parent = limb
+    partToWeld.CFrame = limb.CFrame * relativeCFrame * offset
+    local weld = Instance.new("WeldConstraint")
+    weld.Part0 = limb
+    weld.Part1 = partToWeld
+    weld.Parent = partToWeld
+end
+
+-- Set transparency once
+for _, limb in pairs(character:GetChildren()) do
+    if limb:IsA("BasePart") and limb.Name ~= "HumanoidRootPart" then
+        limb.Transparency = 1
+    elseif limb:IsA("Accessory") then
+        limb:Destroy()
+    end
+end
+
+for _, customPart in pairs(npcModel:GetChildren()) do
+    if customPart:IsA("BasePart") or customPart:IsA("MeshPart") then
+        local limbName = customPart.Name:match("(.*)c$")
+        if limbName then
+            local playerLimb = character:FindFirstChild(limbName)
+            if playerLimb then
+                if limbName == "Head" then
+                    local faceDecal = playerLimb:FindFirstChild("face")
+                    if faceDecal then faceDecal:Destroy() end
+                end
+                weldPartToLimb(playerLimb, customPart, customPart)
+            end
+        end
+    end
+end
+npcModel:Destroy()
+
+-- Keyframe tween builder
+local tStyle = {
+    [Enum.PoseEasingStyle.Linear] = Enum.EasingStyle.Linear,
+    [Enum.PoseEasingStyle.Bounce] = Enum.EasingStyle.Bounce,
+    [Enum.PoseEasingStyle.Cubic] = Enum.EasingStyle.Cubic,
+    [Enum.PoseEasingStyle.Elastic] = Enum.EasingStyle.Elastic,
+    [Enum.PoseEasingStyle.Constant] = Enum.EasingStyle.Linear,
+}
+local tDirection = {
+    [Enum.PoseEasingDirection.In] = Enum.EasingDirection.In,
+    [Enum.PoseEasingDirection.Out] = Enum.EasingDirection.Out,
+    [Enum.PoseEasingDirection.InOut] = Enum.EasingDirection.InOut,
+}
+
+local function BuildTweens(Model, KeyFrameSequence)
+    local frames = {}
+    local keyframes = KeyFrameSequence:GetKeyframes()
+    if not keyframes then
+        warn("No keyframes found in: " .. KeyFrameSequence.Name)
+        return {}, {}, {}
+    end
+
+    for i, kf in ipairs(keyframes) do
+        if kf and kf:IsA("Keyframe") and type(kf.Time) == "number" then
+            table.insert(frames, {Time = kf.Time, Keyframe = kf})
+        else
+            warn("Invalid keyframe at index " .. i .. " in " .. KeyFrameSequence.Name)
+        end
+    end
+
+    if #frames == 0 then
+        warn("No valid keyframes in: " .. KeyFrameSequence.Name)
+        return {}, {}, {}
+    end
+
+    table.sort(frames, function(a, b) return a.Time < b.Time end)
+
+    local tweens, motors, values, keyPoses = {}, {}, {}, {}
+    local function GetMotorFromPose(pose)
+        for _, v in pairs(Model:GetDescendants()) do
+            if v:IsA("Motor6D") and v.Part1 and v.Part0 and v.Part1.Name == pose.Name and v.Part0.Name == pose.Parent.Name then
+                return v
+            end
+        end
+    end
+
+    for i, frame in ipairs(frames) do
+        keyPoses[i] = {Time = frame.Time, Poses = {}}
+        for _, pose in ipairs(frame.Keyframe:GetDescendants()) do
+            if pose:IsA("Pose") and pose.Weight > 0 then
+                local motor = GetMotorFromPose(pose)
+                if motor then
+                    if not motors[pose.Name] then
+                        motors[pose.Name] = motor
+                        local cv = Instance.new("CFrameValue")
+                        cv.Value = motor.Transform
+                        cv.Parent = motor
+                        values[pose.Name] = cv
+                    end
+                    keyPoses[i].Poses[pose.Name] = {Motor = motor, Pose = pose}
+                end
+            end
+        end
+    end
+
+    if #keyPoses > 1 then
+        for i = 1, #keyPoses - 1 do
+            local k1, k2 = keyPoses[i], keyPoses[i + 1]
+            local dur = k2.Time - k1.Time
+            if dur > 0 then
+                tweens[i] = {Time = dur, Tweens = {}}
+                for poseName, d in pairs(k2.Poses) do
+                    if k1.Poses[poseName] then
+                        local info = TweenInfo.new(
+                            dur,
+                            tStyle[k1.Poses[poseName].Pose.EasingStyle],
+                            tDirection[k1.Poses[poseName].Pose.EasingDirection]
+                        )
+                        tweens[i].Tweens[poseName] = TweenService:Create(values[poseName], info, {Value = d.Pose.CFrame})
+                    end
+                end
+            end
+        end
+    end
+
+    return tweens, motors, values
+end
+
+local function PlayKeyframeSequence(Model, KeyFrameSequence, looped, onFinished, preTweens, preMotors, preValues)
+    local tweens, motors, values
+    if preTweens then
+        tweens, motors, values = preTweens, preMotors, preValues
+    else
+        tweens, motors, values = BuildTweens(Model, KeyFrameSequence)
+    end
+    if #tweens == 0 then
+        warn("Failed to build tweens for: " .. (KeyFrameSequence and KeyFrameSequence.Name or "unknown"))
+        if onFinished then onFinished() end
+        return function() end
+    end
+
+    local stopped = false
+    local hb
+    hb = RunService.Heartbeat:Connect(function()
+        if stopped or not Model.Parent then
+            hb:Disconnect()
+            for _, v in pairs(values) do
+                if v then v:Destroy() end
+            end
+            return
+        end
+        for n, motor in pairs(motors) do
+            if motor and motor.Parent then
+                motor.Transform = values[n].Value
+            end
+        end
+    end)
+
+    local function loop()
+        repeat
+            for _, segment in ipairs(tweens) do
+                for _, tw in pairs(segment.Tweens) do
+                    if tw then tw:Play() end
+                end
+                task.wait(segment.Time)
+                if stopped or not Model.Parent then break end
+            end
+            if not looped and not stopped then
+                stopped = true
+                if onFinished then onFinished() end
+                break
+            end
+        until stopped or not Model.Parent
+    end
+
+    task.spawn(loop)
+
+    return function()
+        stopped = true
+        for _, segment in ipairs(tweens) do
+            for _, tw in pairs(segment.Tweens) do
+                if tw then tw:Cancel() end
+            end
+        end
+        if hb then hb:Disconnect() end
+    end
+end
+
+-- Animations setup
+local Object = game:GetObjects("rbxassetid://102046170699445")[1]
+Object.Parent = workspace
+Object:PivotTo(character:GetPivot())
+
+local rig = Object:FindFirstChild("RigCOOLKID")
+if not rig then
+    warn("RigCOOLKID not found!")
+    Object:Destroy()
+    return
+end
+
+local animsaves = rig:FindFirstChild("AnimSaves")
+if not animsaves then
+    warn("AnimSaves not found in RigCOOLKID!")
+    Object:Destroy()
+    return
+end
+
+local safe = Instance.new("Folder")
+safe.Name = "SafeKeyframes"
+safe.Parent = player:WaitForChild("PlayerGui")
+
+local function cloneAnim(name)
+    local anim = animsaves:FindFirstChild(name)
+    if anim then
+        local clone = anim:Clone()
+        clone.Parent = safe
+        return clone
+    else
+        warn("Failed to load: " .. name)
+        return nil
+    end
+end
+
+local idleKF = cloneAnim("idle")
+local walkKF = cloneAnim("walk")
+local attackKF = cloneAnim("attack")
+local killKF = cloneAnim("kill")
+local killvictimKF = cloneAnim("killvictim")
+local wostartKF = cloneAnim("wostart")
+local woloopKF = cloneAnim("woloop")
+local woconnectedKF = cloneAnim("woconnected")
+local corruptnatureKF = cloneAnim("corruptnature")
+local deliverysummonedCOOLKF = cloneAnim("deliverysummonedCOOL")
+local deliverysummonedKF = cloneAnim("deliverysummoned")
+local deliverywalkKF = cloneAnim("deliverywalk")
+local deliveryhitKF = cloneAnim("deliveryhit")
+
+Object:Destroy()
+
+if not (idleKF and walkKF) then
+    warn("Critical movement animations missing!")
+    return
+end
+
+-- Prebuild movement tweens for caching
+local idleTweens, idleMotors, idleValues = BuildTweens(character, idleKF)
+local walkTweens, walkMotors, walkValues = BuildTweens(character, walkKF)
+
+local currentStopper
+local currentAnim
+local currentState = "Idle"
+local animator = humanoid:FindFirstChildOfClass("Animator")
+if animator then animator.Parent = nil end
+
+local function playAnim(model, anim, looped, onFinished)
+    if not anim then
+        warn("Cannot play nil animation")
+        return
+    end
+    if currentAnim == anim then return end
+    if currentStopper then currentStopper() end
+    currentAnim = anim
+    local preT, preM, preV
+    if anim == idleKF then
+        preT, preM, preV = idleTweens, idleMotors, idleValues
+    elseif anim == walkKF then
+        preT, preM, preV = walkTweens, walkMotors, walkValues
+    end
+    currentStopper = PlayKeyframeSequence(model, anim, looped, onFinished, preT, preM, preV)
+end
+
+local function updateMovementAnimations()
+    if currentState == "Action" then return end
+    local moving = humanoid.MoveDirection.Magnitude > 0
+    if moving and currentState ~= "Walk" then
+        currentState = "Walk"
+        playAnim(character, walkKF, true)
+    elseif not moving and currentState ~= "Idle" then
+        currentState = "Idle"
+        playAnim(character, idleKF, true)
+    end
+end
+
+humanoid.WalkSpeed = 16
+
+-- Throttle updates to reduce lag
+local lastUpdate = 0
+local updateInterval = 0.1
+RunService.RenderStepped:Connect(function()
+    if tick() - lastUpdate < updateInterval then return end
+    lastUpdate = tick()
+    updateMovementAnimations()
+end)
+
+-- Sound management
+local soundFolder = Instance.new("Folder")
+soundFolder.Name = "AbilitySounds"
+soundFolder.Parent = workspace
+
+local function createSound(soundId, name)
+    local sound = Instance.new("Sound")
+    sound.Name = name
+    sound.SoundId = "rbxassetid://" .. soundId
+    sound.Volume = 1.7
+    sound.Parent = soundFolder
+    return sound
+end
+
+local sounds = {
+    walkspeedStart1 = createSound("87154097665085", "WalkspeedStart1"),
+    walkspeedStart2 = createSound("120987979668202", "WalkspeedStart2"),
+    walkspeedFailed1 = createSound("72861611511867", "WalkspeedFailed1"),
+    walkspeedFailed2 = createSound("128811607334302", "WalkspeedFailed2"),
+    walkspeedFailed3 = createSound("134412423986447", "WalkspeedFailed3"),
+    walkspeedConnected = createSound("101857553523471", "WalkspeedConnected"),
+    corruptNature = createSound("133615167472559", "CorruptNature"),
+    kill = createSound("134728518283919", "Kill"),
+    delivery = createSound("112658887862706", "Delivery"),
+    idleWalk1 = createSound("81550260989283", "IdleWalk1"),
+    idleWalk2 = createSound("76482268982864", "IdleWalk2")
+}
+
+-- Random idle/walk sound playback
+local function playRandomIdleWalkSound()
+    while character and character.Parent do
+        if currentState == "Idle" or currentState == "Walk" then
+            local sound = math.random() < 0.5 and sounds.idleWalk1 or sounds.idleWalk2
+            sound:Play()
+        end
+        task.wait(math.random(5, 15))
+    end
+end
+task.spawn(playRandomIdleWalkSound)
+
+-- GUI buttons
+local PlayerGui = player:WaitForChild("PlayerGui")
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "AbilityUI"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = PlayerGui
+
+local cooldowns = {}
+local isWalkspeedActive = false
+local walkspeedToken = 0
+local activeWalkspeedCleanup = nil
+
+local function isOnCooldown(name)
+    return cooldowns[name] and tick() < cooldowns[name]
+end
+
+local function setCooldown(name, duration)
+    cooldowns[name] = tick() + duration
+end
+
+local function makeAbilityButton(name, pos, color, func, cd)
+    local btn = Instance.new("TextButton")
+    btn.Name = name
+    btn.Size = UDim2.new(0, 120, 0, 40)
+    btn.Position = pos
+    btn.BackgroundColor3 = color
+    btn.TextColor3 = Color3.new(1, 1, 1)
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 18
+    btn.Text = name
+    btn.Parent = screenGui
+    btn.MouseButton1Click:Connect(function()
+        if isOnCooldown(name) then return end
+        setCooldown(name, cd)
+        func()
+        task.spawn(function()
+            while isOnCooldown(name) do
+                btn.Text = math.ceil(cooldowns[name] - tick()) .. "s"
+                task.wait(1)
+            end
+            btn.Text = name
+        end)
+    end)
+end
+
+makeAbilityButton("Corrupt Nature", UDim2.new(0, 20, 1, -50), Color3.fromRGB(50, 150, 255), function()
+    sounds.corruptNature:Play()
+    playAnim(character, corruptnatureKF, false, function() currentState = "Idle" end)
+    local cam = workspace.CurrentCamera
+    local direction = cam.CFrame.LookVector
+    local part = Instance.new("Part")
+    part.Size = Vector3.new(1, 1, 1)
+    part.Anchored = false
+    part.CanCollide = false
+    part.Position = character.Head.Position + direction * 2
+    part.Parent = workspace
+    local bodyVelocity = Instance.new("BodyVelocity")
+    bodyVelocity.Velocity = direction * 100
+    bodyVelocity.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    bodyVelocity.Parent = part
+    task.delay(8, function() if part then part:Destroy() end end)
+    local conn
+    conn = part.Touched:Connect(function(hit)
+        local targetChar = hit:FindFirstAncestorOfClass("Model")
+        if targetChar and targetChar ~= character then
+            local targetHum = targetChar:FindFirstChild("Humanoid")
+            if targetHum then
+                local dmg = 15
+                local isLastHit = (targetHum.Health - dmg <= 0)
+                targetHum:TakeDamage(dmg)
+                if isLastHit then targetHum.Health = targetHum.MaxHealth end
+                local highlight = Instance.new("Highlight")
+                highlight.FillColor = Color3.fromRGB(255, 165, 0)
+                highlight.OutlineColor = Color3.fromRGB(255, 165, 0)
+                highlight.Parent = targetChar
+                task.delay(5, function() if highlight then highlight:Destroy() end end)
+                conn:Disconnect()
+                part:Destroy()
+            end
+        end
+    end)
+end, 0)
+
+
+makeAbilityButton("Walkspeed", UDim2.new(0, 150, 1, -50), Color3.fromRGB(150, 50, 255), function()
+    -- 発動ごとに識別番号を更新
+    walkspeedToken += 1
+    local myToken = walkspeedToken
+
+    -- 前回のWalkspeedが残っていたら確実に終了
+    if activeWalkspeedCleanup then
+        activeWalkspeedCleanup()
+        activeWalkspeedCleanup = nil
+    end
+
+    isWalkspeedActive = true
+
+    local bodyVelocity
+    local hitbox
+    local touchConn
+    local hitRegistered = false
+    local finished = false
+
+    local function cleanup(playFailSound)
+        if finished then return end
+        finished = true
+
+        if touchConn then
+            touchConn:Disconnect()
+            touchConn = nil
+        end
+
+        if bodyVelocity then
+            bodyVelocity:Destroy()
+            bodyVelocity = nil
+        end
+
+        if hitbox then
+            hitbox:Destroy()
+            hitbox = nil
+        end
+
+        -- 現在の発動だけが状態を変更できる
+        if myToken == walkspeedToken then
+            isWalkspeedActive = false
+            activeWalkspeedCleanup = nil
+
+            if playFailSound and not hitRegistered then
+                local r = math.random()
+                local failSound
+
+                if r < 0.33 then
+                    failSound = sounds.walkspeedFailed1
+                elseif r < 0.66 then
+                    failSound = sounds.walkspeedFailed2
+                else
+                    failSound = sounds.walkspeedFailed3
+                end
+
+                failSound:Play()
+            end
+
+            -- Walkspeedのループアニメーションだけを終了
+            if currentAnim == woloopKF then
+                if currentStopper then
+                    currentStopper()
+                    currentStopper = nil
+                end
+                currentAnim = nil
+            end
+
+            currentState = "Idle"
+        end
+    end
+
+    activeWalkspeedCleanup = function()
+        cleanup(false)
+    end
+
+    sounds.walkspeedStart1:Play()
+    sounds.walkspeedStart2:Play()
+
+    playAnim(character, wostartKF, false, function()
+        -- 古い発動のアニメーション終了処理を無視
+        if myToken ~= walkspeedToken then return end
+        if not isWalkspeedActive then return end
+        if not character or not character.Parent then
+            cleanup(false)
+            return
+        end
+
+        playAnim(character, woloopKF, true)
+
+        -- 元の移動設定を維持
+        local direction = character.HumanoidRootPart.CFrame.LookVector
+        local speed = 45
+
+        bodyVelocity = Instance.new("BodyVelocity")
+        bodyVelocity.Velocity = direction * speed
+        bodyVelocity.MaxForce = Vector3.new(
+            math.huge,
+            math.huge,
+            math.huge
+        )
+        bodyVelocity.Parent = character.HumanoidRootPart
+
+        hitbox = Instance.new("Part")
+        hitbox.Size = Vector3.new(3, 3, 5)
+        hitbox.Transparency = 1
+        hitbox.CanCollide = false
+        hitbox.CFrame =
+            character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -3)
+        hitbox.Parent = workspace
+
+        local weld = Instance.new("WeldConstraint")
+        weld.Part0 = character.HumanoidRootPart
+        weld.Part1 = hitbox
+        weld.Parent = hitbox
+
+        touchConn = hitbox.Touched:Connect(function(hit)
+            if myToken ~= walkspeedToken then return end
+            if not isWalkspeedActive or finished then return end
+            if hit:IsDescendantOf(character) then return end
+
+            local targetChar = hit:FindFirstAncestorOfClass("Model")
+            if not targetChar then return end
+
+            local targetHum = targetChar:FindFirstChild("Humanoid")
+            if not targetHum or targetHum.Health <= 0 then return end
+
+            hitRegistered = true
+
+            local dmg = 45
+            local isLastHit = targetHum.Health - dmg <= 0
+
+            targetHum:TakeDamage(dmg)
+
+            if isLastHit then
+                targetHum.Health = targetHum.MaxHealth
+            end
+
+            sounds.walkspeedConnected:Play()
+
+            -- 先に移動処理を終了
+            cleanup(false)
+
+            -- 別スキルのアニメーションを誤って止めない
+            if myToken == walkspeedToken then
+                playAnim(character, woconnectedKF, false, function()
+                    if myToken == walkspeedToken then
+                        currentState = "Idle"
+                    end
+                end)
+            end
+        end)
+
+        -- 元の2.5秒制限を維持
+        task.delay(2.5, function()
+            if myToken ~= walkspeedToken then return end
+            if finished or not isWalkspeedActive then return end
+
+            cleanup(true)
+        end)
+    end)
+end, 0)
+
+makeAbilityButton("M1", UDim2.new(0, 280, 1, -50), Color3.fromRGB(255, 150, 50), function()
+    playAnim(character, attackKF, false, function()
+        if hitbox then hitbox:Destroy() end
+        currentState = "Idle"
+    end)
+    local hitbox = Instance.new("Part")
+    hitbox.Size = Vector3.new(3, 3, 5)
+    hitbox.Transparency = 1
+    hitbox.CanCollide = false
+    hitbox.CFrame = character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -3)
+    hitbox.Parent = workspace
+    local weld = Instance.new("WeldConstraint")
+    weld.Part0 = character.HumanoidRootPart
+    weld.Part1 = hitbox
+    weld.Parent = hitbox
+    local connection
+    connection = hitbox.Touched:Connect(function(hit)
+        if not hit:IsDescendantOf(character) then
+            local targetChar = hit:FindFirstAncestorOfClass("Model")
+            if targetChar then
+                local targetHum = targetChar:FindFirstChild("Humanoid")
+                if targetHum then
+                    local targetPlayer = Players:GetPlayerFromCharacter(targetChar)
+                    if targetPlayer then
+                        local dmg = 20
+                        if targetHum.Health - dmg <= 0 then
+                            sounds.kill:Play()
+                            local charClone = CloneMe(targetChar)
+                            charClone.Parent = workspace
+                            local cloneHRP = charClone:WaitForChild("HumanoidRootPart")
+                            local offset = CFrame.new(0, 0, -2) * CFrame.Angles(0, math.pi, 0)
+                            cloneHRP.CFrame = character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.pi, 0) * offset
+                            local cloneWeld = Instance.new("WeldConstraint")
+                            cloneWeld.Part0 = character.HumanoidRootPart
+                            cloneWeld.Part1 = cloneHRP
+                            cloneWeld.Parent = cloneHRP
+                            if currentStopper then currentStopper() end
+                            playAnim(character, killKF, false, function()
+                                if charClone then charClone:Destroy() end
+                                currentState = "Idle"
+                            end)
+                            PlayKeyframeSequence(charClone, killvictimKF, false, function()
+                                if charClone then charClone:Destroy() end
+                            end)
+                            targetHum.Health = targetHum.MaxHealth
+                            connection:Disconnect()
+                            hitbox:Destroy()
+                        else
+                            targetHum:TakeDamage(dmg)
+                            connection:Disconnect()
+                            hitbox:Destroy()
+                        end
+                    end
+                end
+            end
+        end
+    end)
+end, 0)
+
+makeAbilityButton("Delivery", UDim2.new(0, 410, 1, -50), Color3.fromRGB(50, 255, 50), function()
+    sounds.delivery:Play()
+    playAnim(character, deliverysummonedCOOLKF, false, function()
+        currentState = "Idle"
+    end)
+    for i = 1, 2 do
+        local offset = (i == 1 and -3 or 3)
+        local npc = createBot()
+        npc:PivotTo(character.HumanoidRootPart.CFrame * CFrame.new(offset, 0, 0))
+        PlayKeyframeSequence(npc, deliverysummonedKF, false, function()
+            local hum = npc:FindFirstChild("Humanoid")
+            if not hum then return end
+            local minionStopper = PlayKeyframeSequence(npc, deliverywalkKF, true)
+            task.spawn(function()
+                local startTime = tick()
+                while npc and npc.Parent and tick() - startTime < 10 do
+                    local nearest, dist = nil, math.huge
+                    for _, p in pairs(Players:GetPlayers()) do
+                        if p ~= player and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
+                            local d = (p.Character.HumanoidRootPart.Position - npc.HumanoidRootPart.Position).Magnitude
+                            if d < dist then
+                                dist = d
+                                nearest = p.Character
+                            end
+                        end
+                    end
+                    if nearest then
+                        hum:MoveTo(nearest.HumanoidRootPart.Position)
+                        if dist < 3 then
+                            minionStopper()
+                            PlayKeyframeSequence(npc, deliveryhitKF, false, function()
+                                if npc then npc:Destroy() end
+                            end)
+                            local targetHum = nearest:FindFirstChild("Humanoid")
+                            if targetHum then
+                                local dmg = 20
+                                local isLastHit = (targetHum.Health - dmg <= 0)
+                                targetHum:TakeDamage(dmg)
+                                if isLastHit then targetHum.Health = targetHum.MaxHealth end
+                            end
+                            return
+                        end
+                    else
+                        minionStopper()
+                        if npc then npc:Destroy() end
+                        return
+                    end
+                    task.wait(0.1)
+                end
+                minionStopper()
+                if npc then npc:Destroy() end
+            end)
+        end)
+    end
+end, 0)
+
+-- Background music
+local backgroundMusic = Instance.new("Sound")
+backgroundMusic.Name = "CompassSound"
+backgroundMusic.SoundId = getcustomasset("BLUU.mp3")
+backgroundMusic.Volume = 1
+backgroundMusic.Looped = true
+backgroundMusic.Parent = workspace
+backgroundMusic:Play()
+
+-- Cleanup on death
+humanoid.Died:Connect(function()
+    if backgroundMusic then
+        backgroundMusic:Stop()
+        backgroundMusic:Destroy()
+    end
+    for _, sound in pairs(sounds) do
+        if sound then
+            sound:Stop()
+            sound:Destroy()
+        end
+    end
+    if soundFolder then
+        soundFolder:Destroy()
+    end
+    if currentStopper then
+        currentStopper()
+    end
+    if screenGui then
+        screenGui:Destroy()
+    end
+    local animator = humanoid:FindFirstChildOfClass("Animator")
+    if animator and not animator.Parent then
+        animator.Parent = humanoid
+    end
+end)
+
+-- Character respawn handling
+player.CharacterAdded:Connect(function(newChar)
+    character = newChar
+    humanoid = character:WaitForChild("Humanoid")
+    humanoid.WalkSpeed = 16
+    currentState = "Idle"
+    if currentStopper then
+        currentStopper()
+    end
+    currentAnim = nil
+    updateMovementAnimations()
+    -- Restart random idle/walk sound playback
+    task.spawn(playRandomIdleWalkSound)
+    -- Restart background music
+    backgroundMusic = Instance.new("Sound")
+    backgroundMusic.Name = "CompassSound"
+    backgroundMusic.SoundId = getcustomasset("BLUU.mp3")
+    backgroundMusic.Volume = 1
+    backgroundMusic.Looped = true
+    backgroundMusic.Parent = workspace
+    backgroundMusic:Play()
+end)
