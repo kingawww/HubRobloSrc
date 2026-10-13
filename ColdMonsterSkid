@@ -88,7 +88,8 @@ local FMData = {
     [32] = {"John Doe", "https://rawscripts.net/raw/Universal-Script-John-doe-210549"},
     [33] = {"FE STRETCHED", "https://pastebin.com/raw/7Nv28tRE"},
     [34] = {"Mass Kill", "https://raw.githubusercontent.com/Makuscripts/PlsDonate/refs/heads/main/Steal-Robux.lua"},
-    [35] = {"Inferno Dominus R6", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/EquipInfernoDominusGPT"}
+    [35] = {"Black Dominus R6", "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Dominus"}
+    [36] = {"Inferno Dominus R6", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/EquipInfernoDominusGPT"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
@@ -437,7 +438,7 @@ ScriptsFrame.ClipsDescendants = true
 UICorner_9.Parent = ScriptsFrame
 
 -- Create FM buttons
-for i = 1, 35 do
+for i = 1, 36 do
 	local FM = Instance.new("TextButton")
 	local Data = FMData[i]
 
