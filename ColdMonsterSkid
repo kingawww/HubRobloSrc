@@ -94,7 +94,7 @@ local FMData = {
     [38] = {"Link Mas R6", "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Mas"},
     [39] = {"K1NG GUI V2", "https://pastebin.com/raw/BawHxeVD"},
     [40] = {"HomeLander", "https://raw.githubusercontent.com/giobolqv1/homelander-by-GioBolqv1-/refs/heads/main/homelander.lua"},
-    [41] = {"Bluudud NoCD!", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/Bluudud-R6-NoCD"}
+    [41] = {"bluudud NoCD!", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/Bluudud-R6-NoCD"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
