@@ -1,3 +1,29 @@
+-- Startup notifications: Cold Monster SKID V1.3
+-- { Look at you, all curious! Good kid! }
+local StarterGui = game:GetService("StarterGui")
+
+StarterGui:SetCore("SendNotification", {
+    Title = "Cold Monster Skid V1.3",
+    Text = "You are Hacker!",
+    Duration = 4.5
+})
+
+task.wait(0.4)
+
+StarterGui:SetCore("SendNotification", {
+    Title = "Cold Monster Skid V1.3",
+    Text = "Let's TROLL! ( ´•ω•` )",
+    Duration = 4.5
+})
+
+task.wait(0.4)
+
+StarterGui:SetCore("SendNotification", {
+    Title = "Cold Monster Skid V1.3",
+    Text = "made by IDioTKing",
+    Duration = 4.5
+})
+
 -- Cold Monster SKID v1.3 was made by IDioTKing
 
 -- Instances:
