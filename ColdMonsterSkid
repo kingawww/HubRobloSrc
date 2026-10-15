@@ -1,28 +1,30 @@
 -- Startup notifications: Cold Monster SKID V1.3
--- { Look at you, all curious! Good kid! }
 local StarterGui = game:GetService("StarterGui")
 
-StarterGui:SetCore("SendNotification", {
-    Title = "Cold Monster Skid V1.3",
-    Text = "You are Hacker!",
-    Duration = 4.5
-})
+local function sendStartupNotification(text)
+    -- SetCore may not be ready immediately, so retry briefly if needed.
+    for attempt = 1, 10 do
+        local success = pcall(function()
+            StarterGui:SetCore("SendNotification", {
+                Title = "Cold Monster Skid V1.3",
+                Text = text,
+                Duration = 3
+            })
+        end)
+        if success then
+            return
+        end
+        task.wait(0.1)
+    end
+end
 
-task.wait(0.4)
-
-StarterGui:SetCore("SendNotification", {
-    Title = "Cold Monster Skid V1.3",
-    Text = "Let's TROLL! ( ´•ω•` )",
-    Duration = 4.5
-})
-
-task.wait(0.4)
-
-StarterGui:SetCore("SendNotification", {
-    Title = "Cold Monster Skid V1.3",
-    Text = "made by IDioTKing",
-    Duration = 4.5
-})
+task.spawn(function()
+    sendStartupNotification("You are Hacker!")
+    task.wait(0.28)
+    sendStartupNotification("Let's TROLL! ( ´•ω•` )")
+    task.wait(0.28)
+    sendStartupNotification("made by IDioTKing")
+end)
 
 -- Cold Monster SKID v1.3 was made by IDioTKing
 
@@ -79,6 +81,12 @@ local tabselected = Instance.new('Sound', main)
 tabselected.SoundId = 'rbxassetid://6228296129'
 tabselected.Volume = 0.7
 -- v1.3↓
+local Universal = "Universal"
+local FE_R6 = "FE R6"
+local FE_R15 = "FE R15"
+local Hub = "Hub"
+local Require = "Require"
+
 local FMData = {
     [1]  = {"FlyGui V3", "https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"},
     [2]  = {"Obby GodMode", "https://raw.githubusercontent.com/zephyr10101/ignore-touchinterests/main/main"},
@@ -87,21 +95,21 @@ local FMData = {
     [5]  = {"Body Fling", "https://raw.githubusercontent.com/0Ben1/fe./main/Fling%20GUI"},
     [6]  = {"Control NPC", "https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty38.lua"},
     [7]  = {"Fling ALL", "https://pastebin.com/raw/zqyDSUWX"},
-    [8]  = {"Nexus 5.0", "https://avatar.sowonaha.workers.dev"},
-    [9]  = {"C00lkidd2 Hub remake", "https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/ckid"},
-    [10] = {"FE Trolling GUI", "https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/FE%20Trolling%20GUI.luau"},
-    [11] = {"Astral Hub V3", "https://raw.githubusercontent.com/Vcsk/AstralHub/main/Main.lua"},
+    [8]  = {"Nexus 5.0", Hub, "https://avatar.sowonaha.workers.dev"},
+    [9]  = {"C00lkidd2 Hub remake", Hub, "https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/ckid"},
+    [10] = {"FE Trolling GUI", Hub, "https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/FE%20Trolling%20GUI.luau"},
+    [11] = {"Astral Hub V3", Hub, "https://raw.githubusercontent.com/Vcsk/AstralHub/main/Main.lua"},
     [12] = {"Walk On Walls", "https://pastebin.com/raw/zXk4Rq2r"},
     [13] = {"Highlight esp", "https://pastebin.com/raw/7K1Jhmck"},
     [14] = {"Delta Mobile Keyboard", "https://raw.githubusercontent.com/Xxtan31/Ata/main/deltakeyboardcrack.txt"},
-    [15] = {"VoidOverlord NoCD!", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/VoidOverlord-NoCD.lua"},
-    [16] = {"Dark Knight", "https://pastebin.com/raw/Eq7Nd8K8"},
-    [17] = {"Demise NoCD!", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/UniversalDemise-NoCD"},
-    [18] = {"Lord", "https://pastefy.app/FebcDLCB/raw?t=" .. tick()},
-    [19] = {"Hater Hand", "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/hand"},
-    [20] = {"Dual RB Swords", "https://rawscripts.net/raw/Universal-Script-Dual-Ultima-RB-Swords-use-an-reanimation-42992"},
-    [21] = {"Lost Hope Scythe", "https://rawscripts.net/raw/Universal-Script-Lost-Hope-Scythe-78166"},
-    [22] = {"VDRo HUB", "https://gist.github.com/Hoang179211/982a4a064a35bbb72849b9b3d11e6a59/raw/5b1edb610825f0f3e1b6e405e34ae913adf9f61d/VDRo%2520Hub"},
+    [15] = {"VoidOverlord NoCD!", FE_R15, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/VoidOverlord-NoCD.lua"},
+    [16] = {"Dark Knight", FE_R15, "https://pastebin.com/raw/Eq7Nd8K8"},
+    [17] = {"Demise NoCD!", FE_R6, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/UniversalDemise-NoCD"},
+    [18] = {"Lord", FE_R6, "https://pastefy.app/FebcDLCB/raw?t=" .. tick()},
+    [19] = {"Hater Hand", FE_R6, "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/hand"},
+    [20] = {"Dual RB Swords", FE_R6, "https://rawscripts.net/raw/Universal-Script-Dual-Ultima-RB-Swords-use-an-reanimation-42992"},
+    [21] = {"Lost Hope Scythe", FE_R6, "https://rawscripts.net/raw/Universal-Script-Lost-Hope-Scythe-78166"},
+    [22] = {"VDRo HUB", Hub, "https://gist.github.com/Hoang179211/982a4a064a35bbb72849b9b3d11e6a59/raw/5b1edb610825f0f3e1b6e405e34ae913adf9f61d/VDRo%2520Hub"},
     [23] = {"SizeChanger +-0.1", "https://pastebin.com/raw/VKy1mAjk"},
     [24] = {"Normal GodMode", "https://raw.githubusercontent.com/brylesantos38-cell/Godmode-doors-script-/refs/heads/main/Idk%20it%20only%20work%20on%20entities%20that%20has%20vynxius%20spawner%20v2%20I'll%20make%20one%20that%20supports%20any%20spawner"},
     [25] = {"D3k7n! GodMode", "https://pastebin.com/raw/0vHhUmYi"},
@@ -110,20 +118,22 @@ local FMData = {
     [28] = {"Lag Switch", "https://gist.githubusercontent.com/voxelscriptz/27135ac7aded338f6d9955ff42241edd/raw/4e82963eedda1eaa650688699ac87fd2d8ab40bc/gistfile1.txt"},
     [29] = {"KillNpcAura v2", "https://pastefy.app/lXaYlxWd/raw"},
     [30] = {"NPC Manipulator", "https://raw.githubusercontent.com/InnocentViru/NPC-Manipulator/refs/heads/main/NPC%20Manipulator%20Script.lua"},
-    [31] = {"XVC Hub", "https://pastebin.com/raw/Piw5bqGq"},
-    [32] = {"John Doe", "https://rawscripts.net/raw/Universal-Script-John-doe-210549"},
-    [33] = {"FE STRETCHED", "https://pastebin.com/raw/7Nv28tRE"},
+    [31] = {"XVC Hub", Hub, "https://pastebin.com/raw/Piw5bqGq"},
+    [32] = {"John Doe", FE_R6, "https://rawscripts.net/raw/Universal-Script-John-doe-210549"},
+    [33] = {"FE STRETCHED", FE_R15, "https://pastebin.com/raw/7Nv28tRE"},
     [34] = {"Mass Kill", "https://raw.githubusercontent.com/Makuscripts/PlsDonate/refs/heads/main/Steal-Robux.lua"},
-    [35] = {"Black Dominus R6", "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Dominus"},
-    [36] = {"Inferno Dominus OnOff", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/EquipInfernoDominusGPT"},
-    [37] = {"Nectula R6", "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Nectula"},
-    [38] = {"Link Mas R6", "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Mas"},
-    [39] = {"K1NG GUI V2", "https://pastebin.com/raw/BawHxeVD"},
+    [35] = {"Black Dominus", FE_R6, "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Dominus"},
+    [36] = {"Inferno Dominus OnOff", FE_R6, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/EquipInfernoDominusGPT"},
+    [37] = {"Nectula", FE_R6, "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Nectula"},
+    [38] = {"Link Mas", FE_R6, "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Mas"},
+    [39] = {"K1NG GUI V2", Hub, "https://pastebin.com/raw/BawHxeVD"},
     [40] = {"HomeLander", "https://raw.githubusercontent.com/giobolqv1/homelander-by-GioBolqv1-/refs/heads/main/homelander.lua"},
-    [41] = {"bluudud NoCD!", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/Bluudud-R6-NoCD"}
+    [41] = {"bluudud NoCD!", FE_R6, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/Bluudud-R6-NoCD"},
+    [42] = {"F3x tool GUI", Require, "https://pastebin.com/raw/hp08JgV1"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
+local CategorySpinner, CategoryDropdown
 
 local OnOffFormain = Instance.new("TextButton") -- on off toggle
 local ToggleCorner = Instance.new("UICorner")
@@ -298,7 +308,7 @@ TextLabel_2.TextSize = 19.000
 
 local function ApplySelectedFont()
     local fontObjects = {
-        ScriptsButton, CreditsButton, ExtrasButton, TITLE,
+        ScriptsButton, CreditsButton, ExtrasButton, TITLE, CategorySpinner,
         TextLabel_1, TextLabel_2, TextLabel_3, TextLabel_4, TextLabel_6,
         OnOffFormain
     }
@@ -456,8 +466,8 @@ ScriptsFrame.Name = "ScriptsFrame"
 ScriptsFrame.Parent = main
 ScriptsFrame.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
 ScriptsFrame.BackgroundTransparency = 1.0
-ScriptsFrame.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
-ScriptsFrame.Size = UDim2.new(0, 400, 0, 320)
+ScriptsFrame.Position = UDim2.new(0.174153879, 0, 0.225, 0)
+ScriptsFrame.Size = UDim2.new(0, 400, 0, 278)
 ScriptsFrame.Visible = false
 --scroll "Scripts" screen
 ScriptsFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y --ScriptsFrame.CanvasSize = UDim2.new(0,0,0,700)
@@ -468,30 +478,121 @@ ScriptsFrame.ClipsDescendants = true
 
 UICorner_9.Parent = ScriptsFrame
 
--- Create FM buttons
-for i = 1, 41 do
-	local FM = Instance.new("TextButton")
-	local Data = FMData[i]
+-- Category Spinner (dropdown above ScriptsFrame)
+CategorySpinner = Instance.new("TextButton")
+CategorySpinner.Name = "CategorySpinner"
+CategorySpinner.Parent = main
+CategorySpinner.Position = UDim2.new(0.174153879, 0, 0.115472637, 0)
+CategorySpinner.Size = UDim2.new(0, 400, 0, 32)
+CategorySpinner.BackgroundColor3 = Color3.fromRGB(20, 20, 200)
+CategorySpinner.BackgroundTransparency = 0.2
+CategorySpinner.BorderSizePixel = 0
+CategorySpinner.Font = SelectedFont
+CategorySpinner.Text = "Universal  ▼"
+CategorySpinner.TextColor3 = Color3.fromRGB(255, 255, 255)
+CategorySpinner.TextSize = 18
+CategorySpinner.ZIndex = 50
+CategorySpinner.Visible = false
 
-	FM.Name = "FM" .. i
-	FM.Parent = ScriptsFrame
-	FM.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
-	FM.BackgroundTransparency = 0.2
-	FM.BorderSizePixel = 0
-	FM.Size = UDim2.new(0,145,0,44)
-	FM.Font = SelectedFont
-	FM.Text = Data[1]
-	FM.TextColor3 = Color3.fromRGB(255, 255, 255)
-	FM.TextSize = 21.000
-	FM.LayoutOrder = i
+local SpinnerCorner = Instance.new("UICorner")
+SpinnerCorner.CornerRadius = UDim.new(0, 6)
+SpinnerCorner.Parent = CategorySpinner
 
-	FM.MouseButton1Click:Connect(function()
-	    fmselected:Play()
-		loadstring(game:HttpGet(Data[2], true))()
-	end)
+CategoryDropdown = Instance.new("Frame")
+CategoryDropdown.Name = "CategoryDropdown"
+CategoryDropdown.Parent = main
+CategoryDropdown.Position = UDim2.new(0.174153879, 0, 0.115472637, 34)
+CategoryDropdown.Size = UDim2.new(0, 400, 0, 150)
+CategoryDropdown.BackgroundColor3 = Color3.fromRGB(15, 15, 35)
+CategoryDropdown.BackgroundTransparency = 0.03
+CategoryDropdown.BorderSizePixel = 0
+CategoryDropdown.Visible = false
+CategoryDropdown.ZIndex = 51
 
-	table.insert(FMs, FM)
+local SpinnerListLayout = Instance.new("UIListLayout")
+SpinnerListLayout.Parent = CategoryDropdown
+SpinnerListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+SpinnerListLayout.Padding = UDim.new(0, 2)
+
+local SpinnerPadding = Instance.new("UIPadding")
+SpinnerPadding.Parent = CategoryDropdown
+SpinnerPadding.PaddingTop = UDim.new(0, 4)
+SpinnerPadding.PaddingLeft = UDim.new(0, 4)
+SpinnerPadding.PaddingRight = UDim.new(0, 4)
+
+local Categories = {"Universal", "FE R6", "FE R15", "Hub", "Require"}
+local SelectedCategory = "Universal"
+
+local function FilterScripts()
+    for _, scriptButton in ipairs(FMs) do
+        scriptButton.Visible = scriptButton:GetAttribute("Category") == SelectedCategory
+    end
 end
+
+for index, categoryName in ipairs(Categories) do
+    local option = Instance.new("TextButton")
+    option.Name = "CategoryOption_" .. index
+    option.Parent = CategoryDropdown
+    option.Size = UDim2.new(1, -8, 0, 26)
+    option.BackgroundColor3 = Color3.fromRGB(40, 40, 70)
+    option.BackgroundTransparency = 0.05
+    option.BorderSizePixel = 0
+    option.Font = SelectedFont
+    option.Text = categoryName
+    option.TextColor3 = Color3.fromRGB(255, 255, 255)
+    option.TextSize = 17
+    option.ZIndex = 52
+    option.LayoutOrder = index
+
+    option.MouseButton1Click:Connect(function()
+        SelectedCategory = categoryName
+        CategorySpinner.Text = categoryName .. "  ▼"
+        CategoryDropdown.Visible = false
+        FilterScripts()
+    end)
+end
+
+CategorySpinner.MouseButton1Click:Connect(function()
+    CategoryDropdown.Visible = not CategoryDropdown.Visible
+end)
+
+-- Create FM buttons with legacy and category-aware data support
+for i = 1, 42 do
+    local FM = Instance.new("TextButton")
+    local Data = FMData[i]
+    local category, scriptUrl
+
+    if Data[3] ~= nil then
+        category = Data[2]
+        scriptUrl = Data[3]
+    else
+        category = Universal
+        scriptUrl = Data[2]
+    end
+
+    FM.Name = "FM" .. i
+    FM.Parent = ScriptsFrame
+    FM.BackgroundColor3 = Color3.fromRGB(200, 30, 30)
+    FM.BackgroundTransparency = 0.2
+    FM.BorderSizePixel = 0
+    FM.Size = UDim2.new(0, 145, 0, 44)
+    FM.Font = SelectedFont
+    FM.Text = Data[1]
+    FM.TextColor3 = Color3.fromRGB(255, 255, 255)
+    FM.TextSize = 21
+    FM.LayoutOrder = i
+    FM:SetAttribute("Category", category)
+
+    FM.MouseButton1Click:Connect(function()
+        fmselected:Play()
+        loadstring(game:HttpGet(scriptUrl, true))()
+    end)
+
+    table.insert(FMs, FM)
+end
+
+-- Show Universal by default
+FilterScripts()
 
 -- Add black outline to FM buttons
 for _,v in ipairs(FMs) do
@@ -511,6 +612,7 @@ end
 
 OnOffFormain.Name = "OnOffFormain" -- on off toggle
 OnOffFormain.Parent = ScreenGui
+OnOffFormain.ZIndex = 100
 OnOffFormain.Size = UDim2.new(0, 45, 0, 45)
 OnOffFormain.AnchorPoint = Vector2.new(0.5, 0)
 OnOffFormain.Position = UDim2.new(0.6, 0, 0, 15)
@@ -547,6 +649,8 @@ local function DQZLQDA_fake_script() -- ScriptsButton.LocalScript
 		script.Parent.Parent.Parent.ExtrasFrame.Visible = false
 		script.Parent.Parent.Parent.CreditsFrame.Visible = false
 		script.Parent.Parent.Parent.ScriptsFrame.Visible = true
+        CategorySpinner.Visible = true
+        CategoryDropdown.Visible = false
 	end)
 end
 coroutine.wrap(DQZLQDA_fake_script)()
@@ -572,6 +676,8 @@ local function QQXH_fake_script() -- CreditsButton.LocalScript
 		script.Parent.Parent.Parent.ExtrasFrame.Visible = false
 		script.Parent.Parent.Parent.CreditsFrame.Visible = true
 		script.Parent.Parent.Parent.ScriptsFrame.Visible = false
+        CategorySpinner.Visible = false
+        CategoryDropdown.Visible = false
 	end)
 end
 coroutine.wrap(QQXH_fake_script)()
@@ -597,6 +703,8 @@ local function OTBCOV_fake_script() -- ExtrasButton.LocalScript
 		script.Parent.Parent.Parent.ExtrasFrame.Visible = true
 		script.Parent.Parent.Parent.CreditsFrame.Visible = false
 		script.Parent.Parent.Parent.ScriptsFrame.Visible = false
+        CategorySpinner.Visible = false
+        CategoryDropdown.Visible = false
 	end)
 end
 coroutine.wrap(OTBCOV_fake_script)()
