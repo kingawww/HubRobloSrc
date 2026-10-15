@@ -1,3 +1,5 @@
+-- { Look at you, all curious! Good kid! }
+
 -- Startup notifications: Cold Monster SKID V1.3
 local StarterGui = game:GetService("StarterGui")
 
