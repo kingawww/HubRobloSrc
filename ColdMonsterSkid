@@ -10,6 +10,7 @@ local function sendStartupNotification(text)
             StarterGui:SetCore("SendNotification", {
                 Title = "Cold Monster Skid V1.3",
                 Text = text,
+                Icon = "rbxthumb://type=Asset&id=113884779101872&w=150&h=150",
                 Duration = 3
             })
         end)
