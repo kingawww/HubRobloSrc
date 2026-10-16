@@ -458,10 +458,11 @@ TextLabel_4.TextSize = 40.000
 TextLabel_6.Parent = CreditsFrame
 TextLabel_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.BackgroundTransparency = 1.000
-TextLabel_6.Position = UDim2.new(0, 0, 0.6, 0)
-TextLabel_6.Size = UDim2.new(0, 359, 0, 50)
+TextLabel_6.Position = UDim2.new(0, 0, 0.3, 0)
+TextLabel_6.Size = UDim2.new(0, 359, 0, 0)
+TextLabel_6.AutomaticSize = Enum.AutomaticSize.Y
 TextLabel_6.Font = SelectedFont
-TextLabel_6.Text = "｛Update log｝\nV1.0\n- Started Cold Monster SKID!\nV1.1\n- Added Click animation & Outline on menu\nV1.2\n- ”Rochips Panel” was RIP!\n- Fix OnOff from bottom-left to top-right\nV1.3\n- Added Many Script and Click Sound!\n- [NEW] Font Changer in Extras!"
+TextLabel_6.Text = "｛Update log｝\nV1.0\n- Started Cold Monster SKID!\nV1.1\n- Added Click animation & Outline on menu\nV1.2\n- ”Rochips Panel” was RIP!\n- Fix OnOff from bottom-left to top-right\nV1.3\n- Added Many Script and Click Sound!\n- [NEW] Font Changer in Extras!\n- [NEW] Category Changer in Scripts!\n- [NEW] Startup Notification!"
 TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.TextSize = 22.000
 
