@@ -10,8 +10,8 @@ local function sendStartupNotification(text)
             StarterGui:SetCore("SendNotification", {
                 Title = "Cold Monster Skid V1.3",
                 Text = text,
-                Icon = "rbxthumb://type=Asset&id=113884779101872&w=150&h=150",
-                Duration = 3
+                Icon = "rbxthumb://type=Asset&id=113884779101872&w=420&h=420",
+                Duration = 3.5
             })
         end)
         if success then
@@ -266,6 +266,39 @@ TopBar.Active = true
 TopBar.Selectable = true
 
 UICorner_6.Parent = TopBar
+
+-- Roblox spinning icon
+local TweenService = game:GetService("TweenService")
+local RobloxIcon = Instance.new("ImageLabel")
+RobloxIcon.Name = "RobloxIcon"
+RobloxIcon.BackgroundTransparency = 1
+RobloxIcon.Parent = SideBar
+RobloxIcon.AnchorPoint = Vector2.new(0.5, 0)
+RobloxIcon.Position = UDim2.new(0.5, 0, 0.75, 0)
+RobloxIcon.Size = UDim2.new(0, 70, 0, 70)
+RobloxIcon.BackgroundTransparency = 1
+RobloxIcon.ZIndex = 10
+
+-- Robloxアイコン画像
+RobloxIcon.Image = "rbxthumb://type=Asset&id=6421296794&w=420&h=420"
+RobloxIcon.ScaleType = Enum.ScaleType.Fit
+RobloxIcon.ZIndex = 10
+
+-- 永久に回転
+local SpinTween = TweenService:Create(
+    RobloxIcon,
+    TweenInfo.new(
+        1.8, -- 1周にかかる秒数
+        Enum.EasingStyle.Linear,
+        Enum.EasingDirection.InOut,
+        -1 -- 無限ループ
+    ),
+    {
+        Rotation = 360
+    }
+)
+
+SpinTween:Play()
 
 TITLE.Name = "TITLE"
 TITLE.Parent = TopBar
@@ -629,6 +662,31 @@ OnOffFormain.TextSize = 24
 
 ToggleCorner.CornerRadius = UDim.new(1,0)
 ToggleCorner.Parent = OnOffFormain
+
+-- Position lock button: inside the bottom-right corner of the snowman button
+local IsPositionLocked = false
+
+local PositionLockButton = Instance.new("TextButton")
+PositionLockButton.Name = "PositionLockButton"
+PositionLockButton.Parent = OnOffFormain
+PositionLockButton.AnchorPoint = Vector2.new(0, 0)
+PositionLockButton.Position = UDim2.new(1, -14, 1, -14)
+PositionLockButton.Size = UDim2.new(0, 7, 0, 7)
+PositionLockButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+PositionLockButton.BorderSizePixel = 0
+PositionLockButton.Text = ""
+PositionLockButton.AutoButtonColor = false
+PositionLockButton.ZIndex = OnOffFormain.ZIndex + 1
+
+PositionLockButton.Activated:Connect(function()
+    IsPositionLocked = not IsPositionLocked
+    if IsPositionLocked then
+        PositionLockButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    else
+        PositionLockButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    end
+end)
+
 -- Scripts:
 
 local function DTUMP_fake_script() -- bar.LocalScript 
@@ -719,6 +777,16 @@ local opened = true -- on off toggle
 local originalSize = main.Size
 
 OnOffFormain.MouseButton1Click:Connect(function()
+    -- Ignore clicks that land on the small position-lock button.
+    local mousePosition = game:GetService("UserInputService"):GetMouseLocation()
+    local lockPosition = PositionLockButton.AbsolutePosition
+    local lockSize = PositionLockButton.AbsoluteSize
+    if mousePosition.X >= lockPosition.X
+        and mousePosition.X <= lockPosition.X + lockSize.X
+        and mousePosition.Y >= lockPosition.Y
+        and mousePosition.Y <= lockPosition.Y + lockSize.Y then
+        return
+    end
 
     fmselected:Play()
 	opened = not opened
@@ -786,20 +854,41 @@ local startPos
 local dragTarget
 
 local function EnableDrag(Object, Target)
-	Object.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1
-		or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = Target.Position
-			dragTarget = Target
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-	end)
+    Object.InputBegan:Connect(function(input)
+        if input.UserInputType ~= Enum.UserInputType.MouseButton1
+            and input.UserInputType ~= Enum.UserInputType.Touch then
+            return
+        end
+
+        -- Do not move the snowman button while its position is locked.
+        if Object == OnOffFormain and IsPositionLocked then
+            return
+        end
+
+        -- Do not start dragging when the small lock square is pressed.
+        if Object == OnOffFormain then
+            local lockPosition = PositionLockButton.AbsolutePosition
+            local lockSize = PositionLockButton.AbsoluteSize
+            local point = input.Position
+            if point.X >= lockPosition.X
+                and point.X <= lockPosition.X + lockSize.X
+                and point.Y >= lockPosition.Y
+                and point.Y <= lockPosition.Y + lockSize.Y then
+                return
+            end
+        end
+
+        dragging = true
+        dragStart = input.Position
+        startPos = Target.Position
+        dragTarget = Target
+
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end)
 end
 
 -- ドラッグ可能な場所
