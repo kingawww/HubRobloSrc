@@ -132,7 +132,8 @@ local FMData = {
     [39] = {"K1NG GUI V2", Hub, "https://pastebin.com/raw/BawHxeVD"},
     [40] = {"HomeLander", "https://raw.githubusercontent.com/giobolqv1/homelander-by-GioBolqv1-/refs/heads/main/homelander.lua"},
     [41] = {"bluudud NoCD!", FE_R6, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/Bluudud-R6-NoCD"},
-    [42] = {"F3x tool GUI", Require, "https://pastebin.com/raw/hp08JgV1"}
+    [42] = {"F3x tool GUI", Require, "https://pastebin.com/raw/hp08JgV1"},
+    [43] = {"L0OLKIDD0 GUI V5", Hub, "https://pastebin.com/raw/ALNYmYUT"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
@@ -594,7 +595,7 @@ CategorySpinner.MouseButton1Click:Connect(function()
 end)
 
 -- Create FM buttons with legacy and category-aware data support
-for i = 1, 42 do
+for i = 1, 43 do
     local FM = Instance.new("TextButton")
     local Data = FMData[i]
     local category, scriptUrl
