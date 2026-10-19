@@ -1,0 +1,173 @@
+-- Tap Ripple + Drag Trail v4
+-- Mobile / PC
+-- Yellow tap rings + green drag squares
+
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Clean up previous version
+local old = playerGui:FindFirstChild("TapRippleEffect")
+if old then
+old:Destroy()
+print("Tap effects OFF")
+return
+end
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "TapRippleEffect"
+gui.IgnoreGuiInset = true
+gui.ResetOnSpawn = false
+gui.DisplayOrder = 999
+gui.Parent = playerGui
+
+-- Settings
+local OFFSET_Y = 50
+local RIPPLE_THICKNESS = 2.15
+local RIPPLE_COLOR = Color3.fromRGB(255, 220, 40)
+local DRAG_COLOR = Color3.fromRGB(50, 255, 100)
+local DRAG_INTERVAL = 0.005
+local SQUARE_SIZE = 7
+
+local function adjustedPosition(position)
+return Vector2.new(position.X, position.Y + OFFSET_Y)
+end
+
+-- Yellow ripple on tap
+local function createRipple(position)
+local ring = Instance.new("Frame")
+ring.Name = "TapRipple"
+ring.AnchorPoint = Vector2.new(0.5, 0.5)
+ring.Position = UDim2.fromOffset(position.X, position.Y)
+ring.Size = UDim2.fromOffset(8, 8)
+ring.BackgroundTransparency = 1
+ring.BorderSizePixel = 0
+ring.Parent = gui
+ring.ZIndex = 999
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(1, 0)
+corner.Parent = ring
+
+local stroke = Instance.new("UIStroke")
+stroke.Color = RIPPLE_COLOR
+stroke.Thickness = RIPPLE_THICKNESS
+stroke.Transparency = 0.05
+stroke.Parent = ring
+
+local info = TweenInfo.new(
+    0.8,
+    Enum.EasingStyle.Quad,
+    Enum.EasingDirection.Out
+)
+
+local expand = TweenService:Create(ring, info, {
+    Size = UDim2.fromOffset(85, 85)
+})
+
+local fade = TweenService:Create(stroke, info, {
+    Transparency = 1,
+    Thickness = 0.5
+})
+
+expand:Play()
+fade:Play()
+
+expand.Completed:Connect(function()
+    ring:Destroy()
+end)
+
+end
+
+-- Green square trail while dragging
+local function createDragSquare(position)
+local square = Instance.new("Frame")
+square.Name = "DragSquare"
+square.AnchorPoint = Vector2.new(0.5, 0.5)
+square.Position = UDim2.fromOffset(position.X, position.Y)
+square.Size = UDim2.fromOffset(SQUARE_SIZE, SQUARE_SIZE)
+square.BackgroundColor3 = DRAG_COLOR
+square.BackgroundTransparency = 0.1
+square.BorderSizePixel = 0
+square.Rotation = 0
+square.Parent = gui
+square.ZIndex = 999
+
+local tween = TweenService:Create(
+    square,
+    TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+    {
+        Size = UDim2.fromOffset(2, 2),
+        BackgroundTransparency = 1,
+        Rotation = 45
+    }
+)
+
+tween:Play()
+tween.Completed:Connect(function()
+    square:Destroy()
+end)
+
+end
+
+local activeInputs = {}
+local lastTrailTime = {}
+
+local function inputKey(input)
+if input.UserInputType == Enum.UserInputType.Touch then
+return input
+elseif input.UserInputType == Enum.UserInputType.MouseButton1 then
+return "Mouse"
+end
+end
+
+UserInputService.InputBegan:Connect(function(input, processed)
+local kind = input.UserInputType
+
+if kind == Enum.UserInputType.Touch
+or kind == Enum.UserInputType.MouseButton1 then
+    local key = inputKey(input)
+    activeInputs[key] = true
+    lastTrailTime[key] = 0
+
+    createRipple(adjustedPosition(input.Position))
+end
+
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+local kind = input.UserInputType
+local key
+
+if kind == Enum.UserInputType.Touch then
+    key = input
+elseif kind == Enum.UserInputType.MouseMovement
+and UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) then
+    key = "Mouse"
+end
+
+if key and activeInputs[key] then
+    local now = os.clock()
+
+    if now - (lastTrailTime[key] or 0) >= DRAG_INTERVAL then
+        lastTrailTime[key] = now
+        createDragSquare(adjustedPosition(input.Position))
+    end
+end
+
+end)
+
+UserInputService.InputEnded:Connect(function(input)
+local key = inputKey(input)
+
+if key then
+    activeInputs[key] = nil
+    lastTrailTime[key] = nil
+end
+
+end)
+
+print("Tap Ripple + Drag Trail v4 enabled!")
