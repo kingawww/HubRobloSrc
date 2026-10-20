@@ -135,7 +135,7 @@ local FMData = {
     [42] = {"F3x tool GUI", Require, "https://pastebin.com/raw/hp08JgV1"},
     [43] = {"L0OLKIDD0 GUI V5", Hub, "https://pastebin.com/raw/ALNYmYUT"},
     [44] = {"Click Effect OnOff", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/ClickEffectOnOff"},
-    [45] = {"FE Tall", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/FETall"},
+    [45] = {"FE Tall", FE_R15, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/FETall"},
     [46] = {"Invis Fling", "https://raw.githubusercontent.com/SVG-CARLOS/I-spent-soo-much-time-making-this-script-that-I-cant-make-a-good-title/refs/heads/main/Invisfling"},
     [47] = {"Kick Fling", FE_R15, "https://rawscripts.net/raw/Universal-Script-kick-fling-177615"}
 }
