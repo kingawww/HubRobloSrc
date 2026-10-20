@@ -1,0 +1,449 @@
+-- R6 Giant Size Editor
+-- Compact Vertical GUI | Draggable | Hold Repeat
+-- Local Client Only by IDioTKing [hi, u can god mode on some game. let's troll!]
+
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local MIN_SIZE = -9999999
+local MAX_SIZE = 10
+local csize = 1
+
+local HOLD_DELAY = 1
+local REPEAT_INTERVAL = 0.1
+local SIZE_STEP = 0.1
+
+local guiName = "GiantSizeEditor"
+local oldGui = playerGui:FindFirstChild(guiName)
+if oldGui then
+    oldGui:Destroy()
+end
+
+local character
+local originalSizes = {}
+local originalMotors = {}
+local originalWalkSpeed = 16
+
+local function getParts(char)
+    return {
+        Head = char:FindFirstChild("Head"),
+        Torso = char:FindFirstChild("Torso"),
+        ["Left Arm"] = char:FindFirstChild("Left Arm"),
+        ["Right Arm"] = char:FindFirstChild("Right Arm"),
+        ["Left Leg"] = char:FindFirstChild("Left Leg"),
+        ["Right Leg"] = char:FindFirstChild("Right Leg"),
+        HumanoidRootPart = char:FindFirstChild("HumanoidRootPart")
+    }
+end
+
+local function saveOriginals(char)
+    character = char
+    originalSizes = {}
+    originalMotors = {}
+
+    local parts = getParts(char)
+
+    for name, part in pairs(parts) do
+        if part and part:IsA("BasePart") then
+            originalSizes[name] = part.Size
+        end
+    end
+
+    local humanoid = char:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        originalWalkSpeed = humanoid.WalkSpeed
+    end
+
+    for _, partName in ipairs({"Torso", "HumanoidRootPart"}) do
+        local part = parts[partName]
+
+        if part then
+            for _, motor in ipairs(part:GetChildren()) do
+                if motor:IsA("Motor6D") then
+                    originalMotors[motor] = {
+                        Part0 = motor.Part0,
+                        Part1 = motor.Part1,
+                        C0 = motor.C0,
+                        C1 = motor.C1,
+                        Transform = motor.Transform
+                    }
+                end
+            end
+        end
+    end
+end
+
+local function applySize(size)
+    if not character or not character.Parent then
+        return
+    end
+
+    size = tonumber(size)
+
+    if not size or size ~= size
+        or size == math.huge or size == -math.huge then
+        return
+    end
+
+    size = math.clamp(size, MIN_SIZE, MAX_SIZE)
+-- Keep higher precision for manually entered values
+    size = math.floor(size * 1000000 + 0.5) / 1000000
+
+    local parts = getParts(character)
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+    for name, originalSize in pairs(originalSizes) do
+        local part = parts[name]
+
+        if part and originalSize then
+            part.Size = originalSize * size
+        end
+    end
+
+    for motor, data in pairs(originalMotors) do
+        if motor and motor.Parent then
+            motor.Part0 = data.Part0
+            motor.Part1 = data.Part1
+
+            motor.C0 = CFrame.new(data.C0.Position * size)
+                * (data.C0 - data.C0.Position)
+
+            motor.C1 = CFrame.new(data.C1.Position * size)
+                * (data.C1 - data.C1.Position)
+
+            motor.Transform = data.Transform
+        end
+    end
+
+    if humanoid then
+        humanoid.WalkSpeed = originalWalkSpeed -- * size
+    end
+
+    csize = size
+end
+
+local initialCharacter = player.Character or player.CharacterAdded:Wait()
+
+for _, name in ipairs({
+    "Humanoid", "Head", "Torso",
+    "Left Arm", "Right Arm", "Left Leg",
+    "Right Leg", "HumanoidRootPart"
+}) do
+    initialCharacter:WaitForChild(name)
+end
+
+saveOriginals(initialCharacter)
+
+-- GUI
+local gui = Instance.new("ScreenGui")
+gui.Name = guiName
+gui.ResetOnSpawn = false
+gui.DisplayOrder = 999
+gui.Parent = playerGui
+
+-- Main panel
+local base = Instance.new("Frame")
+base.Name = "Main"
+base.Size = UDim2.fromOffset(100, 139)
+base.Position = UDim2.new(1, -108, 0.5, -70)
+base.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+base.BorderSizePixel = 0
+base.Active = true
+base.Parent = gui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 5)
+corner.Parent = base
+
+-- Hide button: square corners
+local hideButton = Instance.new("TextButton")
+hideButton.Name = "HideButton"
+hideButton.Size = UDim2.fromOffset(30, 22)
+hideButton.Position = UDim2.new(1, -52, 0, 3)
+hideButton.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+hideButton.TextColor3 = Color3.new(1, 1, 1)
+hideButton.Font = Enum.Font.SourceSansBold
+hideButton.TextSize = 13
+hideButton.Text = "Hide"
+hideButton.BorderSizePixel = 0
+hideButton.Parent = base
+
+-- Close button: square corners
+local closeButton = Instance.new("TextButton")
+closeButton.Name = "CloseButton"
+closeButton.Size = UDim2.fromOffset(22, 22)
+closeButton.Position = UDim2.new(1, -25, 0, 3)
+closeButton.BackgroundColor3 = Color3.fromRGB(190, 50, 50)
+closeButton.TextColor3 = Color3.new(1, 1, 1)
+closeButton.Font = Enum.Font.SourceSansBold
+closeButton.TextSize = 18
+closeButton.Text = "×"
+closeButton.BorderSizePixel = 0
+closeButton.Parent = base
+
+-- Current Size button
+local indicator = Instance.new("TextButton")
+indicator.Name = "CurrentSize"
+indicator.Size = UDim2.new(1, -8, 0, 28)
+indicator.Position = UDim2.fromOffset(4, 28)
+indicator.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+indicator.TextColor3 = Color3.new(1, 1, 1)
+indicator.Font = Enum.Font.SourceSans
+indicator.TextSize = 14
+indicator.Text = "Current Size: 1.0"
+indicator.BorderSizePixel = 0
+indicator.Parent = base
+
+-- Size input
+local input = Instance.new("TextBox")
+input.Name = "SizeInput"
+input.Size = indicator.Size
+input.Position = indicator.Position
+input.Visible = false
+input.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+input.TextColor3 = Color3.new(1, 1, 1)
+input.PlaceholderText = "Enter size"
+input.Font = Enum.Font.SourceSans
+input.TextSize = 14
+input.ClearTextOnFocus = true
+input.Text = ""
+input.BorderSizePixel = 0
+input.Parent = base
+
+-- +0.1 button
+local PlusOne = Instance.new("TextButton")
+PlusOne.Name = "PlusOne"
+PlusOne.Size = UDim2.new(1, -8, 0, 32)
+PlusOne.Position = UDim2.fromOffset(4, 58)
+PlusOne.BackgroundColor3 = Color3.fromRGB(214, 214, 214)
+PlusOne.TextColor3 = Color3.fromRGB(25, 25, 25)
+PlusOne.Font = Enum.Font.SourceSansBold
+PlusOne.TextSize = 18
+PlusOne.Text = "+0.1"
+PlusOne.BorderSizePixel = 0
+PlusOne.Parent = base
+
+-- -0.1 button
+local MinusOne = Instance.new("TextButton")
+MinusOne.Name = "MinusOne"
+MinusOne.Size = UDim2.new(1, -8, 0, 32)
+MinusOne.Position = UDim2.fromOffset(4, 91)
+MinusOne.BackgroundColor3 = Color3.fromRGB(214, 214, 214)
+MinusOne.TextColor3 = Color3.fromRGB(25, 25, 25)
+MinusOne.Font = Enum.Font.SourceSansBold
+MinusOne.TextSize = 18
+MinusOne.Text = "-0.1"
+MinusOne.BorderSizePixel = 0
+MinusOne.Parent = base
+
+-- Reopen button
+local reopenButton = Instance.new("TextButton")
+reopenButton.Name = "ReopenButton"
+reopenButton.Size = UDim2.fromOffset(64, 27)
+reopenButton.Position = UDim2.new(1, -72, 0.5, -14)
+reopenButton.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+reopenButton.TextColor3 = Color3.new(1, 1, 1)
+reopenButton.Font = Enum.Font.SourceSansBold
+reopenButton.TextSize = 14
+reopenButton.Text = "Show GUI"
+reopenButton.Visible = false
+reopenButton.Active = true
+reopenButton.BorderSizePixel = 0
+reopenButton.Parent = gui
+
+-- Drag support: mouse and touch
+local function makeDraggable(target, handle)
+    handle = handle or target
+
+    local dragging = false
+    local dragStart
+    local startPosition
+    local activeInput
+
+    handle.InputBegan:Connect(function(inputObject)
+        local inputType = inputObject.UserInputType
+
+        if inputType == Enum.UserInputType.MouseButton1
+            or inputType == Enum.UserInputType.Touch then
+
+            dragging = true
+            dragStart = inputObject.Position
+            startPosition = target.Position
+            activeInput = inputObject
+
+            inputObject.Changed:Connect(function()
+                if inputObject.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                    activeInput = nil
+                end
+            end)
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(inputObject)
+        if not dragging then
+            return
+        end
+
+        local isMouseMove =
+            inputObject.UserInputType == Enum.UserInputType.MouseMovement
+
+        local isTouchMove =
+            inputObject.UserInputType == Enum.UserInputType.Touch
+            and activeInput == inputObject
+
+        if isMouseMove or isTouchMove then
+            local delta = inputObject.Position - dragStart
+
+            target.Position = UDim2.new(
+                startPosition.X.Scale,
+                startPosition.X.Offset + delta.X,
+                startPosition.Y.Scale,
+                startPosition.Y.Offset + delta.Y
+            )
+        end
+    end)
+end
+
+makeDraggable(base)
+makeDraggable(reopenButton)
+
+-- Update label
+local function updateIndicator()
+    indicator.Text = "Current Size: " .. string.format("%.6f", csize):gsub("0+$", ""):gsub("%.$", "")
+end
+
+-- Direct size input
+indicator.Activated:Connect(function()
+    input.Text = ""
+    indicator.Visible = false
+    input.Visible = true
+    input:CaptureFocus()
+end)
+
+input.FocusLost:Connect(function(enterPressed)
+    if enterPressed then
+        local value = tonumber(input.Text)
+        if value then
+            applySize(value)
+        end
+    end
+
+    input.Visible = false
+    indicator.Visible = true
+    updateIndicator()
+end)
+
+-- Hold-to-repeat support
+local holdToken = 0
+
+local function setupHoldButton(button, direction)
+    local pressed = false
+    local pressInput
+    local holdStart = 0
+
+    local function stopHolding()
+        pressed = false
+        holdToken += 1
+    end
+
+    local function changeSize()
+        applySize(csize + direction * SIZE_STEP)
+        updateIndicator()
+    end
+
+    button.InputBegan:Connect(function(inputObject)
+        local inputType = inputObject.UserInputType
+
+        if inputType ~= Enum.UserInputType.MouseButton1
+            and inputType ~= Enum.UserInputType.Touch then
+            return
+        end
+
+        if pressed then
+            return
+        end
+
+        pressed = true
+        pressInput = inputObject
+        holdStart = os.clock()
+
+        -- First change immediately
+        changeSize()
+
+        holdToken += 1
+        local myToken = holdToken
+
+        task.spawn(function()
+            task.wait(HOLD_DELAY)
+
+            if not pressed or myToken ~= holdToken then
+                return
+            end
+
+            while pressed and myToken == holdToken do
+                changeSize()
+                task.wait(REPEAT_INTERVAL)
+            end
+        end)
+
+        inputObject.Changed:Connect(function()
+            if inputObject.UserInputState == Enum.UserInputState.End then
+                stopHolding()
+            end
+        end)
+    end)
+
+    -- Stop if the mouse/touch is released outside the button
+    UserInputService.InputEnded:Connect(function(inputObject)
+        if not pressed then
+            return
+        end
+
+        if inputObject == pressInput
+            or inputObject.UserInputType == Enum.UserInputType.MouseButton1 then
+            stopHolding()
+        end
+    end)
+end
+
+setupHoldButton(PlusOne, 1)
+setupHoldButton(MinusOne, -1)
+
+-- Hide and reopen
+hideButton.Activated:Connect(function()
+    base.Visible = false
+    reopenButton.Visible = true
+end)
+
+reopenButton.Activated:Connect(function()
+    base.Visible = true
+    reopenButton.Visible = false
+end)
+
+-- Completely remove the GUI
+closeButton.Activated:Connect(function()
+    gui:Destroy()
+end)
+
+-- Respawn support
+player.CharacterAdded:Connect(function(char)
+    for _, name in ipairs({
+        "Humanoid", "Head", "Torso",
+        "Left Arm", "Right Arm", "Left Leg",
+        "Right Leg", "HumanoidRootPart"
+    }) do
+        char:WaitForChild(name)
+    end
+
+    task.wait(0.3)
+    saveOriginals(char)
+    applySize(csize)
+    updateIndicator()
+end)
+
+applySize(1)
+updateIndicator()
