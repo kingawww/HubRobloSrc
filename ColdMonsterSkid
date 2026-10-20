@@ -134,7 +134,8 @@ local FMData = {
     [41] = {"bluudud NoCD!", FE_R6, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/Bluudud-R6-NoCD"},
     [42] = {"F3x tool GUI", Require, "https://pastebin.com/raw/hp08JgV1"},
     [43] = {"L0OLKIDD0 GUI V5", Hub, "https://pastebin.com/raw/ALNYmYUT"},
-    [44] = {"Click Effect OnOff", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/ClickEffectOnOff"}
+    [44] = {"Click Effect OnOff", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/ClickEffectOnOff"},
+    [45] = {"Click Effect OnOff", FE_R15, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/FETall"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
@@ -596,7 +597,7 @@ CategorySpinner.MouseButton1Click:Connect(function()
 end)
 
 -- Create FM buttons with legacy and category-aware data support
-for i = 1, 44 do
+for i = 1, 45 do
     local FM = Instance.new("TextButton")
     local Data = FMData[i]
     local category, scriptUrl
