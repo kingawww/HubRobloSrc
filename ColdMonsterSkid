@@ -137,7 +137,11 @@ local FMData = {
     [44] = {"Click Effect OnOff", "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/ClickEffectOnOff"},
     [45] = {"FE Tall", FE_R15, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/FETall"},
     [46] = {"Invis Fling", "https://raw.githubusercontent.com/SVG-CARLOS/I-spent-soo-much-time-making-this-script-that-I-cant-make-a-good-title/refs/heads/main/Invisfling"},
-    [47] = {"Kick Fling", FE_R15, "https://rawscripts.net/raw/Universal-Script-kick-fling-177615"}
+    [47] = {"Kick Fling", FE_R15, "https://rawscripts.net/raw/Universal-Script-kick-fling-177615"},
+    [48] = {"♡Boobs♡", "https://pastebin.com/raw/CLrSTaqh"},
+    [49] = {"Multi Fling", "https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/mfr.lua"},
+    [50] = {"Caducus", FE_R6, "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/CADUCUS%20(FIXED)"},
+    [51] = {"Epik Dancezz GUI", FE_R6, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/EpikR6DancezzGUI"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
@@ -599,7 +603,7 @@ CategorySpinner.MouseButton1Click:Connect(function()
 end)
 
 -- Create FM buttons with legacy and category-aware data support
-for i = 1, 47 do
+for i = 1, 51 do
     local FM = Instance.new("TextButton")
     local Data = FMData[i]
     local category, scriptUrl
