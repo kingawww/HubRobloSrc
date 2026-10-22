@@ -141,7 +141,8 @@ local FMData = {
     [48] = {"♡Boobs♡", "https://pastebin.com/raw/CLrSTaqh"},
     [49] = {"Multi Fling", "https://raw.githubusercontent.com/RovlixTinProject/NeverX/refs/heads/main/mfr.lua"},
     [50] = {"Caducus", FE_R6, "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/CADUCUS%20(FIXED)"},
-    [51] = {"Epik Dancezz GUI", FE_R6, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/EpikR6DancezzGUI"}
+    [51] = {"Epik Dancezz GUI", FE_R6, "https://raw.githubusercontent.com/kingawww/HubRobloSrc/refs/heads/main/EpikR6DancezzGUI"},
+    [52] = {"Avatar Copier lyraEz", "https://api.lyraez.lol/loader"}
 }
 
 local FMs = {} -- FMs = FunctionMethods
@@ -603,7 +604,7 @@ CategorySpinner.MouseButton1Click:Connect(function()
 end)
 
 -- Create FM buttons with legacy and category-aware data support
-for i = 1, 51 do
+for i = 1, 52 do
     local FM = Instance.new("TextButton")
     local Data = FMData[i]
     local category, scriptUrl
